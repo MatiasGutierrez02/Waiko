@@ -1,4 +1,3 @@
-<!-- src/components/WhatsAppButton.vue -->
 <template>
   <a
     href="https://wa.me/5491153849262"

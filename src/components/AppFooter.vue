@@ -19,14 +19,15 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #75634f;
+  background-color: #4a7764;
   color: #fff;
   text-align: center;
   padding: 10px;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 3.2;
   white-space: nowrap;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .footer p {
