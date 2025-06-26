@@ -1,5 +1,5 @@
 {
-  "name": "nombre-de-tu-proyecto",
+  "name": "Waiko",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "aos": "^2.3.4",
     "core-js": "^3.8.3",
     "emailjs-com": "^3.2.0",
     "quasar": "^2.16.0",
