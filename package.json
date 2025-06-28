@@ -1,5 +1,5 @@
 {
-  "name": "waiko",
+  "name": "Waiko",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "aos": "^2.3.4",
     "core-js": "^3.8.3",
+    "emailjs-com": "^3.2.0",
     "quasar": "^2.16.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"

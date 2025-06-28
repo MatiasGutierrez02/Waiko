@@ -1,500 +1,374 @@
 <template>
-  <div class="home hero-section">
-    <div class="hero-section">
-      <section>
-        <h1 class="banner" v-scroll-reveal="{ delay: 200 }">
-          WAIKO Gestión Ambiental Integral
-        </h1>
-        <h2 class="banner" v-scroll-reveal="{ delay: 400 }">
-          Transformando Desafíos Ambientales en Soluciones Reales
-        </h2>
-        <q-btn
-          v-scroll-reveal="{ delay: 600 }"
-          name="servicios"
-          label="Conoce nuetros Servicios"
-          to="/servicios"
-          :size="'lg'"
-          class="boton-destacado q-px-xl q-py-md"
-          color="primary"
-        ></q-btn>
-      </section>
+  <div class="home-page">
+    <div class="banner">
+      <div class="banner-overlay" data-aos="fade-down">
+        <h1 class="banner-title">WAIKO</h1>
+        <h2 class="banner-subtitle">Tu Aliado Estratégico en Gestión Ambiental</h2>
+      </div>
     </div>
-  </div>
-  <div class="info-section">
-    <section>
-      <h2>
-        <router-link to="/quien-somos" class="link">Sobre Nosotros</router-link>
-      </h2>
-      <h3>
-        Con más de 12 años de experiencia, acompañamos a nuestros clientes en la
-        gestión ambiental diaria y en el control de obras financiadas por
-        organismos internacionales.
-      </h3>
+
+    <section class="sobre-nosotros-alt" data-aos="fade-up">
+      <h2 class="section-title-sobre-nosotros" data-aos="fade-up">Sobre Nosotros</h2>
+      <div class="sobre-nosotros-container" data-aos="zoom-in">
+        <div class="sobre-nosotros-imagen" data-aos="fade-right">
+          <img src="../assets/SobreNosotros.jpg" alt="Gestión Ambiental" />
+        </div>
+        <div class="sobre-nosotros-contenido" data-aos="fade-left">
+          <p class="section-text">
+            Waiko es una consultora ambiental especializada en brindar soluciones sostenibles a empresas, gobiernos y organizaciones.
+            Nuestro compromiso es acompañar a cada cliente en el cumplimiento de las normativas vigentes y en la implementación de políticas que reduzcan el impacto ambiental de sus actividades.
+            <br /><br />
+            Con un enfoque profesional y actualizado, garantizamos un servicio de calidad, estratégico y alineado con los desafíos actuales del medio ambiente.
+          </p>
+          <router-link to="/quienes-somos" class="conocenos-boton">Conocenos más</router-link>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="mis-vis-obj" data-aos="fade-up">
+      <h2 class="section-title-valores" data-aos="fade-down">Nuestros Valores</h2>
+      <div class="container-mvo">
+        <div class="card-mvo" data-aos="flip-left">
+          <div class="icon-mvo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+            </svg>
+          </div>
+          <h3 class="mvo-title">Misión</h3>
+          <p class="mvo-text">
+            Nuestra misión es ofrecer asesoramiento y gestión ambiental de calidad excepcional a empresas, organizaciones gubernamentales y entidades diversas.
+          </p>
+        </div>
+
+        <div class="card-mvo" data-aos="flip-up">
+          <div class="icon-mvo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 0 0 .356C3.423 16.692 7.36 20 12 20c4.638 0 8.576-3.308 9.963-7.322a1.012 1.012 0 0 0 0-.356C20.577 7.308 16.638 4 12 4c-4.638 0-8.576 3.308-9.963 7.322z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            </svg>
+          </div>
+          <h3 class="mvo-title">Visión</h3>
+          <p class="mvo-text">
+            Nuestra visión es crear un mundo en el que la excelencia ambiental y la práctica responsable sean parte integral de cada negocio.
+          </p>
+        </div>
+
+        <div class="card-mvo" data-aos="flip-right">
+          <div class="icon-mvo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
+            </svg>
+          </div>
+          <h3 class="mvo-title">Objetivo</h3>
+          <p class="mvo-text">
+            Impulsar el desarrollo sostenible mediante soluciones prácticas que aseguren el cumplimiento normativo y la protección del entorno natural.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="servicios" data-aos="fade-up">
+      <h2 class="section-title-servicios" data-aos="fade-down">Servicios</h2>
+      <div class="servicios-container">
+        <div class="servicio-card" data-aos="zoom-in">
+          <img src="../assets/GestionAmbiental.jpg" alt="Gestión Ambiental" />
+          <h3>Gestión Ambiental</h3>
+          <p>Soluciones integrales para cumplir con normativas y mejorar el desempeño ambiental.</p>
+          <button>Más información</button>
+        </div>
+
+        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="100">
+          <img src="../assets/ImpactoAcustico.jpg" alt="Impacto Acústico" />
+          <h3>Impacto Acústico</h3>
+          <p>Estudios y asesoramiento para el control del ruido en entornos urbanos e industriales.</p>
+          <button>Más información</button>
+        </div>
+
+        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="200">
+          <img src="../assets/HabilitacionesComerciales.jpg" alt="Habilitaciones Comerciales" />
+          <h3>Habilitaciones Comerciales</h3>
+          <p>Asistencia completa para tramitar habilitaciones bajo normas ambientales.</p>
+          <button>Más información</button>
+        </div>
+
+        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="300">
+          <img src="../assets/AsesoriaTecnica.jpg" alt="Asesoría Técnica" />
+          <h3>Asesoría Técnica</h3>
+          <p>Consultoría técnica en políticas sostenibles, residuos y planes de mitigación.</p>
+          <button>Más información</button>
+        </div>
+      </div>
     </section>
   </div>
-  <section class="beneficios-section">
-    <h2 class="beneficios-title">Beneficios de elegirnos:</h2>
-    <h3 class="beneficios-subtitle">
-      Al confiar en nuestros servicios, usted asegura:
-    </h3>
-    <div class="gridContainer">
-      <div
-        class="beneficio-card"
-        v-scroll-reveal="{
-          delay: 200,
-          origin: 'bottom',
-          distance: '50px',
-        }"
-      >
-        <div class="beneficio-icon">
-          <q-icon name="lock" size="3rem" color="primary" />
-        </div>
-        <h3 class="beneficio-title">Confidencialidad Garantizada</h3>
-        <p class="beneficio-text">
-          Protegemos su información y situación legal con la máxima discreción y
-          profesionalismo.
-        </p>
-      </div>
-      <!-- Beneficio 2 -->
-      <div
-        class="beneficio-card"
-        v-scroll-reveal="{ delay: 300, origin: 'bottom', distance: '50px' }"
-      >
-        <div class="beneficio-icon">
-          <q-icon name="gavel" size="3rem" color="primary" />
-        </div>
-        <h3 class="beneficio-title">Conocimiento Normativo Actualizado</h3>
-        <p class="beneficio-text">
-          Le brindamos la tranquilidad de saber que sus proyectos cumplen con la
-          legislación vigente, gracias a nuestra constante actualización.
-        </p>
-      </div>
-
-      <!-- Beneficio 3 -->
-      <div
-        class="beneficio-card"
-        v-scroll-reveal="{ delay: 400, origin: 'bottom', distance: '50px' }"
-      >
-        <div class="beneficio-icon">
-          <q-icon name="payments" size="3rem" color="primary" />
-        </div>
-        <h3 class="beneficio-title">Planes de Abono Mensual</h3>
-        <p class="beneficio-text">
-          Ofrecemos flexibilidad financiera con opciones que se adaptan a sus
-          necesidades, facilitando una gestión continua y eficiente.
-        </p>
-      </div>
-
-      <!-- Beneficio 4 -->
-      <div
-        class="beneficio-card"
-        v-scroll-reveal="{ delay: 500, origin: 'bottom', distance: '50px' }"
-      >
-        <div class="beneficio-icon">
-          <q-icon name="support_agent" size="3rem" color="primary" />
-        </div>
-        <h3 class="beneficio-title">Atención Personalizada</h3>
-        <p class="beneficio-text">
-          Cada cliente recibe un servicio adaptado a sus necesidades
-          específicas, con un asesor dedicado a su proyecto.
-        </p>
-      </div>
-    </div>
-  </section>
-  <!-- Sección de Servicios Destacados Mejorada -->
-  <section class="servicios-section">
-    <h3>Servicios Destacados</h3>
-    <div class="gridContainer">
-      <div class="servicios-grid">
-        <!-- Card 1: Gestión de Residuos -->
-        <q-card class="servicio-card" v-scroll-reveal="{ delay: 200 }">
-          <div class="servicio-icon-container">
-            <q-icon name="delete" size="4rem" color="accent" />
-          </div>
-          <q-card-section>
-            <div class="text-h6">Gestión de Residuos</div>
-          </q-card-section>
-          <q-card-section class="servicio-descripcion">
-            <p>
-              Soluciones integrales para la gestión adecuada de residuos
-              industriales y peligrosos, cumpliendo con la normativa vigente.
-            </p>
-          </q-card-section>
-          <q-card-actions align="right" class="servicio-actions">
-            <q-btn flat color="accent" label="Ver más" to="/servicios" />
-          </q-card-actions>
-        </q-card>
-
-        <!-- Card 2: Estudios de Impacto Ambiental -->
-        <q-card class="servicio-card" v-scroll-reveal="{ delay: 300 }">
-          <div class="servicio-icon-container">
-            <q-icon name="eco" size="4rem" color="accent" />
-          </div>
-          <q-card-section>
-            <div class="text-h6">Estudios de Impacto Ambiental</div>
-          </q-card-section>
-          <q-card-section class="servicio-descripcion">
-            <p>
-              Evaluaciones completas para identificar, predecir y mitigar los
-              posibles impactos ambientales de sus proyectos.
-            </p>
-          </q-card-section>
-          <q-card-actions align="right" class="servicio-actions">
-            <q-btn flat color="accent" label="Ver más" to="/servicios" />
-          </q-card-actions>
-        </q-card>
-
-        <!-- Card 3: Consultoría Ambiental -->
-        <q-card class="servicio-card" v-scroll-reveal="{ delay: 400 }">
-          <div class="servicio-icon-container">
-            <q-icon name="assignment" size="4rem" color="accent" />
-          </div>
-          <q-card-section>
-            <div class="text-h6">Consultoría Ambiental</div>
-          </q-card-section>
-          <q-card-section class="servicio-descripcion">
-            <p>
-              Asesoramiento especializado para el cumplimiento de normativas
-              ambientales y la implementación de prácticas sostenibles.
-            </p>
-          </q-card-section>
-          <q-card-actions align="right" class="servicio-actions">
-            <q-btn flat color="accent" label="Ver más" to="/servicios" />
-          </q-card-actions>
-        </q-card>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="cta-overlay">
-      <h2 class="cta-title">¿Listo para comenzar?</h2>
-      <p class="cta-text final">
-        Nuestro equipo de expertos está preparado para ayudarte con tus desafíos
-        ambientales
-      </p>
-      <q-btn
-        v-scroll-reveal="{ delay: 600 }"
-        name="asesoramiento"
-        label="Solicitar Asesoramiento"
-        :size="'lg'"
-        class="boton-destacado q-px-xl q-py-md"
-        color="primary"
-      ></q-btn>
-    </div>
-  </section>
 </template>
 
-<script>
-import { QBtn } from "quasar";
+<script setup>
+import { onMounted } from 'vue'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-export default {
-  name: "HomePage",
-  components: {
-    QBtn,
-  },
-};
+onMounted(() => {
+  AOS.init({
+    duration: 800,
+    once: false,
+  })
+})
 </script>
 
+
 <style scoped>
-.home {
-  margin-top: 100px;
+.home-page {
   display: flex;
   flex-direction: column;
-  /* margin-top: 100px; */
-}
-.hero-section {
-  height: 120vh;
-  background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)),
-    url("../assets/BackgroundHome.jpg") no-repeat center center/cover;
-  margin-bottom: auto;
-  max-height: 60vh;
-  min-height: 60vh !important;
-  justify-content: center;
-  position: relative;
-}
-.info-section {
-  padding: 3rem 1rem;
-  background-color: #f8f9fa;
-}
-h1.banner {
-  font-size: 4rem !important;
-  color: #fff !important;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
-  margin-bottom: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-h2.banner {
-  font-size: 2.2rem !important;
-  color: #f5f7f6 !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
-  margin-bottom: 2.5rem;
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 2.5rem !important;
-  color: #333333 !important;
-}
-h2 {
-  font-size: 1.8rem !important;
-  color: #333333 !important;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding-bottom: 3rem;
 }
 
 .banner {
-  line-height: 1.4;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Sección de información mejorada */
-.info-section {
-  padding: 5rem 2rem;
-  background-color: #f5f7f6;
-  position: relative;
-}
-
-.info-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 5px;
-  background: linear-gradient(to right, #4a7764, #f0a04b);
-}
-
-.info-section section {
-  max-width: 900px;
-  margin: 0 auto;
-}
-.link {
-  text-decoration: none;
-  color: #4a7764;
-  transition: all 0.3s ease;
+  height: 55vh;
+  background: url("../assets/ImagenFondoFinal.png") no-repeat center center/cover;
   position: relative;
-  padding-bottom: 3px;
-}
-.link:hover {
-  color: #f0a04b;
-}
-
-/* Grid container mejorado */
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Sección de beneficios mejorada */
-.beneficios-section {
-  padding: 0rem 2rem;
-  background: linear-gradient(to bottom, #f5f7f6, #fff);
-  text-align: center;
-  position: relative;
-}
-
-.beneficio-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
-}
-
-.beneficio-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.beneficio-icon {
-  background-color: rgba(74, 119, 100, 0.1);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
 }
 
-.beneficio-title {
+.banner-overlay {
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+.banner-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.banner-subtitle {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  font-weight: 400;
 }
 
-.beneficio-text {
-  text-align: center;
-  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
-  margin: 0;
-  color: #666;
-  line-height: 1.6;
-}
-
-/* Sección de servicios mejorada */
-.servicios-section {
-  background: linear-gradient(135deg, #4a7764, #183a37);
-  padding: 6rem 2rem;
-  margin-top: 3rem;
-  position: relative;
-  color: #fff;
-  text-align: center;
-}
-
-servicios-section::before {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: 0;
+.sobre-nosotros-alt {
   width: 100%;
-  height: 6px;
-  background: linear-gradient(to right, #f0a04b, #75634f);
+  padding: 4rem 1.5rem;
+  background-color: #ffffff;
+  display: block;
+  text-align: center;
 }
 
-.servicios-section h3 {
-  color: #fff !important;
-  font-size: 2.2rem !important;
-  margin-bottom: 3rem;
-  position: relative;
-  display: inline-block;
+.sobre-nosotros-container {
+  max-width: 1100px;
+  margin: 0 auto; /* <-- CENTRAR EL CONTENEDOR */
+  display: flex;
+  flex-wrap: wrap;
+  background: #f4f7f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
 
-.servicios-section h3::after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 3px;
-  background-color: #f0a04b;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+.sobre-nosotros-imagen {
+  flex: 1 1 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f2ea;
 }
 
-.servicios-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.sobre-nosotros-imagen img {
+  width: 100%;
+  height: auto;
+}
+
+.sobre-nosotros-contenido {
+  flex: 2 1 400px;
+  padding: 2.5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #264d2c;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.mis-vis-obj {
+  width: 100%;
+  background-color: #264d2c;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-mvo {
+  display: flex;
   gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.card-mvo {
+  background-color: #f4f7f5;
+  color: #264d2c;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  flex: 1 1 320px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.card-mvo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+
+.icon-mvo {
+  color: #264d2c;
+  margin-bottom: 1rem;
+}
+
+.size-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.mvo-title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.mvo-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.servicios {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title-servicios {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #264d2c;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.servicios-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   width: 100%;
 }
 
 .servicio-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #f4f7f5;
   border-radius: 12px;
-  overflow: hidden;
-  border: none;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .servicio-card:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
-.servicio-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0 1rem;
-  background-color: rgba(240, 160, 75, 0.1);
-  transition: all 0.3s ease;
+.servicio-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-.servicio-card:hover .servicio-icon-container {
-  background-color: rgba(240, 160, 75, 0.2);
+.servicio-card h3 {
+  font-size: 1.4rem;
+  color: #264d2c;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-.servicio-card .text-h6 {
-  color: #183a37;
-  font-weight: 600;
-  font-size: 1.5rem !important;
+.servicio-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
-.servicio-descripcion {
-  flex-grow: 1;
-  padding: 0.5rem 1.5rem 1rem;
+.servicio-card button {
+  background-color: #264d2c;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.servicio-descripcion p {
-  color: #666;
-  line-height: 1.7;
-  font-size: 1.05rem;
+.servicio-card button:hover {
+  background-color: #3b6e40;
 }
 
-.servicio-actions {
-  margin-top: auto;
-  padding: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-.boton-destacado {
-  margin: 40px;
-}
-
-/* CTA section mejorada */
-.cta-section {
-  padding: 6rem 2rem;
-  background: linear-gradient(rgba(24, 58, 55, 0.9), rgba(24, 58, 55, 0.9)),
-    url("../assets/BackgroundHome.jpg") no-repeat center center/cover;
-  text-align: center;
-  position: relative;
+.conocenos-boton {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #264d2c;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-.cta-overlay {
-  max-width: 900px;
-  margin: 0 auto;
+.conocenos-boton:hover {
+  background-color: #3b6e40;
 }
-
-.cta-title {
-  color: #fff !important;
-  font-size: 2.8rem !important;
-  margin-bottom: 1.5rem;
+.section-title-valores {
+  color: #aee79d;
+  font-size: 2.4rem;
   font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  max-width: 1100px;
 }
 
-.cta-text {
-  color: #f5f7f6;
-  font-size: 1.4rem !important;
-  margin-bottom: 2.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Botón destacado mejorado */
-.boton-destacado {
-  margin: 2rem 0;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-radius: 50px;
-  box-shadow: 0 10px 20px rgba(240, 160, 75, 0.3);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.boton-destacado:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(240, 160, 75, 0.4);
-  background-color: #f0a04b !important;
-  border-color: #fff;
-}
-
-/* Media queries para responsividad */
-@media (max-width: 768px) {
-  h1.banner {
-    font-size: 3rem !important;
-  }
-
-  h2.banner {
-    font-size: 1.8rem !;
-  }
+.section-title-sobre-nosotros {
+  font-size: 2rem;
+  color: #264d2c;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
 }
 </style>

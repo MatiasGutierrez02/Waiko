@@ -1,10 +1,17 @@
 <template>
   <header class="header">
     <div class="container">
-      <router-link to="/" class="logo">
-        <img src="../assets/5(3).png" class="imagenLogo" alt="Logo" to="/" />
-      </router-link>
-      <nav>
+      <img src="../assets/LogoFinalBlanco.png" class="imagenLogo" alt="Logo" />
+
+      <!-- Ícono hamburguesa -->
+      <button class="hamburger" @click="toggleMenu">
+        <span :class="{ open: isMenuOpen }"></span>
+        <span :class="{ open: isMenuOpen }"></span>
+        <span :class="{ open: isMenuOpen }"></span>
+      </button>
+
+      <!-- Menú Desktop -->
+      <nav class="nav-desktop">
         <router-link to="/">Inicio</router-link>
         <router-link to="/quien-somos">Quiénes somos</router-link>
         <div class="dropdown-container">
@@ -32,6 +39,14 @@
         </div>
         <router-link to="/contacto">Contacto</router-link>
       </nav>
+
+      <!-- Menú Mobile -->
+      <nav class="nav-mobile" v-if="isMenuOpen">
+        <router-link to="/" @click="closeMenu">Inicio</router-link>
+        <router-link to="/quien-somos" @click="closeMenu">Quiénes somos</router-link>
+        <router-link to="/servicios" @click="closeMenu">Servicios</router-link>
+        <router-link to="/contacto" @click="closeMenu">Contacto</router-link>
+      </nav>
     </div>
   </header>
 </template>
@@ -39,6 +54,19 @@
 <script>
 export default {
   name: "AppHeader",
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
+    },
+  },
 };
 </script>
 
@@ -48,71 +76,140 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #4a7764;
+  background-color: #264d2c;
   color: #fff;
-  padding: 10px;
-  z-index: 10;
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .container {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
+  flex-wrap: wrap;
 }
+
+.imagenLogo {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.imagenLogo:hover {
+  transform: scale(1.05);
+}
+
 nav {
   display: flex;
-  justify-content: space-around !important;
+  gap: 30px;
 }
 
-.dropdown-container {
-  display: inline-block;
-  padding: 0px 50px 0px 0px;
+.nav-desktop {
+  display: flex;
+  gap: 30px;
 }
 
-.servicios-dropdown {
-  font-weight: bold;
-  color: #4a7764;
-  padding: 0;
-  margin: 0;
-  height: auto;
-  min-height: auto;
+.nav-mobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 👈 Centra horizontalmente */
+  background-color: #264d2c;
+  padding: 10px 0 0 ;
+  gap: 0px;
 }
 
-/* Style the dropdown menu items */
-:deep(.q-list) {
-  background-color: #4a7764;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-:deep(.q-item) {
-  color: #4a7764 !important;
-}
-:deep(.q-item:hover) {
-  background-color: #4a7764 !important;
-}
-:deep(.q-btn) {
-  text-transform: none;
-  padding: 0;
-  min-height: auto;
+.nav-mobile a {
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ffffff22;
 }
 
-:deep(.q-btn:hover) {
-  color: #2c3e50;
-}
 
+
+
+/* Links */
 a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
-  padding: 0px 50px 0px 0px;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #aee79d;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
 }
 
 a:hover {
-  color: #2c3e50;
+  color: #aee79d;
 }
-.imagenLogo {
-  height: 80px;
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Botón hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Transición al abrir */
+.hamburger span.open:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger span.open:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #264d2c;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
 }
 </style>
