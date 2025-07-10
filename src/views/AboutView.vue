@@ -34,23 +34,33 @@ export default {
   margin-top: 100px;
 }
 
-.h1 {
-  font-size: 3.5rem;
-  text-align: center;
-  color: #2c3e50;
-  max-width: 800px;
-  margin: 0 auto;
-  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 20px !important;
+  color: #144553;
 }
 
 h2 {
   font-size: 1.8rem !important;
-  color: #2c3e50;
+  color: #144553;
   line-height: 1.4;
   margin: 5px 30px;
   text-align: center;
   line-height: 1.4;
-  padding: 50px
+  padding: 50px;
 }
 
+/* Add to the existing <style> section */
+@media (max-width: 768px) {
+  .about {
+    margin-top: 80px;
+  }
+
+  h2 {
+    font-size: 1.4rem !important;
+    padding: 30px 20px;
+    margin: 5px 15px;
+  }
+}
 </style>

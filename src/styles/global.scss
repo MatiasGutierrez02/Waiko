@@ -1,0 +1,25 @@
+// Responsive images
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Responsive container
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Additional responsive helpers
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .text-center-mobile {
+    text-align: center !important;
+  }
+}

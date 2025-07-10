@@ -11,13 +11,19 @@
       </p>
       <p>
         <strong>Email:</strong>
-        <a href="mailto:info@waiko.com.ar?cc=info@waiko.com.ar" class="contact-link">
+        <a
+          href="mailto:info@waiko.com.ar?cc=info@waiko.com.ar"
+          class="contact-link"
+        >
           info@waiko.com.ar
         </a>
       </p>
     </div>
 
-    <q-form @submit.prevent="enviarConsulta" class="contact-form q-pa-lg q-mb-xl">
+    <q-form
+      @submit.prevent="enviarConsulta"
+      class="contact-form q-pa-lg q-mb-xl"
+    >
       <q-input
         filled
         v-model="form.nombre"
@@ -73,8 +79,10 @@
     </q-form>
 
     <q-dialog v-model="successDialog">
-      <q-card style="min-width: 280px; max-width: 400px;">
-        <q-card-section class="text-h6 text-primary">Consulta enviada</q-card-section>
+      <q-card style="min-width: 280px; max-width: 400px">
+        <q-card-section class="text-h6 text-primary"
+          >Consulta enviada</q-card-section
+        >
         <q-card-section>
           Gracias por contactarnos. Te responderemos a la brevedad.
         </q-card-section>
@@ -144,16 +152,15 @@ const enviarConsulta = async () => {
   box-shadow: 0 10px 24px rgba(38, 77, 44, 0.15);
   padding: 2.5rem 2rem;
   font-family: "Roboto", sans-serif;
-  color: #264d2c;
+  color: #144553;
 }
-
 
 .contact-title {
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #264d2c;
+  color: #144553;
 }
 
 .contact-info p {
@@ -162,7 +169,7 @@ const enviarConsulta = async () => {
 }
 
 .contact-link {
-  color: #264d2c;
+  color: #144553;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -179,7 +186,7 @@ const enviarConsulta = async () => {
 }
 
 .q-btn--unelevated {
-  background-color: #264d2c !important;
+  background-color: #144553 !important;
   color: white !important;
   font-weight: 600 !important;
   border-radius: 8px !important;
@@ -187,10 +194,27 @@ const enviarConsulta = async () => {
 }
 
 .q-btn--unelevated:hover {
-  background-color: #3b6e40 !important;
+  background-color: #144553 !important;
 }
 
 .q-card-section.text-primary {
-  color: #264d2c !important;
+  color: #144553 !important;
+}
+@media (max-width: 768px) {
+  .contact-container {
+    margin: 120px auto 2rem;
+    padding: 1.5rem 1rem;
+    width: 90%;
+  }
+
+  .contact-title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    margin-top: 100px;
+  }
 }
 </style>

@@ -14,25 +14,31 @@
       <nav class="nav-desktop">
         <router-link to="/">Inicio</router-link>
         <router-link to="/quien-somos">Quiénes somos</router-link>
-        <div class="dropdown-container">
+        <div class="dropdown-container servicios-dropdown-container">
           <q-btn-dropdown
             flat
             no-caps
             label="Servicios"
             class="servicios-dropdown"
             text-color="white"
+            menu-anchor="bottom left"
+            menu-self="top left"
+            :menu-offset="[0, 10]"
+            persistent
           >
             <q-list>
               <q-item clickable v-close-popup to="/servicios/">
-                <q-item-section>Evaluación de Impacto Ambiental</q-item-section>
+                <q-item-section class="q-item"
+                  >Evaluación de Impacto Ambiental</q-item-section
+                >
               </q-item>
 
               <q-item clickable v-close-popup to="/servicios/">
-                <q-item-section>Impacto Acústico</q-item-section>
+                <q-item-section class="q-item">Impacto Acústico</q-item-section>
               </q-item>
 
               <q-item clickable v-close-popup to="/servicios/">
-                <q-item-section>Asesoramiento</q-item-section>
+                <q-item-section class="q-item">Asesoramiento</q-item-section>
               </q-item>
             </q-list>
           </q-btn-dropdown>
@@ -43,7 +49,9 @@
       <!-- Menú Mobile -->
       <nav class="nav-mobile" v-if="isMenuOpen">
         <router-link to="/" @click="closeMenu">Inicio</router-link>
-        <router-link to="/quien-somos" @click="closeMenu">Quiénes somos</router-link>
+        <router-link to="/quien-somos" @click="closeMenu"
+          >Quiénes somos</router-link
+        >
         <router-link to="/servicios" @click="closeMenu">Servicios</router-link>
         <router-link to="/contacto" @click="closeMenu">Contacto</router-link>
       </nav>
@@ -76,7 +84,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #264d2c;
+  background-color: #144553;
   color: #fff;
   padding: 12px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -99,6 +107,55 @@ export default {
   transform: scale(1.05);
 }
 
+.servicios-dropdown-container {
+  display: flex;
+  align-items: flex-start !important;
+}
+
+:deep(.servicios-dropdown) {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+:deep(.servicios-dropdown .q-btn__content) {
+  display: flex;
+  align-items: center;
+}
+
+:deep(.servicios-dropdown .q-btn__wrapper) {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: unset;
+}
+
+:deep(.servicios-dropdown) {
+  margin-top: -6px !important;
+}
+
+:deep(.servicios-dropdown .q-menu) {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #144553 !important;
+  border-radius: 4px;
+  padding: 8px 0;
+  min-width: 200px;
+}
+
+:deep(.servicios-dropdown .q-item) {
+  font-weight: 500;
+  padding: 8px 16px;
+  background-color: #144553 !important;
+}
+
+.q-item {
+  background-color: #144553 !important;
+}
+:deep(.servicios-dropdown .q-item:hover) {
+  background-color: rgba(174, 231, 157, 0.1);
+}
+
 nav {
   display: flex;
   gap: 30px;
@@ -114,8 +171,8 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center; /* 👈 Centra horizontalmente */
-  background-color: #264d2c;
-  padding: 10px 0 0 ;
+  background-color: #144553;
+  padding: 10px 0 0;
   gap: 0px;
 }
 
@@ -125,9 +182,6 @@ nav {
   text-align: center;
   border-top: 1px solid #ffffff22;
 }
-
-
-
 
 /* Links */
 a {
@@ -207,9 +261,9 @@ a:hover::after {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #264d2c;
+    background-color: #144553;
     width: 100%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 }
 </style>

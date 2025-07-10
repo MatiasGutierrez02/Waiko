@@ -5,6 +5,7 @@ import quasarUserOptions from "./quasar-user-options";
 import router from "./router";
 import 'quasar/src/css/index.sass';
 import '@quasar/extras/material-icons/material-icons.css';
+import './styles/global.scss';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -18,5 +19,8 @@ app.mount('#app');
 
 AOS.init({
   duration: 800,     // Duración de animaciones
-  once: false,        // Solo se animan una vez al hacer scroll
+  once: false,        // Solo se animan una vez al hacer scroll  disable: 'mobile', // Disable animations on mobile for better performance
+  startEvent: 'DOMContentLoaded',
+  offset: 120,
+  mirror: false
 });
