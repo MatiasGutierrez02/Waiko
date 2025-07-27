@@ -9,55 +9,6 @@
       </div>
     </div>
 
-    <!-- <section class="servicios-destacados" data-aos="fade-up">
-      <h2 class="section-title-servicios" data-aos="fade-down">
-        Servicios Destacados
-      </h2>
-      <div class="servicios-container">
-        <div class="servicio-card" data-aos="zoom-in">
-          <img src="@/assets/GestionAmbiental.jpg" alt="Gestión Ambiental" />
-          <h3>Gestión Ambiental</h3>
-          <p>
-            Soluciones integrales para cumplir con normativas y mejorar el
-            desempeño ambiental.
-          </p>
-          <button>Más información</button>
-        </div>
-
-        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="100">
-          <img src="@/assets/ImpactoAcustico.jpg" alt="Impacto Acústico" />
-          <h3>Impacto Acústico</h3>
-          <p>
-            Estudios y asesoramiento para el control del ruido en entornos
-            urbanos e industriales.
-          </p>
-          <button>Más información</button>
-        </div>
-
-        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="200">
-          <img
-            src="@/assets/HabilitacionesComerciales.jpg"
-            alt="Habilitaciones Comerciales"
-          />
-          <h3>Habilitaciones Comerciales</h3>
-          <p>
-            Asistencia completa para tramitar habilitaciones bajo normas
-            ambientales.
-          </p>
-          <button>Más información</button>
-        </div>
-        <div class="servicio-card" data-aos="zoom-in" data-aos-delay="300">
-          <img src="@/assets/AsesoriaTecnica.jpg" alt="Asesoría Técnica" />
-          <h3>Asesoría Técnica</h3>
-          <p>
-            Consultoría técnica en políticas sostenibles, residuos y planes de
-            mitigación.
-          </p>
-          <button>Más información</button>
-        </div>
-      </div>
-    </section> -->
-
     <section class="servicios-destacados" data-aos="fade-up">
       <h2 class="section-title-servicios" data-aos="fade-down">
         Servicios Destacados
@@ -192,6 +143,7 @@
         </div>
       </div>
     </section>
+    <ProjectGallery />
 
     <section class="nuestro-impacto" data-aos="fade-up">
       <h2 class="section-title-impacto" data-aos="fade-down">
@@ -200,21 +152,25 @@
       <div class="impacto-container">
         <div class="estadisticas" data-aos="fade-right">
           <div class="estadistica-item">
-            <h3><span class="contador" data-target="500">0</span>+</h3>
+            <h3><span class="contador" data-target="350">0</span>+</h3>
             <p>Proyectos Completados</p>
           </div>
           <div class="estadistica-item">
-            <h3><span class="contador" data-target="1000">0</span>k</h3>
+            <h3><span class="contador" data-target="2300">0</span>k</h3>
             <p>Toneladas de CO2 Reducidas</p>
           </div>
           <div class="estadistica-item">
-            <h3><span class="contador" data-target="200">0</span>+</h3>
+            <h3><span class="contador" data-target="600">0</span>+</h3>
             <p>Clientes Satisfechos</p>
           </div>
           <div class="estadistica-item">
-            <h3><span class="contador" data-target="20">0</span>+</h3>
+            <h3><span class="contador" data-target="13">0</span>+</h3>
             <p>Años de Experiencia</p>
           </div>
+        </div>
+        <div class="mapa-impacto" data-aos="fade-left">
+          <h3>Nuestros Proyectos</h3>
+          <div id="mapa"></div>
         </div>
       </div>
     </section>
@@ -246,6 +202,9 @@
 import { ref, onMounted } from "vue";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
 
 const servicios = [
   {
@@ -278,45 +237,68 @@ const servicios = [
       "Evaluación y gestión de impactos ambientales en proyectos y actividades.",
     imagen: new URL("@/assets/ImpactoAcustico.jpg", import.meta.url).href,
   },
-
-  // {
-  //   titulo: "Habilitaciones Comerciales",
-  //   descripcion:
-  //     "Asistencia completa para tramitar habilitaciones bajo normas ambientales.",
-  //   imagen: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
-  //     .href,
-  // },
-  // {
-  //   titulo: "Asesoría Técnica",
-  //   descripcion:
-  //     "Consultoría técnica en políticas sostenibles, residuos y planes de mitigación.",
-  //   imagen: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
-  // },
 ];
 
 const currentIndex = ref(0);
-const carouselWrapper = ref(null);
 
-const nextSlide = () => {
+function nextSlide() {
   if (currentIndex.value < servicios.length - 1) {
     currentIndex.value++;
   } else {
     currentIndex.value = 0;
   }
-};
+}
 
-const prevSlide = () => {
+function prevSlide() {
   if (currentIndex.value > 0) {
     currentIndex.value--;
   } else {
     currentIndex.value = servicios.length - 1;
   }
-};
+}
 
 onMounted(() => {
   AOS.init({
     duration: 800,
     once: false,
+  });
+
+  // Ejemplo de proyectos para el mapa
+  const proyectos = [
+    {
+      nombre: "Proyecto Buenos Aires",
+      descripcion: "Gestión ambiental en Buenos Aires.",
+      lat: -34.6037,
+      lng: -58.3816,
+    },
+    {
+      nombre: "Proyecto Córdoba",
+      descripcion: "Reducción de CO2 en Córdoba.",
+      lat: -31.4201,
+      lng: -64.1888,
+    },
+    {
+      nombre: "Proyecto Mendoza",
+      descripcion: "Consultoría ambiental en Mendoza.",
+      lat: -32.8895,
+      lng: -68.8458,
+    },
+  ];
+
+  // Initialize the map
+  const map = L.map("mapa").setView([-38.4161, -63.6167], 4); // Center on Argentina
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap contributors",
+  }).addTo(map);
+
+  // Add markers for each project
+  proyectos.forEach((proyecto) => {
+    const marker = L.marker([proyecto.lat, proyecto.lng]).addTo(map);
+    marker.bindPopup(`
+      <strong>${proyecto.nombre}</strong><br>
+      ${proyecto.descripcion}
+    `);
   });
 
   // Animación de contadores
@@ -353,7 +335,10 @@ onMounted(() => {
     { threshold: 0.5 }
   );
 
-  observador.observe(document.querySelector(".nuestro-impacto"));
+  const nuestroImpactoElement = document.querySelector(".nuestro-impacto");
+  if (nuestroImpactoElement) {
+    observador.observe(nuestroImpactoElement);
+  }
 });
 </script>
 
@@ -686,6 +671,25 @@ onMounted(() => {
   margin-bottom: 1.5rem;
   font-family: "Roboto", sans-serif;
   width: 100%;
+}
+
+.mapa-impacto {
+  flex: 1;
+  min-width: 300px;
+  margin-top: 2rem;
+}
+
+.mapa-impacto h3 {
+  font-size: 1.5rem;
+  color: #144553;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#mapa {
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cta-section {
