@@ -46,7 +46,6 @@
         </ul>
 
         <div class="about-cta" data-aos="fade-up" data-aos-delay="270">
-          <router-link to="/quienes-somos" class="btn btn-primary">Conocenos más</router-link>
           <button class="btn btn-ghost" @click="scrollToServices">Ver servicios</button>
         </div>
       </div>
