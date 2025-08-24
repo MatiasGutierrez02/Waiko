@@ -4,8 +4,8 @@
       <h2 class="contacto-title" ref="titleRef"><span>Contacto</span></h2>
     </div>
 
-    <div class="contacto-grid">
-      <aside class="info-card contact-card" :ref="setCardRef" :style="{ '--delay': '0ms' }">
+    <div class="contacto-grid" ref="gridRef">
+      <aside class="info-card contact-card" style="--delay: 0ms">
         <h3 class="info-title">Hablemos</h3>
         <p class="info-text">Escribinos y un consultor te responde en el día hábil.</p>
 
@@ -28,41 +28,14 @@
         <p class="mini-note">Al enviar aceptás ser contactad@ por nuestro equipo.</p>
       </aside>
 
-      <q-form @submit.prevent="enviarConsulta" class="form-card contact-card" :ref="setCardRef" :style="{ '--delay': '140ms' }">
+      <q-form @submit.prevent="enviarConsulta" class="form-card contact-card" style="--delay: 140ms">
         <div class="fields-grid">
-          <q-input
-            filled dense color="primary"
-            v-model="form.nombre"
-            label="Nombre y Apellido"
-            class="field"
-            :rules="[v => !!v || 'Requerido']"
-          />
-          <q-input
-            filled dense  color="primary"
-            v-model="form.mail"
-            type="email"
-            label="Email"
-            class="field"
-            :rules="[
-              v => !!v || 'Requerido',
-              v => /.+@.+\..+/.test(v) || 'Email inválido'
-            ]"
-          />
-          <q-input
-            filled dense  color="primary"
-            v-model="form.telefono"
-            label="Teléfono"
-            class="field span-2"
-          />
-          <q-input
-            filled dense  color="primary"
-            v-model="form.consulta"
-            type="textarea"
-            autogrow
-            label="Contanos tu consulta"
-            class="field span-2 textarea-large"
-            :rules="[v => !!v || 'Requerido']"
-          />
+          <q-input filled dense color="primary" v-model="form.nombre" label="Nombre y Apellido" class="field" :rules="[v => !!v || 'Requerido']"/>
+          <q-input filled dense color="primary" v-model="form.mail" type="email" label="Email" class="field"
+                   :rules="[v => !!v || 'Requerido', v => /.+@.+\..+/.test(v) || 'Email inválido']"/>
+          <q-input filled dense color="primary" v-model="form.telefono" label="Teléfono" class="field span-2"/>
+          <q-input filled dense color="primary" v-model="form.consulta" type="textarea" autogrow
+                   label="Contanos tu consulta" class="field span-2 textarea-large" :rules="[v => !!v || 'Requerido']"/>
         </div>
 
         <div class="terms-wrap" :class="{ invalid: termsInvalid }">
@@ -76,71 +49,79 @@
         </div>
 
         <div class="actions">
-          <q-btn
-            type="submit"
-            label="Enviar consulta"
-            color="primary"
-            unelevated
-            class="send-btn"
-            :class="{ shake: shakeNow }"
-            :loading="loading"
-          />
+          <q-btn type="submit" label="Enviar consulta" color="primary" unelevated
+                 class="send-btn" :class="{ shake: shakeNow }" :loading="loading" />
         </div>
       </q-form>
     </div>
 
     <q-dialog v-model="showTerms">
       <q-card class="terms-card">
-        <div class="terms-accent"></div>
-        <q-card-section class="t-head">
-          <div class="t-title">Política de Privacidad</div>
+        <div class="t-hero">
+          <div class="t-hero-left">
+            <div class="t-badge" aria-hidden="true">🔒</div>
+            <div class="t-hero-text">
+              <div class="t-hero-title">Política de Privacidad</div>
+              <div class="t-hero-sub">Última actualización: {{ today }}</div>
+            </div>
+          </div>
           <q-btn flat round dense icon="close" class="t-close" v-close-popup />
-        </q-card-section>
-        <q-separator />
-        <q-card-section class="t-body">
-          <p><strong>Última actualización:</strong> {{ today }}</p>
-          <p>En WAIKO, valoramos tu privacidad y nos comprometemos a proteger los datos personales que nos proporciones a través de nuestros formularios de contacto o canales digitales.</p>
+        </div>
 
-          <h4>1. ¿Qué datos recopilamos?</h4>
-          <p>Al completar nuestro formulario, podemos solicitar la siguiente información:</p>
-          <ul>
-            <li>Nombre y apellido</li>
-            <li>Correo electrónico</li>
-            <li>Teléfono de contacto</li>
-            <li>Empresa o institución</li>
-            <li>Mensajes o consultas específicas</li>
-          </ul>
+        <div class="t-body">
+          <section class="t-section">
+            <h4 class="t-h">¿Qué datos recopilamos?</h4>
+            <ul class="t-list">
+              <li>Nombre y apellido</li>
+              <li>Correo electrónico</li>
+              <li>Teléfono de contacto</li>
+              <li>Empresa o institución</li>
+              <li>Mensajes o consultas específicas</li>
+            </ul>
+          </section>
 
-          <h4>2. ¿Para qué usamos tus datos?</h4>
-          <p>Los datos serán utilizados exclusivamente para:</p>
-          <ul>
-            <li>Contactarte en relación con tu consulta o interés en nuestros servicios.</li>
-            <li>Ofrecerte asesoramiento personalizado sobre gestión ambiental, normativa, residuos u otros temas vinculados a nuestros servicios.</li>
-            <li>Enviarte comunicaciones informativas o comerciales vinculadas a nuestra actividad (solo si das tu consentimiento).</li>
-          </ul>
+          <section class="t-section">
+            <h4 class="t-h">¿Para qué usamos tus datos?</h4>
+            <ul class="t-list">
+              <li>Contactarte en relación con tu consulta o interés en nuestros servicios.</li>
+              <li>Ofrecerte asesoramiento personalizado sobre gestión ambiental, normativa y residuos.</li>
+              <li>Enviarte comunicaciones informativas o comerciales (solo con tu consentimiento).</li>
+            </ul>
+          </section>
 
-          <h4>3. ¿Cómo protegemos tus datos?</h4>
-          <p>Implementamos medidas técnicas y organizativas adecuadas para garantizar la seguridad de tus datos, evitando accesos no autorizados, pérdidas o divulgaciones indebidas.</p>
+          <section class="t-section">
+            <h4 class="t-h">¿Cómo protegemos tus datos?</h4>
+            <p>Aplicamos medidas técnicas y organizativas adecuadas para evitar accesos no autorizados, pérdidas o divulgaciones indebidas.</p>
+          </section>
 
-          <h4>4. ¿Compartimos tu información?</h4>
-          <p>No compartimos tus datos con terceros.</p>
+          <section class="t-section">
+            <h4 class="t-h">¿Compartimos tu información?</h4>
+            <p>No compartimos tus datos con terceros.</p>
+          </section>
 
-          <h4>5. Tus derechos</h4>
-          <p>Podés solicitar el acceso, rectificación, actualización o supresión de tus datos en cualquier momento escribiéndonos a <a href="mailto:info@waiko.com.ar">info@waiko.com.ar</a>. También podés solicitar que dejemos de enviarte comunicaciones en cualquier momento.</p>
+          <section class="t-section">
+            <h4 class="t-h">Tus derechos</h4>
+            <p>Podés solicitar el acceso, rectificación, actualización o supresión de tus datos escribiendo a
+              <a href="mailto:info@waiko.com.ar">info@waiko.com.ar</a>. También podés pedir dejar de recibir comunicaciones en cualquier momento.</p>
+          </section>
 
-          <h4>6. Base legal</h4>
-          <p>Esta política cumple con lo establecido por la Ley N.º 25.326 de Protección de los Datos Personales de la República Argentina.</p>
-        </q-card-section>
-        <q-card-actions class="t-actions" align="right">
+          <section class="t-section">
+            <h4 class="t-h">Base legal</h4>
+            <p>Cumplimos con la Ley N.º 25.326 de Protección de los Datos Personales de la República Argentina.</p>
+          </section>
+        </div>
+
+        <div class="t-actions">
           <q-btn flat label="Cerrar" color="primary" v-close-popup />
-        </q-card-actions>
+          <q-btn label="Aceptar y cerrar" color="primary" unelevated class="t-cta" v-close-popup />
+        </div>
       </q-card>
     </q-dialog>
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import emailjs from 'emailjs-com'
 
 const form = ref({ nombre: '', mail: '', telefono: '', consulta: '' })
@@ -186,59 +167,51 @@ const enviarConsulta = async () => {
 const headingRef = ref(null)
 const titleRef = ref(null)
 let titleIO
-const cardEls = []
-const setCardRef = el => {
-  if (!el) return
-  const node = el.$el ? el.$el : el
-  if (node instanceof Element) cardEls.push(node)
-}
-let cardIO
+const gridRef = ref(null)
+let gridIO
+const ease = t => 1 - Math.pow(1 - t, 3)
 
-function ease(t){ return 1 - Math.pow(1 - t, 3) }
+onMounted(async () => {
+  await nextTick()
 
-onMounted(() => {
   const title = titleRef.value
   const heading = headingRef.value
   if (title && heading) {
     title.style.opacity = '0'
     title.style.transform = 'translateX(-40px)'
     heading.style.setProperty('--line-scale', '0')
+
     titleIO = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
       const start = performance.now()
       const dur = 900
-      function step(now){
+      const step = (now) => {
         const t = Math.min(1, (now - start) / dur)
         const e = ease(t)
         title.style.opacity = String(e)
         title.style.transform = `translateX(${(1 - e) * -40}px)`
         heading.style.setProperty('--line-scale', String(e))
-        if (t < 1) requestAnimationFrame(step)
-        else titleIO.disconnect()
+        t < 1 ? requestAnimationFrame(step) : titleIO.disconnect()
       }
       requestAnimationFrame(step)
     }, { threshold: 0.35 })
     titleIO.observe(title)
   }
 
-  cardIO = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const el = entry.target
-      if (entry.isIntersecting) {
-        el.classList.add('in-view')
-        cardIO.unobserve(el)
-      }
-    })
-  }, { threshold: 0.25 })
-
-  cardEls.forEach(el => {
-    if (el instanceof Element) cardIO.observe(el)
-  })
+  const grid = gridRef.value
+  if (grid) {
+    gridIO = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      grid.classList.add('in-view')
+      gridIO.disconnect()
+    }, { threshold: 0.25 })
+    gridIO.observe(grid)
+  }
 })
 
 onBeforeUnmount(() => {
   titleIO && titleIO.disconnect()
-  cardIO && cardIO.disconnect()
+  gridIO && gridIO.disconnect()
 })
 </script>
 
@@ -252,14 +225,11 @@ onBeforeUnmount(() => {
   align-items:center;
   overflow-x: clip;
 }
-@supports not (overflow-x: clip){
-  .contacto-section{ overflow-x: hidden; }
-}
+@supports not (overflow-x: clip){ .contacto-section{ overflow-x: hidden; } }
 
 .section-heading{
   --line-grad: linear-gradient(90deg, #264d2c 0%, #3a6d40 30%, #aee79d 70%, transparent 100%);
-  --line-height:2px; --line-gap:8px;
-  --line-scale: 0;
+  --line-height:2px; --line-gap:8px; --line-scale: 0;
   width:100%; max-width:1100px; position:relative; margin-bottom:2.2rem;
 }
 .section-heading::before{
@@ -277,9 +247,7 @@ onBeforeUnmount(() => {
 }
 .contacto-title > span{ display:inline-block; padding-right:.75rem; background:#f7fbf8; }
 
-.contacto-grid{
-  width:100%; max-width:1100px; display:grid; grid-template-columns:.95fr 1.05fr; gap:1.6rem; align-items:stretch;
-}
+.contacto-grid{ width:100%; max-width:1100px; display:grid; grid-template-columns:.95fr 1.05fr; gap:1.6rem; align-items:stretch; }
 
 .info-card{
   background:linear-gradient(180deg,#264d2c 0%,#1f3d25 100%);
@@ -305,22 +273,10 @@ onBeforeUnmount(() => {
 .fields-grid{ display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
 .field.span-2{ grid-column: span 2; }
 
-.q-field--filled .q-field__control{
-  border-radius:16px !important;
-  overflow:hidden;
-  box-shadow:0 0 0 rgba(0,0,0,0);
-}
-.q-field--filled .q-field__control:before,
-.q-field--filled .q-field__control:after{
-  border-radius:16px !important;
-}
-.q-field--filled .q-field__control:before{
-  background:#f2f5f3 !important;
-  border:1px solid rgba(38,77,44,.12);
-}
-.q-field--filled.q-field--focused .q-field__control{
-  box-shadow:0 0 0 3px rgba(174,231,157,.25);
-}
+.q-field--filled .q-field__control{ border-radius:16px !important; overflow:hidden; box-shadow:0 0 0 rgba(0,0,0,0); }
+.q-field--filled .q-field__control:before, .q-field--filled .q-field__control:after{ border-radius:16px !important; }
+.q-field--filled .q-field__control:before{ background:#f2f5f3 !important; border:1px solid rgba(38,77,44,.12); }
+.q-field--filled.q-field--focused .q-field__control{ box-shadow:0 0 0 3px rgba(174,231,157,.25); }
 .q-field__native, .q-field__input{ padding-top:.9rem; padding-bottom:.9rem; }
 .textarea-large .q-field__native{ min-height:170px; }
 
@@ -339,46 +295,89 @@ onBeforeUnmount(() => {
 .send-btn.shake{ animation:shakeX .45s ease; }
 
 .terms-card{
-  width:min(720px,92vw);
-  border-radius:18px;
+  width:min(780px,92vw);
+  border-radius:20px;
   overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,.25);
   background:#fff;
+  box-shadow:0 26px 70px rgba(0,0,0,.28);
+  animation: pop .35s cubic-bezier(.2,.7,.3,1);
   position:relative;
 }
-.terms-accent{
-  position:absolute; inset:0 auto auto 0; height:6px; width:100%;
-  background:linear-gradient(90deg,#264d2c, #3b6e40, #aee79d);
-  opacity:.9;
-}
-.t-head{
+@keyframes pop{ 0%{ opacity:0; transform:translateY(10px) scale(.98) } 100%{ opacity:1; transform:none } }
+.terms-card::after{ content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(38,77,44,.08); }
+
+.t-hero{
+  position:relative;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px 18px;
-  background:linear-gradient(180deg,#f9fbf9 0%,#ffffff 100%);
+  padding:18px 20px;
+  color:#fff;
+  background:
+    radial-gradient(80% 120% at 120% -10%, rgba(174,231,157,.36), transparent 40%),
+    linear-gradient(90deg,#234a2a 0%, #2e5a33 45%, #3b6e40 100%);
 }
-.t-title{ font-weight:900; color:#264d2c; }
-.t-close{ color:#264d2c; }
+.t-hero-left{ display:flex; align-items:center; gap:.9rem; }
+.t-badge{
+  width:42px; height:42px; border-radius:12px;
+  display:grid; place-items:center; font-size:1.2rem;
+  background:#ffffff; color:#264d2c; box-shadow:0 10px 24px rgba(0,0,0,.18);
+  border:2px solid #aee79d;
+}
+.t-hero-title{ font-weight:900; line-height:1; font-size:1.25rem; letter-spacing:.2px; }
+.t-hero-sub{ font-size:.92rem; opacity:.9; }
+.t-close{ color:#eaf7ee; }
+
 .t-body{
-  padding:16px 18px;
+  padding:18px 22px 8px;
   max-height:60vh; overflow:auto;
+  color:#2f3b31;
+  counter-reset: sec;
 }
-.t-body h4{ margin:1rem 0 .35rem; color:#264d2c; }
-.t-body ul{ padding-left:1.1rem; }
-.t-actions{ padding:10px 14px 16px; }
+.t-body::-webkit-scrollbar{ width:10px }
+.t-body::-webkit-scrollbar-thumb{ background:#dfe6e1; border-radius:999px }
+.t-body::-webkit-scrollbar-thumb:hover{ background:#cfd8d2 }
+
+.t-section{ margin:1rem 0 1.1rem; }
+.t-h{
+  position:relative; margin:0 0 .45rem;
+  font-weight:900; color:#264d2c; font-size:1.15rem;
+}
+.t-h::before{
+  counter-increment: sec;
+  content: counter(sec) ". ";
+  color:#3b6e40;
+  margin-right:.25rem;
+}
+
+.t-list{ padding-left:0; margin:0; list-style:none; }
+.t-list li{
+  position:relative; padding-left:1.3rem; margin:.25rem 0;
+}
+.t-list li::before{
+  content:""; position:absolute; left:0; top:.55rem; width:.65rem; height:.65rem;
+  border-radius:.2rem;
+  background:linear-gradient(135deg,#aee79d 0%, #67c56b 100%);
+  box-shadow:0 0 0 2px #eef6f0 inset;
+}
+
+.t-actions{
+  display:flex; gap:.5rem; justify-content:flex-end; align-items:center;
+  padding:12px 16px 16px;
+  background:linear-gradient(180deg,#ffffff 0%, #f7fbf8 100%);
+}
+.t-cta{
+  border-radius:12px;
+  font-weight:800;
+  padding:.6rem 1rem;
+}
 
 .contact-card{
-  transform: translateX(-40vw);
+  transform: translateX(-16rem);
   opacity: 0;
-  transition:
-    transform 900ms cubic-bezier(.22,.61,.36,1),
-    opacity 900ms cubic-bezier(.22,.61,.36,1);
+  transition: transform 900ms cubic-bezier(.22,.61,.36,1), opacity 900ms cubic-bezier(.22,.61,.36,1);
   transition-delay: var(--delay, 0ms);
   will-change: transform, opacity;
 }
-.contact-card.in-view{
-  transform: translateX(0);
-  opacity: 1;
-}
+.contacto-grid.in-view .contact-card{ transform: translateX(0); opacity: 1; }
 
 @media (max-width: 900px){
   .contacto-grid{ grid-template-columns:1fr; }
@@ -386,6 +385,8 @@ onBeforeUnmount(() => {
   .actions{ justify-content:stretch; }
   .send-btn{ width:100%; }
   .contacto-title > span{ padding-right:.5rem; }
-  .contact-card{ transform: translateX(-20vw); }
+  .contact-card{ transform: translateX(-8rem); }
+  .t-hero{ padding:16px; }
+  .t-hero-title{ font-size:1.1rem; }
 }
 </style>
