@@ -191,29 +191,49 @@ const scrollToContact = () => {
     padding: 0.7rem 1.2rem;
   }
 }
-/* === TABLETS EN HORIZONTAL (landscape) === */
-/* @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-.banner-right {
-    --hero-title-size: 3.5rem;
-    padding-top: 80px;
-  }
-.banner-right{
-  padding-top: 80px;
-}
-} */
-
+/* === TABLETS EN HORIZONTAL (Landscape) === */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   :deep(.banner-right) {
     --hero-title-size: 3.5rem;
     padding-top: 80px;
   }
+
+  :deep(.banner-main-title) {
+    font-size: 3.5rem !important;
+  }
+
+  :deep(.banner-subtitle) {
+    font-size: 1.2rem !important;
+  }
+
+  :deep(.banner-button) {
+    font-size: 1rem !important;
+    margin-top: 1rem;
+  }
 }
 
-/* === NOTEBOOKS / PANTALLAS MEDIANAS === */
-@media (max-width: 1366px) and (min-width: 901px) {
+/* === NOTEBOOKS Y PANTALLAS MEDIANAS (ej. 1366px, 1536px) === */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  :deep(.banner-right) {
+    --hero-title-size: 4.5rem;
+    padding-top: 60px;
+  }
 
+  :deep(.banner-main-title) {
+    font-size: 4.5rem !important;
+  }
 
+  :deep(.banner-subtitle) {
+    font-size: 1.4rem !important;
+  }
+
+  :deep(.banner-button) {
+    font-size: 1.1rem !important;
+    margin-top: 1rem;
+  }
 }
+
+
 
 
 /* Animación de entrada solo en elementos del banner */
