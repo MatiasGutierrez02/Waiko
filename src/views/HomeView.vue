@@ -71,6 +71,7 @@ const scrollToContact = () => {
   align-items: center;
   background-color: #f9f9f9;
   padding-bottom: 3rem;
+  padding-top: 80px;
 }
 
 .banner {
@@ -251,7 +252,7 @@ const scrollToContact = () => {
 
   .banner-right {
     align-items: center;
-    --hero-title-size: 4.5rem;
+    --hero-title-size: clamp(3.5rem, 6vw + 0.8rem, 5rem); /* Escala en notebooks */
   }
 
   .brand-w {
