@@ -53,8 +53,7 @@
         </section>
 
         <!-- Call to action -->
-         <ContactoComponente></ContactoComponente>
-
+        <ContactoComponente></ContactoComponente>
       </div>
     </div>
 
@@ -98,7 +97,8 @@ onMounted(() => {
     hero.style.opacity = 0;
     hero.style.transform = "translateY(40px)";
     requestAnimationFrame(() => {
-      hero.style.transition = "opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1)";
+      hero.style.transition =
+        "opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1)";
       hero.style.opacity = 1;
       hero.style.transform = "translateY(0)";
     });
@@ -234,7 +234,7 @@ section h2::after {
   align-items: center;
   gap: 1rem;
   transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
-              box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   border-left: 4px solid #aee79d;
 }
 
@@ -279,7 +279,7 @@ section h2::after {
   margin: 0 auto;
   box-shadow: 0 10px 30px rgba(38, 77, 44, 0.3);
   transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-              box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .cta-card:hover {
