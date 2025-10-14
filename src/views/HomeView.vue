@@ -192,7 +192,7 @@ const scrollToContact = () => {
   }
 }
 /* === TABLETS EN HORIZONTAL (landscape) === */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+/* @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 .banner-right {
     --hero-title-size: 3.5rem;
     padding-top: 80px;
@@ -200,6 +200,13 @@ const scrollToContact = () => {
 .banner-right{
   padding-top: 80px;
 }
+} */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  :deep(.banner-right) {
+    --hero-title-size: 3.5rem;
+    padding-top: 80px;
+  }
 }
 
 /* === NOTEBOOKS / PANTALLAS MEDIANAS === */
