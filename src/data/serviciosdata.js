@@ -6,7 +6,7 @@ export const serviciosData = {
       "Abono Ambiental Empresarial | Control de Vencimientos y Declaraciones.\n" +
       "Delegue la gestión ambiental de su empresa. Control de vencimientos, manifiestos y presentaciones oficiales.\n" +
       "Evite demoras y sanciones con nuestro plan mensual de seguimiento ambiental.",
-    image: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
+    image: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
     features: [
       "Control de vencimientos y presentaciones.",
       "Asesoramiento técnico permanente.",
@@ -32,7 +32,7 @@ export const serviciosData = {
       "Inscripción en Residuos Peligrosos CABA y APra | Cumpla la Ley 2214 | Evite Multas",
     description:
       "Nos encargamos de inscripciones, renovaciones y actualizaciones en el Registro de Generadores de Residuos Peligrosos CABA (APRA).",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+    image: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url)
       .href,
     features: [
       "Atención inmediata ante inspecciones o intimaciones.",
@@ -45,7 +45,7 @@ export const serviciosData = {
     subtitle:
       "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
     description: "Cumpla con la Ley 24.051 y evite clausuras o sanciones.",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+    image: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url)
       .href,
     features: [
       "Inscripción y renovación de Generadores de Residuos Peligrosos.",
@@ -59,7 +59,7 @@ export const serviciosData = {
       "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
     description:
       "Realizamos Estudios de Ruido Ambiental e Industrial según normativa vigente.",
-    image: new URL("@/assets/ImpactoAcustico.jpg", import.meta.url).href,
+    image: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
     features: [
       "Inscripción al Registro de Actividades Catalogadas (RAc).",
       "Mediciones con instrumental calibrado y certificado.",
@@ -94,7 +94,7 @@ export const serviciosData = {
     description:
       "¿Recibió una intimación o cédula ambiental?\n" +
       "Respondemos de inmediato para evitar multas o clausuras.",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+    image: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url)
       .href,
     features: [
       "Regularización urgente.",
@@ -109,7 +109,7 @@ export const serviciosData = {
       "Evaluaciones Ambientales CAF - BID - BM | Estándares Internacionales",
     description:
       "Brindamos asistencia técnica especializada para cumplir con las evaluaciones ambientales requeridas por organismos internacionales de crédito como CAF, BID y Banco Mundial.",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+    image: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
       .href,
     features: [
       "Amplia experiencia en inspecciones ambientales a Obras financiadas por organismos internacionales.",
@@ -128,7 +128,7 @@ export const serviciosData = {
     description:
       "Asistencia a empresas internacionales para cumplir con normativa ambiental argentina.\n" +
       "Traducción técnica y gestión completa.",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+    image: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url)
       .href,
     features: [
       "Orientamos a empresas extranjeras que inician operaciones en Argentina.",

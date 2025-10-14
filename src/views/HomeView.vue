@@ -32,7 +32,7 @@
     <SobreNosotros id="quien-somos" />
     <ValoresDestacados />
 
-    <section id="section">
+    <section id="servicios">
       <CarruselServicios />
     </section>
 
@@ -45,23 +45,23 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import CarruselServicios from '@/components/CarruselServicios.vue'
-import NuestroImpacto from '@/components/NuestroImpacto.vue'
-import ValoresDestacados from '@/components/ValoresDestacados.vue'
-import SobreNosotros from '@/components/SobreNosotros.vue'
-import ContactoComponente from '@/components/ContactoComponente.vue'
+import { onMounted } from "vue";
+import CarruselServicios from "@/components/CarruselServicios.vue";
+import NuestroImpacto from "@/components/NuestroImpacto.vue";
+import ValoresDestacados from "@/components/ValoresDestacados.vue";
+import SobreNosotros from "@/components/SobreNosotros.vue";
+import ContactoComponente from "@/components/ContactoComponente.vue";
 
-onMounted(() => {})
+onMounted(() => {});
 
 const scrollToContact = () => {
-  const el = document.getElementById('contacto')
-  if (!el) return
-  const header = document.querySelector('header.header')
-  const headerH = header ? header.offsetHeight : 80
-  const y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 2
-  window.scrollTo({ top: y, behavior: 'smooth' })
-}
+  const el = document.getElementById("contacto");
+  if (!el) return;
+  const header = document.querySelector("header.header");
+  const headerH = header ? header.offsetHeight : 80;
+  const y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 2;
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
 </script>
 
 <style scoped>
@@ -71,19 +71,23 @@ const scrollToContact = () => {
   align-items: center;
   background-color: #f9f9f9;
   padding-bottom: 3rem;
-  padding-top: 80px;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .banner {
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 600px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 10vw;
+  padding: 0 clamp(2rem, 8vw, 10vw) 0 0;
   background-color: #000;
+  margin-top: 84px;
 }
 .banner-video {
   position: absolute;
@@ -119,19 +123,26 @@ const scrollToContact = () => {
   font-weight: 900;
   font-size: var(--hero-title-size);
   line-height: 1;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,.55);
-  margin-bottom: .25rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.25rem;
 }
 .brand-w {
-  height: 100px;
+  height: 1em; /* Use em units to scale proportionally with text */
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
-  margin-right: -20px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+  margin-right: -0.15em; /* Proportional negative margin */
+  z-index: 10;
+  flex-shrink: 0;
 }
-.brand-letters { letter-spacing: .04em; }
+.brand-letters {
+  letter-spacing: 0.04em;
+  z-index: 10;
+  font-weight: 900;
+  margin-left: -0.05em; /* Additional negative margin to get closer */
+}
 
 .banner-main-title {
   font-size: var(--hero-title-size);
@@ -155,13 +166,16 @@ const scrollToContact = () => {
   transition: background-color 0.3s ease;
   font-size: 1.3rem;
 }
-.banner-button:hover { background-color: #3b6e40; }
+.banner-button:hover {
+  background-color: #3b6e40;
+}
 
 #section {
   width: 100%;
 }
 
-@media (max-width: 900px) {
+/* === TABLETS PORTRAIT === */
+@media (max-width: 1024px) and (min-width: 768px) {
   .banner {
     justify-content: center;
     padding-right: 0;
@@ -173,17 +187,21 @@ const scrollToContact = () => {
   }
   .banner-right {
     align-items: center;
-    --hero-title-size: 4.5rem;
+    --hero-title-size: 3.8rem;
   }
   .brand-w {
     height: 1em;
-    margin-right: 0;
+    margin-right: -0.15em;
   }
+  .brand-letters {
+    margin-left: -0.05em;
+  }
+
   .banner-main-title {
     margin-top: 0;
   }
   .banner-subtitle {
-    font-size: clamp(1rem, 3.2vw + .5rem, 1.2rem);
+    font-size: clamp(1rem, 3.2vw + 0.5rem, 1.2rem);
     margin-bottom: 1.4rem;
   }
   .banner-button {
@@ -210,6 +228,56 @@ const scrollToContact = () => {
     font-size: 1rem !important;
     margin-top: 1rem;
   }
+
+  .brand-w {
+    height: 1em;
+    margin-right: -0.1em;
+  }
+  .brand-letters {
+    margin-left: -0.03em;
+  }
+}
+
+/* === MÓVILES MEDIANOS A GRANDES (415px - 767px) === */
+@media (max-width: 767px) and (min-width: 415px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 75vh;
+    min-height: 450px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2.2rem, 7vw + 0.8rem, 3.2rem);
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+  }
+  .brand-w {
+    height: 1em;
+    margin-right: -0.13em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .banner-subtitle {
+    font-size: clamp(1rem, 3vw + 0.5rem, 1.2rem);
+    margin-bottom: 1.4rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(1rem, 3vw + 0.3rem, 1.1rem);
+    padding: 0.7rem 1.2rem;
+  }
 }
 
 /* === NOTEBOOKS Y PANTALLAS MEDIANAS (ej. 1366px, 1536px) === */
@@ -227,36 +295,212 @@ const scrollToContact = () => {
     font-size: 1.4rem !important;
   }
 
+  .brand-w {
+    height: 1em;
+    margin-right: -0.15em;
+  }
+  .brand-letters {
+    margin-left: -0.05em;
+  }
+
   :deep(.banner-button) {
     font-size: 1.1rem !important;
     margin-top: 1rem;
   }
 }
 
+/* === iPhone XR y móviles similares (414px) === */
+@media (max-width: 414px) and (min-width: 375px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 70vh;
+    min-height: 420px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0.8rem;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2rem, 8vw + 0.5rem, 2.8rem);
+    gap: clamp(0.6rem, 2vw, 1rem);
+  }
+  .brand-w {
+    height: 1em;
+    margin-right: -0.12em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
 
+  .banner-main-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.9rem, 3vw + 0.4rem, 1.1rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(0.9rem, 4vw + 0.2rem, 1rem);
+    padding: 0.6rem 1rem;
+  }
+}
 
+/* === Móviles pequeños (iPhone SE, etc.) === */
+@media (max-width: 374px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 65vh;
+    min-height: 380px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 0.8rem 0.6rem;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(1.6rem, 10vw + 0.2rem, 2.4rem);
+    gap: 0.5rem;
+  }
+  .brand-w {
+    height: 1em;
+    margin-right: -0.1em;
+  }
+  .brand-letters {
+    margin-left: -0.03em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.85rem, 4vw + 0.3rem, 1rem);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .banner-button {
+    font-size: clamp(0.85rem, 5vw + 0.1rem, 0.95rem);
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* === Pantallas muy pequeñas === */
+@media (max-width: 320px) {
+  .banner {
+    min-height: 360px;
+  }
+
+  .banner-content {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .banner-right {
+    --hero-title-size: clamp(1.4rem, 12vw, 2rem);
+  }
+
+  .banner-button {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* === Móviles en orientación horizontal === */
+@media (max-width: 767px) and (orientation: landscape) {
+  .banner {
+    height: 85vh;
+    min-height: 350px;
+  }
+
+  .banner-right {
+    gap: 0.4rem;
+  }
+
+  .banner-main-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .banner-subtitle {
+    margin-bottom: 1rem;
+  }
+}
 
 /* Animación de entrada solo en elementos del banner */
 @keyframes heroIn {
-  0% { opacity: 0; transform: translateY(22px) scale(.98); filter: blur(2px); }
-  100% { opacity: 1; transform: none; filter: blur(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
 }
 .banner-content [data-hero] {
   opacity: 0;
-  animation: heroIn .7s ease-out forwards;
+  animation: heroIn 0.7s ease-out forwards;
 }
-.brand-waiko[data-hero] { animation-delay: .05s; }
-.banner-main-title[data-hero] { animation-delay: .15s; }
-.banner-subtitle[data-hero] { animation-delay: .28s; }
-.banner-button[data-hero] { animation-delay: .42s; }
+.brand-waiko[data-hero] {
+  animation-delay: 0.05s;
+}
+.banner-main-title[data-hero] {
+  animation-delay: 0.15s;
+}
+.banner-subtitle[data-hero] {
+  animation-delay: 0.28s;
+}
+.banner-button[data-hero] {
+  animation-delay: 0.42s;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .banner-content [data-hero] { animation: none; opacity: 1; transform: none; filter: none; }
+  .banner-content [data-hero] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
-.home-page{ overflow-x: clip; }
-.banner{ overflow-x: clip; }
-@supports not (overflow-x: clip){
-  .home-page, .banner{ overflow-x: hidden; }
+.home-page {
+  overflow-x: clip;
+}
+.banner {
+  overflow-x: clip;
+}
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .banner {
+    height: -webkit-fill-available;
+    min-height: 450px;
+  }
+
+  @media (max-width: 414px) {
+    .banner {
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .banner {
+      min-height: 380px;
+    }
+  }
 }
 
+@supports not (overflow-x: clip) {
+  .home-page,
+  .banner {
+    overflow-x: hidden;
+  }
+}
 </style>
