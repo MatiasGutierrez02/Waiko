@@ -251,7 +251,7 @@ const scrollToContact = () => {
 
   .banner-right {
     align-items: center;
-    --hero-title-size: 4.5rem
+    --hero-title-size: 4.5rem;
   }
 
   .brand-w {
