@@ -71,7 +71,7 @@
 import { computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import AOS from "aos";
-import { serviciosData } from "@/data/serviciosData.js";
+import { serviciosData } from "@/data/serviciosdata.js";
 
 const route = useRoute();
 const router = useRouter();
