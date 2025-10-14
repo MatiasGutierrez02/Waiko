@@ -193,9 +193,10 @@ const scrollToContact = () => {
 }
 /* === TABLETS EN HORIZONTAL (landscape) === */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-.banner-main-title{ 
-  font-size: 3.5rem; 
-}
+.banner-right {
+    --hero-title-size: 3.5rem;
+    padding-top: 80px;
+  }
 .banner-right{
   padding-top: 80px;
 }
