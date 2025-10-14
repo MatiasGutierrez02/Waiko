@@ -1,10 +1,16 @@
 <template>
   <section id="servicios" class="servicios">
     <div class="section-heading" ref="headingRef">
-      <h2 class="section-title-servicios" ref="titleRef"><span>Servicios</span></h2>
+      <h2 class="section-title-servicios" ref="titleRef">
+        <span>Servicios</span>
+      </h2>
     </div>
 
-    <div class="carousel-wrapper" @mouseenter="hover = true" @mouseleave="hover = false">
+    <div
+      class="carousel-wrapper"
+      @mouseenter="hover = true"
+      @mouseleave="hover = false"
+    >
       <Swiper
         :modules="modules"
         :slides-per-view="1"
@@ -34,12 +40,17 @@
                 aria-label="Servicio destacado"
               >
                 <svg viewBox="0 0 24 24" class="crown" aria-hidden="true">
-                  <g fill="yellow" stroke="#b88a00" stroke-width=".6" stroke-linejoin="round">
-                    <path d="M5 10l4 3 3-4 3 4 4-3v6H5z"/>
-                    <rect x="5" y="17" width="14" height="2.4" rx="1.2"/>
-                    <circle cx="7" cy="9" r="1.1"/>
-                    <circle cx="12" cy="8" r="1.1"/>
-                    <circle cx="17" cy="9" r="1.1"/>
+                  <g
+                    fill="yellow"
+                    stroke="#b88a00"
+                    stroke-width=".6"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 10l4 3 3-4 3 4 4-3v6H5z" />
+                    <rect x="5" y="17" width="14" height="2.4" rx="1.2" />
+                    <circle cx="7" cy="9" r="1.1" />
+                    <circle cx="12" cy="8" r="1.1" />
+                    <circle cx="17" cy="9" r="1.1" />
                   </g>
                 </svg>
               </span>
@@ -52,104 +63,195 @@
         </SwiperSlide>
 
         <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev" :class="{ 'is-visible': hover }" aria-label="Anterior"></div>
-        <div class="swiper-button-next" :class="{ 'is-visible': hover }" aria-label="Siguiente"></div>
+        <div
+          class="swiper-button-prev"
+          :class="{ 'is-visible': hover }"
+          aria-label="Anterior"
+        ></div>
+        <div
+          class="swiper-button-next"
+          :class="{ 'is-visible': hover }"
+          aria-label="Siguiente"
+        ></div>
       </Swiper>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, defineProps, defineEmits } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Keyboard, A11y, Autoplay } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import {
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+  defineProps,
+  defineEmits,
+} from "vue";
+import { useRouter } from "vue-router";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import {
+  Navigation,
+  Pagination,
+  Keyboard,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const props = defineProps({
   services: {
     type: Array,
-    default: () => ([
+    default: () => [
       {
         premium: true,
-        title: 'Nuestro servicio principal',
-        desc: 'Detalle sobre nuestro servicio más solicitado dentro del mercado.',
-        img: new URL('@/assets/imagenTrabajo.jpg', import.meta.url).href,
-        to: '/servicios/asesoria-tecnica'
+        title: "Abono Mensual",
+        desc: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
+        img: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
+        to: "/servicios/abono-mensual",
       },
       {
-        title: 'Gestión Ambiental',
-        desc: 'Soluciones integrales para cumplir con normativas y mejorar el desempeño ambiental.',
-        img: new URL('@/assets/GestionAmbiental.jpg', import.meta.url).href,
-        to: '/servicios/gestion-ambiental'
+        title: "Impacto Ambiental",
+        desc: "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
+        img: new URL("@/assets/GestionAmbiental.jpg", import.meta.url).href,
+        to: "/servicios/gestion-ambiental",
       },
       {
-        title: 'Impacto Acústico',
-        desc: 'Estudios y asesoramiento para el control del ruido en entornos urbanos e industriales.',
-        img: new URL('@/assets/ImpactoAcustico.jpg', import.meta.url).href,
-        to: '/servicios/impacto-acústico'
+        title: "Inscripción Generador de Residuos Peligrosos CABA y APra",
+        desc: "Inscripción en Residuos Peligrosos CABA y APra | Cumpla la Ley 2214 | Evite Multas",
+        img: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url).href,
+        to: "/servicios/habilitaciones-comerciales",
       },
       {
-        title: 'Habilitaciones Comerciales',
-        desc: 'Asistencia completa para tramitar habilitaciones bajo normas ambientales.',
-        img: new URL('@/assets/HabilitacionesComerciales.jpg', import.meta.url).href,
-        to: '/servicios/habilitaciones-comerciales'
+        title: "Residuos Peligrosos Nación (Sayds)",
+        desc: "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
+        img: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
+        to: "/servicios/habilitaciones-comerciales-nacion",
       },
       {
-        title: 'Asesoría Técnica',
-        desc: 'Consultoría en políticas sostenibles, residuos y planes de mitigación.',
-        img: new URL('@/assets/AsesoriaTecnica.jpg', import.meta.url).href,
-        to: '/servicios/asesoria-tecnica'
+        title: "Estudio De Ruido (Impacto Acústico - Rac)",
+        desc: "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
+        img: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
+        to: "/servicios/impacto-acustico",
       },
-    ])
+      {
+        title: "Habilitaciones Y Permisos",
+        desc: "Brindamos un servicio integral de habilitación comercial y permisos ambientales operativos.",
+        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+          .href,
+        to: "/servicios/habilitaciones-permisos",
+      },
+      {
+        title: "Intimaciones Y Cédulas",
+        desc: "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
+        img: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url).href,
+        to: "/servicios/intimaciones-cedulas",
+      },
+      {
+        title: "Organismos Internacionales De Crédito (Caf - Bid)",
+        desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
+        img: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
+          .href,
+        to: "/servicios/internacionales-credito",
+      },
+      {
+        title: "Empresas Extranjeras",
+        desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
+        img: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
+        to: "/servicios/empresas-extranjeras",
+      },
+    ],
+  },
+});
+const emit = defineEmits(["select"]);
+const router = useRouter();
+const modules = [Navigation, Pagination, Keyboard, A11y, Autoplay];
+const hover = ref(false);
+const swiperRef = ref(null);
+const items = computed(() => props.services);
+const navigation = {
+  nextEl: ".swiper-button-next",
+  prevEl: ".swiper-button-prev",
+};
+const pagination = {
+  el: ".swiper-pagination",
+  clickable: true,
+  dynamicBullets: true,
+};
+const breakpoints = {
+  480: {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    centeredSlides: true,
+  },
+  768: {
+    slidesPerView: 1.5,
+    spaceBetween: 18,
+    centeredSlides: true,
+  },
+  900: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    centeredSlides: true,
+  },
+  1200: {
+    slidesPerView: 3,
+    spaceBetween: 24,
+    centeredSlides: true,
+  },
+};
+function onSelect(item) {
+  if (item.to) {
+    router.push(item.to);
   }
-})
 
-const emit = defineEmits(['select'])
-const modules = [Navigation, Pagination, Keyboard, A11y, Autoplay]
-const hover = ref(false)
-const swiperRef = ref(null)
-const items = computed(() => props.services)
-const navigation = { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-const pagination = { el: '.swiper-pagination', clickable: true, dynamicBullets: true }
-const breakpoints = { 900:{slidesPerView:2,spaceBetween:20}, 1200:{slidesPerView:3,spaceBetween:24} }
-function onSelect(item){ emit('select', item) }
-function onSwiperReady(swiper){ swiperRef.value = swiper; requestAnimationFrame(() => swiper.update()); window.addEventListener('load', handleWindowLoad) }
-function handleWindowLoad(){ swiperRef.value?.update() }
-onMounted(() => setTimeout(() => swiperRef.value?.update(), 120))
-onBeforeUnmount(() => window.removeEventListener('load', handleWindowLoad))
+  emit("select", item);
+}
+function onSwiperReady(swiper) {
+  swiperRef.value = swiper;
+  requestAnimationFrame(() => swiper.update());
+  window.addEventListener("load", handleWindowLoad);
+}
+function handleWindowLoad() {
+  swiperRef.value?.update();
+}
+onMounted(() => setTimeout(() => swiperRef.value?.update(), 120));
+onBeforeUnmount(() => window.removeEventListener("load", handleWindowLoad));
 
-const headingRef = ref(null)
-const titleRef = ref(null)
+const headingRef = ref(null);
+const titleRef = ref(null);
 
 onMounted(() => {
-  const box = headingRef.value
-  const title = titleRef.value
-  if (!box || !title) return
+  const box = headingRef.value;
+  const title = titleRef.value;
+  if (!box || !title) return;
 
-  box.style.setProperty('--line-scale', '0')
-  title.style.opacity = '0'
-  title.style.transform = 'translateX(40px)'
+  box.style.setProperty("--line-scale", "0");
+  title.style.opacity = "0";
+  title.style.transform = "translateX(40px)";
 
-  const io = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) return
-    const start = performance.now()
-    const dur = 900
-    const step = (now) => {
-      const t = Math.min(1, (now - start) / dur)
-      const e = 1 - Math.pow(1 - t, 3)
-      box.style.setProperty('--line-scale', String(e))
-      title.style.opacity = String(e)
-      title.style.transform = `translateX(${(1 - e) * 40}px)`
-      if (t < 1) requestAnimationFrame(step)
-      else io.disconnect()
-    }
-    requestAnimationFrame(step)
-  }, { threshold: 0.4 })
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      const start = performance.now();
+      const dur = 900;
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / dur);
+        const e = 1 - Math.pow(1 - t, 3);
+        box.style.setProperty("--line-scale", String(e));
+        title.style.opacity = String(e);
+        title.style.transform = `translateX(${(1 - e) * 40}px)`;
+        if (t < 1) requestAnimationFrame(step);
+        else io.disconnect();
+      };
+      requestAnimationFrame(step);
+    },
+    { threshold: 0.4 }
+  );
 
-  io.observe(box)
-})
+  io.observe(box);
+});
 </script>
 
 <style scoped>
@@ -162,8 +264,15 @@ onMounted(() => {
   align-items: center;
 }
 
-.section-heading{
-  --line-grad: linear-gradient(90deg, transparent 0%, #aee79d 12%, #264d2c 50%, #aee79d 88%, transparent 100%);
+.section-heading {
+  --line-grad: linear-gradient(
+    90deg,
+    transparent 0%,
+    #aee79d 12%,
+    #264d2c 50%,
+    #aee79d 88%,
+    transparent 100%
+  );
   --line-height: 2px;
   --line-gap: 8px;
   --line-scale: 0;
@@ -173,37 +282,38 @@ onMounted(() => {
   margin-bottom: 2.5rem;
   isolation: isolate;
 }
-.section-heading::before{
+.section-heading::before {
   content: "";
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   top: 50%;
   transform: translateY(-50%) scaleX(var(--line-scale));
   transform-origin: left center;
   height: calc(var(--line-height) * 2 + var(--line-gap));
-  opacity: .55;
-  background:
-    var(--line-grad) left top / 100% var(--line-height) no-repeat,
-    var(--line-grad) left calc(var(--line-height) + var(--line-gap)) / 100% var(--line-height) no-repeat;
+  opacity: 0.55;
+  background: var(--line-grad) left top / 100% var(--line-height) no-repeat,
+    var(--line-grad) left calc(var(--line-height) + var(--line-gap)) / 100%
+      var(--line-height) no-repeat;
   z-index: 0;
 }
 
-.section-title-servicios{
+.section-title-servicios {
   position: relative;
   margin: 0;
   text-align: left;
   font-weight: 800;
   font-size: 2.2rem;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   color: #264d2c;
   opacity: 0;
   transform: translateX(40px);
   will-change: transform, opacity;
   z-index: 1;
 }
-.section-title-servicios > span{
+.section-title-servicios > span {
   display: inline-block;
-  padding-right: .75rem;
+  padding-right: 0.75rem;
   background: #fff;
 }
 
@@ -213,7 +323,9 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
 }
-.servicios-swiper { padding: 30px 10px 48px; }
+.servicios-swiper {
+  padding: 30px 10px 48px;
+}
 
 .servicio-card {
   position: relative;
@@ -223,13 +335,19 @@ onMounted(() => {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
 }
 .servicio-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
-.img-wrap { position: relative; }
+.img-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
 .servicio-card img {
   width: 100%;
   height: 220px;
@@ -238,34 +356,51 @@ onMounted(() => {
   margin-bottom: 1rem;
 }
 
-.premium-corner{
+.premium-corner {
   position: absolute;
   top: 10px;
   left: 10px;
   width: 42px;
   height: 42px;
   border-radius: 999px;
-  background: rgba(255,255,255,.96);
-  border: 2px solid #F5E3A3;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #f5e3a3;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
   z-index: 2;
   transform: translateY(-2px);
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
-:deep(.swiper-slide-active .premium-corner){ transform: translateY(0) scale(1.05); }
+:deep(.swiper-slide-active .premium-corner) {
+  transform: translateY(0) scale(1.05);
+}
 
 .servicio-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #264d2c;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
 }
 .servicio-card p {
   font-size: 1rem;
   color: #555;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.5;
+  height: 120px;
 }
 .servicio-card button {
   background-color: #264d2c;
@@ -276,30 +411,44 @@ onMounted(() => {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: auto;
 }
-.servicio-card button:hover { background-color: #3b6e40; }
+.servicio-card button:hover {
+  background-color: #3b6e40;
+}
 
 .swiper-button-prev,
 .swiper-button-next {
   color: #264d2c;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   translate: 0 -50%;
   top: 45%;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s ease;
+  transition: opacity 0.25s ease;
 }
 .swiper-button-prev::after,
-.swiper-button-next::after { font-size: 18px; font-weight: 700; }
+.swiper-button-next::after {
+  font-size: 18px;
+  font-weight: 700;
+}
 .carousel-wrapper:hover .swiper-button-prev,
-.carousel-wrapper:hover .swiper-button-next { opacity: 1; pointer-events: auto; }
+.carousel-wrapper:hover .swiper-button-next {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-.swiper-pagination-bullet { background: #a7c4ad; opacity: 1; }
-.swiper-pagination-bullet-active { background: #264d2c; }
+.swiper-pagination-bullet {
+  background: #a7c4ad;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background: #264d2c;
+}
 
 :deep(.swiper-slide-active .servicio-card) {
   transform: scale(1.08);
@@ -311,10 +460,119 @@ onMounted(() => {
   transform: scale(0.95);
   opacity: 0.9;
 }
-.servicios{ overflow-x: clip; }
-.carousel-wrapper{ overflow: hidden; }
-@supports not (overflow-x: clip){
-  .servicios{ overflow-x: hidden; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .servicios-swiper {
+    padding: 20px 5px 40px;
+  }
+
+  .servicio-card {
+    padding: 1.2rem;
+    height: 380px;
+  }
+
+  .servicio-card img {
+    height: 180px;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    height: 60px;
+  }
+
+  .servicio-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    height: 100px;
+  }
+
+  .servicio-card button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 36px;
+    height: 36px;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 14px;
+  }
+
+  :deep(.swiper-slide-active .servicio-card) {
+    transform: scale(1.02);
+  }
 }
 
+@media (max-width: 480px) {
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .section-title-servicios {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+  }
+
+  .servicios-swiper {
+    padding: 15px 0 35px;
+  }
+
+  .servicio-card {
+    padding: 1rem;
+    margin: 0 0.5rem;
+    height: 350px;
+  }
+
+  .servicio-card img {
+    height: 160px;
+    margin-bottom: 0.8rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.1rem;
+    height: 55px;
+    margin-bottom: 0.8rem;
+  }
+
+  .servicio-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    height: 90px;
+    margin-bottom: 1rem;
+  }
+
+  .premium-corner {
+    width: 36px;
+    height: 36px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .crown {
+    width: 18px;
+    height: 18px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+.servicios {
+  overflow-x: clip;
+}
+.carousel-wrapper {
+  overflow: hidden;
+}
+@supports not (overflow-x: clip) {
+  .servicios {
+    overflow-x: hidden;
+  }
+}
 </style>
