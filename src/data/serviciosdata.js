@@ -11,7 +11,7 @@ export const serviciosData = {
       "Control de vencimientos y presentaciones.",
       "Asesoramiento técnico permanente.",
       "Asistencia ante inspecciones y control documental. ",
-    ]
+    ],
   },
   "gestion-ambiental": {
     title: "Impacto Ambiental",
@@ -41,11 +41,10 @@ export const serviciosData = {
     ],
   },
   "habilitaciones-comerciales-nacion": {
-    title: "Inscripción Generador de Residuos Peligrosos Nación (SAyDS)",
+    title: "Residuos Peligrosos Nación (Sayds)",
     subtitle:
       "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
-    description:
-      "Cumpla con la Ley 24.051 y evite clausuras o sanciones.",
+    description: "Cumpla con la Ley 24.051 y evite clausuras o sanciones.",
     image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
       .href,
     features: [
@@ -55,16 +54,37 @@ export const serviciosData = {
     ],
   },
   "impacto-acustico": {
-    title: "Impacto Acústico",
-    subtitle: "Control profesional del ruido ambiental",
+    title: "Estudio De Ruido (Impacto Acústico - Rac)",
+    subtitle:
+      "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
     description:
-      "Realizamos estudios especializados de impacto acústico y brindamos asesoramiento técnico para el control efectivo del ruido en entornos urbanos, industriales y comerciales.",
+      "Realizamos Estudios de Ruido Ambiental e Industrial según normativa vigente.",
     image: new URL("@/assets/ImpactoAcustico.jpg", import.meta.url).href,
     features: [
-      "Mediciones acústicas con equipos certificados",
-      "Estudios de impacto sonoro detallados",
-      "Diseño de medidas correctivas específicas",
-      "Sistemas de monitoreo acústico continuo",
+      "Inscripción al Registro de Actividades Catalogadas (RAc).",
+      "Mediciones con instrumental calibrado y certificado.",
+      "Profesionales inscriptos y con amplia experiencia.",
+      "Evite multas y sanciones. ",
+    ],
+  },
+  "habilitaciones-permisos": {
+    title: "Habilitaciones y Permisos",
+    subtitle:
+      "Brindamos un servicio integral de habilitación ambiental y permisos operativos.",
+    description:
+      "Gestiones ante la Agencia gubernamental de Control.\n" +
+      "Evite sanciones y mantenga su empresa operativa.\n",
+    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
+      .href,
+    features: [
+      "Asesoramiento en factibilidad edilicia y de requisitos según usos comerciales:",
+      "Proyecto de arquitectura comercial según requisitos reglamentarios",
+      "Certificación de fachadas - Certificado de conservación",
+      "Informes técnicos: Certificados de vidrios inastillables / Análisis de patologías constructivas",
+      "Peritajes - Consultor técnico de parte",
+      "Habilitaciones comerciales / Depósitos / Industrias / Sanidad",
+      "Habilitaciones de publicidad en vía pública - Carteles / Marquesinas / Toldos",
+      "Asistencia ante intimaciones y clausuras de comercios y obras civiles",
     ],
   },
   "intimaciones-cedulas": {
@@ -72,44 +92,51 @@ export const serviciosData = {
     subtitle:
       "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
     description:
-      "Brindamos asesoramiento especializado en respuesta a intimaciones ambientales y gestión de cédulas de notificación de organismos como APRA y AGC.",
+      "¿Recibió una intimación o cédula ambiental?\n" +
+      "Respondemos de inmediato para evitar multas o clausuras.",
     image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
       .href,
     features: [
-      "Análisis técnico de intimaciones ambientales",
-      "Elaboración de respuestas técnico-legales",
-      "Gestión integral ante organismos competentes",
-      "Seguimiento hasta resolución favorable",
+      "Regularización urgente.",
+      "Presentación técnica y defensa documental.",
+      "Soluciones rápidas para evitar multas o clausuras.",
     ],
   },
   "internacionales-credito": {
     title: "Organismos Internacionales De Crédito (CAF - BID)",
     subtitle:
-      "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)",
+      "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)/n" +
+      "Evaluaciones Ambientales CAF - BID - BM | Estándares Internacionales",
     description:
       "Brindamos asistencia técnica especializada para cumplir con las evaluaciones ambientales requeridas por organismos internacionales de crédito como CAF, BID y Banco Mundial.",
     image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
       .href,
     features: [
-      "Evaluaciones ambientales bajo estándares internacionales",
-      "Planes de gestión ambiental y social",
-      "Estudios de impacto ambiental especializados",
-      "Sistemas de monitoreo y seguimiento",
+      "Amplia experiencia en inspecciones ambientales a Obras financiadas por organismos internacionales.",
+      "Consultoría ambiental para proyectos con financiamiento internacional. Cumplimiento de estándares CAF, BID y Banco Mundial.",
+      "Asesoramos proyectos con financiamiento internacional (CAF, BID, BM) en evaluaciones de impacto ambiental, planes de manejo y cumplimiento de salvaguardas.",
+      "Adaptación a normas internacionales.",
+      "Informes y matrices ambientales.",
+      "Asistencia técnica integral.",
     ],
   },
   "empresas-extranjeras": {
     title: "Empresas Extranjeras",
     subtitle:
-      "Asesoramiento ambiental para empresas extranjeras operando en Argentina",
+      "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
+
     description:
-      "Brindamos asesoramiento integral en normativas ambientales argentinas para empresas extranjeras que desean establecer operaciones en el país.",
+      "Asistencia a empresas internacionales para cumplir con normativa ambiental argentina.\n" +
+      "Traducción técnica y gestión completa.",
     image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
       .href,
     features: [
-      "Análisis de normativa ambiental argentina",
-      "Adaptación a regulaciones locales",
-      "Gestión de permisos ambientales",
-      "Asesoramiento en cumplimiento normativo",
+      "Orientamos a empresas extranjeras que inician operaciones en Argentina.",
+      "Cumplimiento normativo local.",
+      "Tramitaciones ambientales, residuos, habilitaciones y permisos.",
+      "Traducción técnica y representación ante organismos.",
+      "Entendemos los desafíos que enfrentan las organizaciones extranjeras al ingresar a un nuevo entorno regulatorio. Por ello, ofrecemos acompañamiento técnico-legal desde las etapas preliminares del proyecto hasta su consolidación operativa en Argentina.",
+      "Contamos con capacidades bilingües en español e inglés, lo cual nos permite establecer una comunicación fluida y efectiva con equipos corporativos internacionales, garantizando la comprensión precisa de los requisitos y procesos involucrados.",
     ],
   },
 };

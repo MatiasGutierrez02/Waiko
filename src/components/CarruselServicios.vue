@@ -120,47 +120,45 @@ const props = defineProps({
       {
         title: "Inscripción Generador de Residuos Peligrosos CABA y APra",
         desc: "Inscripción en Residuos Peligrosos CABA y APra | Cumpla la Ley 2214 | Evite Multas",
-        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url).href,
+        img: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url).href,
         to: "/servicios/habilitaciones-comerciales",
       },
       {
         title: "Residuos Peligrosos Nación (Sayds)",
         desc: "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
         img: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
-        to: "/servicios/residuos-peligrosos",
+        to: "/servicios/habilitaciones-comerciales-nacion",
       },
       {
         title: "Estudio De Ruido (Impacto Acústico - Rac)",
         desc: "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
-        img: new URL("@/assets/ImpactoAcustico.jpg", import.meta.url).href,
+        img: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
         to: "/servicios/impacto-acustico",
       },
       {
-        title: "Habilitaciones Comerciales y Ambientales",
+        title: "Habilitaciones Y Permisos",
         desc: "Brindamos un servicio integral de habilitación comercial y permisos ambientales operativos.",
         img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
           .href,
-        to: "/servicios/habilitaciones-comerciales",
+        to: "/servicios/habilitaciones-permisos",
       },
       {
         title: "Intimaciones Y Cédulas",
         desc: "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
-        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url) //falta foto
-          .href,
+        img: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url).href,
         to: "/servicios/intimaciones-cedulas",
       },
       {
         title: "Organismos Internacionales De Crédito (Caf - Bid)",
         desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
-        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url) //falta foto
+        img: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
           .href,
         to: "/servicios/internacionales-credito",
       },
       {
         title: "Empresas Extranjeras",
         desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
-        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url) //falta foto
-          .href,
+        img: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
         to: "/servicios/empresas-extranjeras",
       },
     ],
@@ -195,12 +193,12 @@ const breakpoints = {
   900: {
     slidesPerView: 2,
     spaceBetween: 20,
-    centeredSlides: false,
+    centeredSlides: true,
   },
   1200: {
     slidesPerView: 3,
     spaceBetween: 24,
-    centeredSlides: false,
+    centeredSlides: true,
   },
 };
 function onSelect(item) {

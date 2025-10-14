@@ -16,16 +16,14 @@
 
       <nav class="nav-desktop">
         <router-link to="/">Inicio</router-link>
-        <router-link to="/quien-somos">Quiénes somos</router-link>
+        <a href="#quien-somos" @click.prevent="goNosotros">Quienes Somos</a>
         <a href="#servicios" @click.prevent="goServicios">Servicios</a>
         <a href="#contacto" @click.prevent="goContact">Contacto</a>
       </nav>
 
       <nav class="nav-mobile" v-if="isMenuOpen">
         <router-link to="/" @click="closeMenu">Inicio</router-link>
-        <router-link to="/quien-somos" @click="closeMenu"
-          >Quiénes somos</router-link
-        >
+        <a href="#quien-somos" @click.prevent="goNosotros">Quienes Somos</a>
         <a href="#servicios" @click.prevent="goServicios">Servicios</a>
         <a href="#contacto" @click.prevent="goContact">Contacto</a>
       </nav>
@@ -81,6 +79,24 @@ export default {
 
     goHome() {
       this.$router.push("/");
+    },
+
+    goNosotros() {
+      this.closeMenu();
+      this.isHidden = false;
+      const scroll = () => {
+        const el = document.getElementById("quien-somos");
+        if (!el) return;
+        const header = document.querySelector("header.header");
+        const h = header ? header.offsetHeight : 80;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      };
+      if (this.$route.path === "/") {
+        scroll();
+      } else {
+        this.$router.push("/").then(() => setTimeout(scroll, 250));
+      }
     },
 
     goContact() {

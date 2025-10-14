@@ -29,7 +29,9 @@
       </div>
     </div>
 
-    <SobreNosotros />
+    <section id="quien-somos">
+      <SobreNosotros />
+    </section>
     <ValoresDestacados />
 
     <section id="section">
@@ -71,19 +73,21 @@ const scrollToContact = () => {
   align-items: center;
   background-color: #f9f9f9;
   padding-bottom: 3rem;
-  overflow-x: clip;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .banner {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 600px;
+  min-height: 500px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: min(10vw, 8rem);
+  padding-right: clamp(2rem, 8vw, 8rem);
   background-color: #000;
 }
 .banner-video {
@@ -97,21 +101,22 @@ const scrollToContact = () => {
 .banner-content {
   position: relative;
   z-index: 2;
-  max-width: min(1000px, 90vw);
+  max-width: min(1000px, 95vw);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
   color: white;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  padding: 0 1rem;
 }
 .banner-right {
-  --hero-title-size: 7.5rem;
+  --hero-title-size: clamp(3rem, 8vw + 1rem, 7.5rem);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: clamp(0.8rem, 2vw, 1.5rem);
   width: 100%;
   max-width: 800px;
 }
