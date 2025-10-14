@@ -193,82 +193,18 @@ const scrollToContact = () => {
 }
 /* === TABLETS EN HORIZONTAL (landscape) === */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .banner {
-    height: auto;              /* No se corta más */
-    min-height: 80vh;          /* Mantiene proporción */
-    justify-content: center;
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  .banner-content {
-    align-items: center;
-    text-align: center;
-    padding: 0 2rem;
-    max-width: 90%;
-  }
-
-  .banner-right {
-    align-items: center;
-    --hero-title-size: clamp(2.8rem, 5vw + 0.8rem, 4.2rem); /* Escala en tablets */
-  }
-
-  .brand-w {
-    height: 70px;
-    margin-right: 0;
-  }
-
-  .banner-main-title {
-    margin-top: 0;
-  }
-
-  .banner-subtitle {
-    font-size: clamp(1.1rem, 2vw + 0.5rem, 1.4rem);
-    margin-bottom: 1.5rem;
-  }
-
-  .banner-button {
-    font-size: 1.1rem;
-    padding: 0.7rem 1.2rem;
-  }
+.bannner-main-title{ 
+  font-size: 3.5rem; 
+}
+.banner-right{
+  padding-top: 80px;
+}
 }
 
 /* === NOTEBOOKS / PANTALLAS MEDIANAS === */
 @media (max-width: 1366px) and (min-width: 901px) {
-  .banner {
-    height: auto;
-    min-height: 85vh;
-    justify-content: center;
-    padding-right: 0;
-    padding-left: 0;
-  }
 
-  .banner-content {
-    align-items: center;
-    text-align: center;
-    padding: 0 2rem;
-    max-width: 800px;
-  }
 
-  .banner-right {
-    align-items: center;
-    --hero-title-size: clamp(3.5rem, 6vw + 0.8rem, 5rem); /* Escala en notebooks */
-  }
-
-  .brand-w {
-    height: 80px;
-    margin-right: 0;
-  }
-
-  .banner-subtitle {
-    font-size: clamp(1.2rem, 2vw + 0.5rem, 1.5rem);
-    margin-bottom: 1.8rem;
-  }
-
-  .banner-button {
-    font-size: 1.2rem;
-    padding: 0.7rem 1.4rem;
-  }
 }
 
 
