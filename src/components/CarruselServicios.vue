@@ -391,11 +391,10 @@ onMounted(() => {
 .servicio-card p {
   font-size: 1rem;
   color: #555;
-  margin-bottom: 1.5rem;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;

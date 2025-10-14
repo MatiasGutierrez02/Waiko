@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <SobreNosotros />
+    <SobreNosotros id="quien-somos" />
     <ValoresDestacados />
 
     <section id="section">
@@ -190,8 +190,85 @@ const scrollToContact = () => {
     padding: 0.7rem 1.2rem;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .banner {
+    height: auto;
+    min-height: 80vh;
+    justify-content: center;
+    padding-right: 0;
+    padding-left: 0;
+  }
 
-/* Animación de entrada solo en elementos del banner */
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    max-width: 90%;
+  }
+
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2.8rem, 5vw + 0.8rem, 4.2rem);
+  }
+
+  .brand-w {
+    height: 70px;
+    margin-right: 0;
+  }
+
+  .banner-main-title {
+    margin-top: 0;
+  }
+
+  .banner-subtitle {
+    font-size: clamp(1.1rem, 2vw + 0.5rem, 1.4rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-button {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 901px) {
+  .banner {
+    height: auto;
+    min-height: 85vh;
+    justify-content: center;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    max-width: 800px;
+  }
+
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(3.5rem, 6vw + 0.8rem, 5rem);
+  }
+
+  .brand-w {
+    height: 80px;
+    margin-right: 0;
+  }
+
+  .banner-subtitle {
+    font-size: clamp(1.2rem, 2vw + 0.5rem, 1.5rem);
+    margin-bottom: 1.8rem;
+  }
+
+  .banner-button {
+    font-size: 1.2rem;
+    padding: 0.7rem 1.4rem;
+  }
+}
+
+
 @keyframes heroIn {
   0% { opacity: 0; transform: translateY(22px) scale(.98); filter: blur(2px); }
   100% { opacity: 1; transform: none; filter: blur(0); }

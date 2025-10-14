@@ -20,21 +20,31 @@
     <div class="content-section" v-if="serviceData">
       <div class="container">
         <!-- Descripción -->
-        <section class="description-section">
+        <section
+          class="description-section"
+          data-aos="fade-up"
+          data-aos-offset="100"
+          data-aos-delay="100"
+        >
           <h2>¿Qué ofrecemos?</h2>
           <p class="description">{{ serviceData.description }}</p>
         </section>
 
         <!-- Características principales -->
-        <section class="features-section">
+        <section
+          class="features-section"
+          data-aos="fade-up"
+          data-aos-offset="100"
+          data-aos-delay="200"
+        >
           <h2>Características principales</h2>
           <div class="features-grid">
             <div
-              v-for="feature in serviceData.features"
+              v-for="(feature, i) in serviceData.features"
               :key="feature"
               class="feature-card"
+              :data-aos-delay="200 + i * 100"
               data-aos="fade-up"
-              data-aos-delay="100"
             >
               <div class="feature-icon">✓</div>
               <p>{{ feature }}</p>
@@ -43,17 +53,8 @@
         </section>
 
         <!-- Call to action -->
-        <section class="cta-section" data-aos="zoom-in">
-          <div class="cta-card">
-            <h2>¿Necesitas este servicio?</h2>
-            <p>
-              Contactanos para recibir una propuesta personalizada sin costo
-            </p>
-            <button @click="goToContact" class="cta-button">
-              Solicitar {{ serviceData.title }}
-            </button>
-          </div>
-        </section>
+         <ContactoComponente></ContactoComponente>
+
       </div>
     </div>
 
@@ -71,29 +72,37 @@
 import { computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import AOS from "aos";
+import "aos/dist/aos.css";
 import { serviciosData } from "@/data/serviciosdata.js";
-
+import ContactoComponente from "@/components/ContactoComponente.vue";
 const route = useRoute();
 const router = useRouter();
 
 const serviceSlug = computed(() => route.params.slug);
 const serviceData = computed(() => {
-  console.log("Service slug:", serviceSlug.value);
-  console.log("Available services:", Object.keys(serviciosData));
-  console.log("Service data:", serviciosData[serviceSlug.value]);
   return serviciosData[serviceSlug.value] || null;
 });
 
-const goToContact = () => {
-  router.push("/contacto");
-};
 
 const goHome = () => {
   router.push("/");
 };
 
 onMounted(() => {
+  // Inicializa AOS
   AOS.refresh();
+
+  // Animación hero al entrar
+  const hero = document.querySelector(".hero-content");
+  if (hero) {
+    hero.style.opacity = 0;
+    hero.style.transform = "translateY(40px)";
+    requestAnimationFrame(() => {
+      hero.style.transition = "opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1)";
+      hero.style.opacity = 1;
+      hero.style.transform = "translateY(0)";
+    });
+  }
 });
 </script>
 
@@ -139,6 +148,7 @@ onMounted(() => {
   z-index: 2;
   text-align: center;
   color: white;
+  will-change: transform, opacity;
 }
 
 .hero-title {
@@ -180,16 +190,22 @@ section h2 {
   text-align: center;
   font-weight: 700;
   position: relative;
+  overflow: hidden;
 }
 
 section h2::after {
   content: "";
   display: block;
-  width: 80px;
+  width: 0;
   height: 3px;
   background: linear-gradient(90deg, #264d2c, #aee79d);
   margin: 1rem auto 0;
   border-radius: 2px;
+  transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+[data-aos].aos-animate h2::after {
+  width: 80px;
 }
 
 .description {
@@ -217,13 +233,14 @@ section h2::after {
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: all 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   border-left: 4px solid #aee79d;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .feature-icon {
@@ -247,98 +264,6 @@ section h2::after {
   line-height: 1.6;
 }
 
-/* Benefits Grid */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.benefit-card {
-  background: white;
-  padding: 2.5rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: all 0.3s ease;
-  border-top: 4px solid #264d2c;
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.benefit-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.benefit-card p {
-  margin: 0;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.6;
-}
-
-/* Process Timeline */
-.process-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 3rem;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.process-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.process-step:hover {
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.step-number {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, #264d2c, #3b6e40);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.8rem;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(38, 77, 44, 0.3);
-}
-
-.step-content h3 {
-  color: #264d2c;
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.step-content p {
-  color: #666;
-  line-height: 1.7;
-  margin: 0;
-  font-size: 1.05rem;
-}
-
 /* CTA Section */
 .cta-section {
   text-align: center;
@@ -353,6 +278,13 @@ section h2::after {
   max-width: 700px;
   margin: 0 auto;
   box-shadow: 0 10px 30px rgba(38, 77, 44, 0.3);
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.cta-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 14px 40px rgba(38, 77, 44, 0.35);
 }
 
 .cta-card h2 {
@@ -437,22 +369,7 @@ section h2::after {
     min-height: 350px;
   }
 
-  .process-step {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .step-number {
-    margin: 0 auto;
-    width: 60px;
-    height: 60px;
-    font-size: 1.6rem;
-  }
-
-  .features-grid,
-  .benefits-grid {
+  .features-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -471,8 +388,7 @@ section h2::after {
     padding: 0 1rem;
   }
 
-  .feature-card,
-  .benefit-card {
+  .feature-card {
     padding: 1.5rem;
   }
 
@@ -482,10 +398,6 @@ section h2::after {
 
   .cta-card h2 {
     font-size: 1.8rem;
-  }
-
-  .process-timeline {
-    gap: 1.5rem;
   }
 }
 
@@ -503,24 +415,8 @@ section h2::after {
     padding: 0 1rem;
   }
 
-  .feature-card,
-  .process-step,
-  .benefit-card {
+  .feature-card {
     padding: 1.2rem;
-  }
-
-  .step-number {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
-  }
-
-  .step-content h3 {
-    font-size: 1.2rem;
-  }
-
-  .step-content p {
-    font-size: 0.95rem;
   }
 
   .cta-card {
@@ -538,11 +434,6 @@ section h2::after {
 
   .content-section {
     padding: 3rem 0;
-  }
-
-  .feature-icon,
-  .benefit-icon {
-    font-size: 2rem;
   }
 
   .feature-icon {
