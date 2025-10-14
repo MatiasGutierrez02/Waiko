@@ -172,7 +172,7 @@ const scrollToContact = () => {
   }
   .banner-right {
     align-items: center;
-    --hero-title-size: clamp(2.2rem, 9vw + 0.6rem, 3.6rem);
+    --hero-title-size: 4.5rem;
   }
   .brand-w {
     height: 1em;
@@ -190,10 +190,11 @@ const scrollToContact = () => {
     padding: 0.7rem 1.2rem;
   }
 }
+/* === TABLETS EN HORIZONTAL (landscape) === */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .banner {
-    height: auto;
-    min-height: 80vh;
+    height: auto;              /* No se corta más */
+    min-height: 80vh;          /* Mantiene proporción */
     justify-content: center;
     padding-right: 0;
     padding-left: 0;
@@ -208,7 +209,7 @@ const scrollToContact = () => {
 
   .banner-right {
     align-items: center;
-    --hero-title-size: clamp(2.8rem, 5vw + 0.8rem, 4.2rem);
+    --hero-title-size: clamp(2.8rem, 5vw + 0.8rem, 4.2rem); /* Escala en tablets */
   }
 
   .brand-w {
@@ -231,6 +232,7 @@ const scrollToContact = () => {
   }
 }
 
+/* === NOTEBOOKS / PANTALLAS MEDIANAS === */
 @media (max-width: 1366px) and (min-width: 901px) {
   .banner {
     height: auto;
@@ -249,7 +251,7 @@ const scrollToContact = () => {
 
   .banner-right {
     align-items: center;
-    --hero-title-size: clamp(3.5rem, 6vw + 0.8rem, 5rem);
+    --hero-title-size: 4.5rem
   }
 
   .brand-w {
@@ -269,6 +271,7 @@ const scrollToContact = () => {
 }
 
 
+/* Animación de entrada solo en elementos del banner */
 @keyframes heroIn {
   0% { opacity: 0; transform: translateY(22px) scale(.98); filter: blur(2px); }
   100% { opacity: 1; transform: none; filter: blur(0); }
