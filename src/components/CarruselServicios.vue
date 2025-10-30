@@ -270,7 +270,7 @@ onMounted(() => {
     90deg,
     transparent 0%,
     #aee79d 12%,
-    #264d2c 50%,
+    #144553 50%,
     #aee79d 88%,
     transparent 100%
   );
@@ -306,7 +306,7 @@ onMounted(() => {
   font-weight: 800;
   font-size: 2.2rem;
   letter-spacing: 0.02em;
-  color: #264d2c;
+  color: #144553;
   opacity: 0;
   transform: translateX(40px);
   will-change: transform, opacity;
@@ -379,7 +379,7 @@ onMounted(() => {
 
 .servicio-card h3 {
   font-size: 1.2rem;
-  color: #264d2c;
+  color: #144553;
   margin-bottom: 1rem;
   font-weight: bold;
   height: 70px;
@@ -403,7 +403,7 @@ onMounted(() => {
   height: 120px;
 }
 .servicio-card button {
-  background-color: #264d2c;
+  background-color: #144553;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -419,7 +419,7 @@ onMounted(() => {
 
 .swiper-button-prev,
 .swiper-button-next {
-  color: #264d2c;
+  color: #144553;
   background: rgba(255, 255, 255, 0.9);
   width: 44px;
   height: 44px;
@@ -447,7 +447,7 @@ onMounted(() => {
   opacity: 1;
 }
 .swiper-pagination-bullet-active {
-  background: #264d2c;
+  background: #144553;
 }
 
 :deep(.swiper-slide-active .servicio-card) {

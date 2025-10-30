@@ -156,7 +156,7 @@ const scrollToContact = () => {
   margin-bottom: 2rem;
 }
 .banner-button {
-  background-color: #264d2c;
+  background-color: #144553;
   color: white;
   padding: 0.8rem 1.5rem;
   border: none;

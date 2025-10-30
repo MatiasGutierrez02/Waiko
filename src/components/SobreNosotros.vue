@@ -102,7 +102,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-:root { --brand:#264d2c; --brandLight:#aee79d; --ink:#2f3b31; }
+:root { --brand:#144553; --brandLight:#aee79d; --ink:#2f3b31; }
 
 .about-wrap{
   width:100%;
@@ -115,7 +115,7 @@ onMounted(() => {
 
 /* Título con doble línea solo a la derecha y animación */
 .about-heading{
-  --line-grad: linear-gradient(90deg, transparent 0%, #aee79d 12%, #264d2c 50%, #aee79d 88%, transparent 100%);
+  --line-grad: linear-gradient(90deg, transparent 0%, #aee79d 12%, #144553 50%, #aee79d 88%, transparent 100%);
   --line-height: 2px;
   --line-gap: 8px;
   --line-scale: 0;
@@ -129,7 +129,7 @@ onMounted(() => {
   text-align:left;
   font-weight:900;
   font-size: clamp(1.8rem, 2.4vw + 1rem, 2.4rem);
-  color:#264d2c;
+  color:#144553;
 
   opacity:0;
   transform: translateX(40px);

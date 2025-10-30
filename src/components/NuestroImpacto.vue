@@ -132,7 +132,7 @@ watch(() => props.stats, (nv) => {
 .nuestro-impacto{
   width: 100%;
   padding: 4rem 1.5rem;
-  background: linear-gradient(180deg, #264d2c 0%, #1f3d25 100%);
+  background: linear-gradient(180deg, #144553 0%, #1f3d25 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,7 +215,7 @@ watch(() => props.stats, (nv) => {
 
 .contador-wrap {
   font-size: 2.2rem;
-  color: #264d2c;
+  color: #144553;
   margin: 0 0 .35rem 0;
   line-height: 1;
   font-weight: 800;

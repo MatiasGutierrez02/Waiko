@@ -144,7 +144,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #264d2c;
+  background-color: #144553;
   color: #fff;
   padding: 12px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -187,7 +187,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #264d2c;
+  background-color: #144553;
   padding: 10px 0 0;
   gap: 0px;
 }
@@ -264,7 +264,7 @@ a:hover::after {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #264d2c;
+    background-color: #144553;
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }

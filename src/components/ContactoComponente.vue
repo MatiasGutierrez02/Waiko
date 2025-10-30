@@ -227,7 +227,7 @@ onBeforeUnmount(() => {
 @supports not (overflow-x: clip){ .contacto-section{ overflow-x: hidden; } }
 
 .section-heading{
-  --line-grad: linear-gradient(90deg, #264d2c 0%, #3a6d40 30%, #aee79d 70%, transparent 100%);
+  --line-grad: linear-gradient(90deg, #144553 0%, #3a6d40 30%, #aee79d 70%, transparent 100%);
   --line-height:2px; --line-gap:8px; --line-scale: 0;
   width:100%; max-width:1100px; position:relative; margin-bottom:2.2rem;
 }
@@ -241,7 +241,7 @@ onBeforeUnmount(() => {
   opacity:.6;
 }
 .contacto-title{
-  margin:0; font-weight:900; font-size:2.2rem; letter-spacing:.02em; color:#264d2c; text-align:left; position:relative;
+  margin:0; font-weight:900; font-size:2.2rem; letter-spacing:.02em; color:#144553; text-align:left; position:relative;
   opacity:0; transform:translateX(-40px); will-change:transform, opacity;
 }
 .contacto-title > span{ display:inline-block; padding-right:.75rem; background:#f7fbf8; }
@@ -249,7 +249,7 @@ onBeforeUnmount(() => {
 .contacto-grid{ width:100%; max-width:1100px; display:grid; grid-template-columns:.95fr 1.05fr; gap:1.6rem; align-items:stretch; }
 
 .info-card{
-  background:linear-gradient(180deg,#264d2c 0%,#1f3d25 100%);
+  background:linear-gradient(180deg,#144553 0%,#1f3d25 100%);
   color:#eaf3ed; border-radius:16px; padding:1.6rem 1.4rem;
   box-shadow:0 12px 30px rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.12);
 }
@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
 
 .actions{ margin-top:.5rem; display:flex; justify-content:flex-end; }
 .send-btn{
-  background-color:#264d2c !important; color:#fff !important; font-weight:800 !important;
+  background-color:#144553 !important; color:#fff !important; font-weight:800 !important;
   border-radius:999px !important; padding:.75rem 1.4rem;
 }
 .send-btn:hover{ background-color:#3b6e40 !important; }
@@ -318,7 +318,7 @@ onBeforeUnmount(() => {
 .t-badge{
   width:42px; height:42px; border-radius:12px;
   display:grid; place-items:center; font-size:1.2rem;
-  background:#ffffff; color:#264d2c; box-shadow:0 10px 24px rgba(0,0,0,.18);
+  background:#ffffff; color:#144553; box-shadow:0 10px 24px rgba(0,0,0,.18);
   border:2px solid #aee79d;
 }
 .t-hero-title{ font-weight:900; line-height:1; font-size:1.25rem; letter-spacing:.2px; }
@@ -338,7 +338,7 @@ onBeforeUnmount(() => {
 .t-section{ margin:1rem 0 1.1rem; }
 .t-h{
   position:relative; margin:0 0 .45rem;
-  font-weight:900; color:#264d2c; font-size:1.15rem;
+  font-weight:900; color:#144553; font-size:1.15rem;
 }
 .t-h::before{
   counter-increment: sec;

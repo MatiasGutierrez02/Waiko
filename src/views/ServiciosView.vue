@@ -127,10 +127,11 @@ onMounted(() => {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(38, 77, 44, 0.8),
-    rgba(38, 77, 44, 0.6)
-  );
+  135deg,
+  rgba(20, 69, 83, 0.85),
+  rgba(25, 90, 108, 0.65)
+);
+
   z-index: 1;
 }
 
@@ -185,7 +186,7 @@ section {
 
 section h2 {
   font-size: 2.4rem;
-  color: #264d2c;
+  color: #144553;
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 700;
@@ -198,7 +199,7 @@ section h2::after {
   display: block;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, #264d2c, #aee79d);
+  background: linear-gradient(90deg, #144553, #aee79d);
   margin: 1rem auto 0;
   border-radius: 2px;
   transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -246,7 +247,7 @@ section h2::after {
 .feature-icon {
   width: 45px;
   height: 45px;
-  background: linear-gradient(135deg, #aee79d, #264d2c);
+  background: linear-gradient(135deg, #aee79d, #144553);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -271,7 +272,7 @@ section h2::after {
 }
 
 .cta-card {
-  background: linear-gradient(135deg, #264d2c, #3b6e40);
+  background: linear-gradient(135deg, #144553, #3b6e40);
   color: white;
   padding: 4rem 2rem;
   border-radius: 20px;
@@ -306,7 +307,7 @@ section h2::after {
 
 .cta-button {
   background: #aee79d;
-  color: #264d2c;
+  color: #144553;
   padding: 1.2rem 2.5rem;
   border: none;
   border-radius: 10px;
@@ -331,7 +332,7 @@ section h2::after {
 }
 
 .error-section h1 {
-  color: #264d2c;
+  color: #144553;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -343,7 +344,7 @@ section h2::after {
 }
 
 .back-button {
-  background: #264d2c;
+  background: #144553;
   color: white;
   padding: 1rem 2rem;
   border: none;

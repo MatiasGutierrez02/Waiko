@@ -103,7 +103,7 @@ onMounted(() => {
 <style scoped>
 .values-section {
   width: 100%;
-  background: linear-gradient(180deg, #264d2c 0%, #1f3d25 100%);
+  background: linear-gradient(180deg, #144553 0%, #1f3d25 100%);
   padding: 3.2rem 1.25rem 10rem;
   display: flex;
   flex-direction: column;
@@ -232,7 +232,7 @@ onMounted(() => {
   width: 48px;
   height: 48px;
   background: #ffffff;
-  color: #264d2c;
+  color: #144553;
   border-radius: 999px;
   display: grid;
   place-items: center;
@@ -242,7 +242,7 @@ onMounted(() => {
 .icon-badge svg { width: 26px; height: 26px; }
 
 .value-title {
-  color: #264d2c;
+  color: #144553;
   font-weight: 800;
   font-size: 1.35rem;
   margin: .6rem 0 .35rem;
