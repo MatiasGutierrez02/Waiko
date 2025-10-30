@@ -336,7 +336,7 @@ onMounted(() => {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  height: 450px;
+  height: 500px;
   display: flex;
   flex-direction: column;
 }
@@ -469,7 +469,7 @@ onMounted(() => {
 
   .servicio-card {
     padding: 1.2rem;
-    height: 380px;
+    height: 420px;
   }
 
   .servicio-card img {
@@ -525,7 +525,7 @@ onMounted(() => {
   .servicio-card {
     padding: 1rem;
     margin: 0 0.5rem;
-    height: 350px;
+    height: 380px;
   }
 
   .servicio-card img {
