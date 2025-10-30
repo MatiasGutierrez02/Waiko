@@ -20,7 +20,7 @@
             Tu aliado estratégico en gestión ambiental
           </h1>
           <h2 class="banner-subtitle" data-hero>
-            Con más de 10 años de experiencia ayudando a empresas a ser mejor
+            Trayectoria, conocimiento normativo y soluciones efectivas para cada desafío regulatorio
           </h2>
           <button class="banner-button" @click="scrollToContact" data-hero>
             Contacta nuestro servicio aquí
@@ -152,7 +152,7 @@ const scrollToContact = () => {
   line-height: 1;
 }
 .banner-subtitle {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin-bottom: 2rem;
 }
 .banner-button {

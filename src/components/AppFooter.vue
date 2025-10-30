@@ -6,10 +6,7 @@
         <p>Consultoría en Gestión Ambiental</p>
       </div>
       <div class="footer-links">
-        <p>Evaluación de Impacto Ambiental</p>
-        <p>Impacto Acústico</p>
-        <p>Seguridad e Higiene Laboral</p>
-        <p>Habilitaciones Comerciales</p>
+        <p>Más sobre nosotros</p>
       </div>
     </div>
     <div class="footer-bottom">

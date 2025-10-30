@@ -5,10 +5,7 @@
     <div class="about-grid">
       <div class="about-copy" data-aos="fade-up" data-aos-delay="50">
         <p class="about-lead">
-          En <strong>Waiko</strong> ayudamos a organizaciones a integrar la
-          sostenibilidad en su operación diaria. Combinamos
-          <em>cumplimiento normativo</em>, análisis técnico y acompañamiento
-          continuo para lograr un impacto ambiental medible.
+          Somos un equipo de especialistas en gestión ambiental con amplia trayectoria, dedicados a brindar soluciones integrales para el cumplimiento normativo y la sostenibilidad de proyectos industriales.
         </p>
 
         <ul class="about-features">
@@ -21,7 +18,7 @@
                       d="M9 12l2 2 4-4"/>
               </svg>
             </span>
-            Cumplimiento normativo sin fricción
+            Experiencia que respalda cada gestión
           </li>
 
           <li class="feature" data-aos="fade-up" data-aos-delay="170">
@@ -31,7 +28,7 @@
                 <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
               </svg>
             </span>
-            Planes a medida y objetivos claros
+            Conocimiento técnico al servicio de nuestros clientes
           </li>
 
           <li class="feature" data-aos="fade-up" data-aos-delay="220">
@@ -41,7 +38,7 @@
                       d="M4 19h16M7 16v-5m5 5V8m5 8V6"/>
               </svg>
             </span>
-            Impacto medible y reportable
+            Eficiencia y confiabilidad en cada proyecto
           </li>
         </ul>
 
@@ -191,6 +188,7 @@ onMounted(() => {
   color:#425046; line-height:1.75;
   font-size: clamp(1rem, .35vw + .95rem, 1.05rem);
   margin:0 0 1rem;
+  text-align: left;
 }
 .about-features{
   display:grid; gap:.65rem; list-style:none; padding:0; margin:0 0 1.1rem;

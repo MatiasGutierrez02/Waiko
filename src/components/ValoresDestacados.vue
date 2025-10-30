@@ -62,9 +62,9 @@ const props = defineProps({
   values: {
     type: Array,
     default: () => ([
-      { title: 'Misión',   text: 'Brindar asesoramiento y gestión ambiental de calidad excepcional para empresas y organismos.', icon: 'mision' },
-      { title: 'Visión',   text: 'Consolidar un futuro donde la excelencia ambiental sea parte integral de cada negocio.',     icon: 'vision' },
-      { title: 'Objetivo', text: 'Impulsar soluciones prácticas que aseguren el cumplimiento normativo y protejan el entorno.', icon: 'objetivo' }
+      { title: 'Misión',   text: 'Ofrecer asesoramiento técnico y gestión ambiental de alta calidad, garantizando el cumplimiento normativo y la mejora continua en cada proyecto.', icon: 'mision' },
+      { title: 'Visión',   text: 'Ser referentes en consultoría ambiental, promoviendo una cultura empresarial basada en la excelencia y la sostenibilidad.',     icon: 'vision' },
+      { title: 'Objetivo', text: 'Desarrollar soluciones integrales que fortalezcan el desempeño ambiental y la competitividad de nuestros clientes.', icon: 'objetivo' }
     ])
   }
 })

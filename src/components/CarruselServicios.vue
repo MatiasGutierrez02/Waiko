@@ -26,7 +26,7 @@
         :update-on-window-resize="true"
         :watch-slides-progress="true"
         @swiper="onSwiperReady"
-        :autoplay="{ delay: 2500, disableOnInteraction: false }"
+        :autoplay="{ delay: 4000, disableOnInteraction: false }"
         class="servicios-swiper"
       >
         <SwiperSlide v-for="(s, i) in items" :key="i">
@@ -56,7 +56,7 @@
               </span>
             </div>
 
-            <h3>{{ s.title }}</h3>
+            <h3 v-html="s.title"></h3>
             <p>{{ s.desc }}</p>
             <button @click="onSelect(s)">Más información</button>
           </article>
@@ -118,26 +118,26 @@ const props = defineProps({
         to: "/servicios/gestion-ambiental",
       },
       {
-        title: "Inscripción Generador de Residuos Peligrosos CABA y APra",
-        desc: "Inscripción en Residuos Peligrosos CABA y APra | Cumpla la Ley 2214 | Evite Multas",
+        title: "Inscripción Generador de Residuos Peligrosos APra",
+        desc: "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
         img: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url).href,
         to: "/servicios/habilitaciones-comerciales",
       },
       {
-        title: "Residuos Peligrosos Nación (Sayds)",
-        desc: "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
+        title: "Residuos Peligrosos (Sayds)",
+        desc: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
         img: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
         to: "/servicios/habilitaciones-comerciales-nacion",
       },
       {
-        title: "Estudio De Ruido (Impacto Acústico - Rac)",
-        desc: "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
+        title: "Estudio de Impacto Acústico - RAC",
+        desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
         img: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
         to: "/servicios/impacto-acustico",
       },
       {
         title: "Habilitaciones Y Permisos",
-        desc: "Brindamos un servicio integral de habilitación comercial y permisos ambientales operativos.",
+        desc: "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
         img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
           .href,
         to: "/servicios/habilitaciones-permisos",
@@ -149,7 +149,7 @@ const props = defineProps({
         to: "/servicios/intimaciones-cedulas",
       },
       {
-        title: "Organismos Internacionales De Crédito (Caf - Bid)",
+        title: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
         desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
         img: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
           .href,
@@ -256,14 +256,15 @@ onMounted(() => {
 
 <style scoped>
 .servicios {
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   background-color: #ffffff;
   padding: 4rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
-
 .section-heading {
   --line-grad: linear-gradient(
     90deg,

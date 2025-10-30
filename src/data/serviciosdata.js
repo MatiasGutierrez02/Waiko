@@ -3,9 +3,7 @@ export const serviciosData = {
     title: "Abono Mensual",
     subtitle: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
     description:
-      "Abono Ambiental Empresarial | Control de Vencimientos y Declaraciones.\n" +
-      "Delegue la gestión ambiental de su empresa. Control de vencimientos, manifiestos y presentaciones oficiales.\n" +
-      "Evite demoras y sanciones con nuestro plan mensual de seguimiento ambiental.",
+      "Abono Ambiental Empresarial / Control de Vencimientos y Declaraciones Juradas. Delegue la gestión ambiental de su empresa con nuestro plan mensual evitando sanciones y pago de multas.",
     image: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
     features: [
       "Control de vencimientos y presentaciones.",
@@ -23,28 +21,28 @@ export const serviciosData = {
     features: [
       "Ayudamos a su empresa al total cumplimiento normativo.",
       "Gestión completa ante APRA (Agencia de Protección Ambiental).",
-      "Nuevos registros o renovaciones de certificados.",
+      "Nuevos registros y/o renovaciones de certificados vencidos.",
     ],
   },
   "habilitaciones-comerciales": {
-    title: "Inscripción Generador de Residuos Peligrosos CABA y APra",
+    title: "Inscripción Generador de Residuos Peligrosos  APra",
     subtitle:
-      "Inscripción en Residuos Peligrosos CABA y APra | Cumpla la Ley 2214 | Evite Multas",
+      "Inscripción en Residuos Peligrosos APra | Cumpla la Ley 2214 | Evite Multas",
     description:
-      "Nos encargamos de inscripciones, renovaciones y actualizaciones en el Registro de Generadores de Residuos Peligrosos CABA (APRA).",
+      "Nos encargamos de inscripciones, renovaciones y actualizaciones en el Registro de Generadores de Residuos Peligrosos (APRA).",
     image: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url)
       .href,
     features: [
       "Atención inmediata ante inspecciones o intimaciones.",
       "Gestión completa y presentación de expedientes.",
-      "Cumpla la Ley 2214 y evite sanciones.",
+      "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
     ],
   },
   "habilitaciones-comerciales-nacion": {
     title: "Residuos Peligrosos Nación (Sayds)",
     subtitle:
       "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
-    description: "Cumpla con la Ley 24.051 y evite clausuras o sanciones.",
+    description: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
     image: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url)
       .href,
     features: [
@@ -58,19 +56,18 @@ export const serviciosData = {
     subtitle:
       "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
     description:
-      "Realizamos Estudios de Ruido Ambiental e Industrial según normativa vigente.",
+      "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
     image: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
     features: [
       "Inscripción al Registro de Actividades Catalogadas (RAc).",
       "Mediciones con instrumental calibrado y certificado.",
-      "Profesionales inscriptos y con amplia experiencia.",
-      "Evite multas y sanciones. ",
+      "Profesionales inscriptos y con amplia experiencia."
     ],
   },
   "habilitaciones-permisos": {
     title: "Habilitaciones y Permisos",
     subtitle:
-      "Brindamos un servicio integral de habilitación ambiental y permisos operativos.",
+      "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
     description:
       "Gestiones ante la Agencia gubernamental de Control.\n" +
       "Evite sanciones y mantenga su empresa operativa.\n",
@@ -105,19 +102,18 @@ export const serviciosData = {
   "internacionales-credito": {
     title: "Organismos Internacionales De Crédito (CAF - BID)",
     subtitle:
-      "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)/n" +
-      "Evaluaciones Ambientales CAF - BID - BM | Estándares Internacionales",
+      "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)",
     description:
-      "Brindamos asistencia técnica especializada para cumplir con las evaluaciones ambientales requeridas por organismos internacionales de crédito como CAF, BID y Banco Mundial.",
+      "Auditores especializados en proyectos financiados por organismos internacionales, garantizando el cumplimiento de los más exigentes estándares ambientales.",
     image: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
       .href,
     features: [
-      "Amplia experiencia en inspecciones ambientales a Obras financiadas por organismos internacionales.",
+      "Asesoramos a empresas extranjeras que inician operaciones en Argentina.",
       "Consultoría ambiental para proyectos con financiamiento internacional. Cumplimiento de estándares CAF, BID y Banco Mundial.",
       "Asesoramos proyectos con financiamiento internacional (CAF, BID, BM) en evaluaciones de impacto ambiental, planes de manejo y cumplimiento de salvaguardas.",
       "Adaptación a normas internacionales.",
-      "Informes y matrices ambientales.",
-      "Asistencia técnica integral.",
+      "Acompañamiento técnico legal.",
+      "Contamos con capacidades bilingües en español e inglés.",
     ],
   },
   "empresas-extranjeras": {

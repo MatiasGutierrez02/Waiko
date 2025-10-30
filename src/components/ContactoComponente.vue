@@ -7,7 +7,7 @@
     <div class="contacto-grid" ref="gridRef">
       <aside class="info-card contact-card" style="--delay: 0ms">
         <h3 class="info-title">Hablemos</h3>
-        <p class="info-text">Escribinos y un consultor te responde en el día hábil.</p>
+        <p class="info-text">Escribinos y uno de nuestros consultores te responderá a la brevedad.</p>
 
         <ul class="info-list">
           <li>
@@ -25,7 +25,6 @@
         </ul>
 
         <a :href="whatsappLink" target="_blank" class="wa-cta">Escribir por WhatsApp</a>
-        <p class="mini-note">Al enviar aceptás ser contactad@ por nuestro equipo.</p>
       </aside>
 
       <q-form @submit.prevent="enviarConsulta" class="form-card contact-card" style="--delay: 140ms">
