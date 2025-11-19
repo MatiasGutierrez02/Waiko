@@ -243,6 +243,7 @@ const scrollToContact = () => {
     padding: 0;
     height: 75vh;
     min-height: 450px;
+    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -314,6 +315,7 @@ const scrollToContact = () => {
     padding: 0;
     height: 70vh;
     min-height: 420px;
+    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -360,6 +362,7 @@ const scrollToContact = () => {
     padding: 0;
     height: 65vh;
     min-height: 380px;
+    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -399,6 +402,7 @@ const scrollToContact = () => {
 @media (max-width: 320px) {
   .banner {
     min-height: 360px;
+    margin-top: 52px ;
   }
 
   .banner-content {
@@ -420,6 +424,8 @@ const scrollToContact = () => {
   .banner {
     height: 85vh;
     min-height: 350px;
+    margin-top: 52px ;
+
   }
 
   .banner-right {

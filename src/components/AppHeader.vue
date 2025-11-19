@@ -268,5 +268,10 @@ a:hover::after {
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
+
+  .imagenLogo {
+    height: 40px;
+  }
+
 }
 </style>
