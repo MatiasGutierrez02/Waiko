@@ -2,7 +2,7 @@
   <header :class="['header', { 'is-hidden': isHidden }]">
     <div class="container">
       <img
-        src="../assets/LogoFinalIcono.png"
+        src="../assets/Logo_con_nombre_blanco.png"
         @click="goHome"
         class="imagenLogo"
         alt="Logo"
