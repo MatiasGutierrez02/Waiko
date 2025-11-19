@@ -310,7 +310,7 @@ const scrollToContact = () => {
   }
 
   .brand-w {
-    height: 4em;
+    height: 5em;
     margin-right: -0.15em;
   }
   .banner-main-title {
