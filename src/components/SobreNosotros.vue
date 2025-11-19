@@ -188,7 +188,7 @@ onMounted(() => {
   color:#425046; line-height:1.75;
   font-size: clamp(1rem, .35vw + .95rem, 1.05rem);
   margin:0 0 1rem;
-  text-align: left;
+  text-align: justify;
 }
 .about-features{
   display:grid; gap:.65rem; list-style:none; padding:0; margin:0 0 1.1rem;

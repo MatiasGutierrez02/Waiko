@@ -9,6 +9,7 @@ export const serviciosData = {
       "Control de vencimientos y presentaciones.",
       "Asesoramiento técnico permanente.",
       "Asistencia ante inspecciones y control documental. ",
+      "Alojamiento y backup virtual de la documentación ambiental.",
     ],
   },
   "gestion-ambiental": {
@@ -16,7 +17,7 @@ export const serviciosData = {
     subtitle:
       "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
     description:
-      "Elaboramos y presentamos Estudios de Impacto Ambiental (EIA) y Actualizaciones Ambientales requeridas por Ley 123.",
+      "Elaboramos y gestionamos el Certificado de Aptitud Ambiental (CAA) y actualizaciones ambientales requeridas por Ley 123",
     image: new URL("@/assets/GestionAmbiental.jpg", import.meta.url).href,
     features: [
       "Ayudamos a su empresa al total cumplimiento normativo.",
@@ -30,7 +31,7 @@ export const serviciosData = {
       "Inscripción en Residuos Peligrosos APra | Cumpla la Ley 2214 | Evite Multas",
     description:
       "Nos encargamos de inscripciones, renovaciones y actualizaciones en el Registro de Generadores de Residuos Peligrosos (APRA).",
-    image: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url)
+    image: new URL("@/assets/apra.jpg", import.meta.url)
       .href,
     features: [
       "Atención inmediata ante inspecciones o intimaciones.",
@@ -43,7 +44,7 @@ export const serviciosData = {
     subtitle:
       "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
     description: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
-    image: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url)
+    image: new URL("@/assets/sayds.jpg", import.meta.url)
       .href,
     features: [
       "Inscripción y renovación de Generadores de Residuos Peligrosos.",
@@ -105,10 +106,10 @@ export const serviciosData = {
       "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)",
     description:
       "Auditores especializados en proyectos financiados por organismos internacionales, garantizando el cumplimiento de los más exigentes estándares ambientales.",
-    image: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
+    image: new URL("@/assets/caf_bid.jpg", import.meta.url)
       .href,
     features: [
-      "Asesoramos a empresas extranjeras que inician operaciones en Argentina.",
+      "Contamos con inspectores ambientales especializados en obras financiadas por organismos internacionales.",
       "Consultoría ambiental para proyectos con financiamiento internacional. Cumplimiento de estándares CAF, BID y Banco Mundial.",
       "Asesoramos proyectos con financiamiento internacional (CAF, BID, BM) en evaluaciones de impacto ambiental, planes de manejo y cumplimiento de salvaguardas.",
       "Adaptación a normas internacionales.",

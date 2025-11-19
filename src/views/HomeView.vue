@@ -12,8 +12,7 @@
       <div class="banner-content">
         <div class="banner-right">
           <div class="brand-waiko" aria-label="WAIKO" data-hero>
-            <img class="brand-w" src="@/assets/LogoFinalIcono.png" alt="W" />
-            <span class="brand-letters">AIKO</span>
+            <img class="brand-w" src="@/assets/Logo_con_nombre_blanco.png" alt="W" />
           </div>
 
           <h1 class="banner-main-title" data-hero>
@@ -126,14 +125,13 @@ const scrollToContact = () => {
   letter-spacing: 0.02em;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
-  margin-bottom: 0.25rem;
+  margin-bottom: -9.75rem;
 }
 .brand-w {
-  height: 1em; /* Use em units to scale proportionally with text */
+  height: 4em; /* Use em units to scale proportionally with text */
   aspect-ratio: 1 / 1;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
-  margin-right: -0.15em; /* Proportional negative margin */
   z-index: 10;
   flex-shrink: 0;
 }
@@ -322,13 +320,17 @@ const scrollToContact = () => {
     text-align: center;
     padding: 1rem 0.8rem;
   }
+  .brand-waiko {
+      margin-bottom: -1.5em;
+
+  }
   .banner-right {
     align-items: center;
     --hero-title-size: clamp(2rem, 8vw + 0.5rem, 2.8rem);
     gap: clamp(0.6rem, 2vw, 1rem);
   }
   .brand-w {
-    height: 1em;
+    height: 4em;
     margin-right: -0.12em;
   }
   .brand-letters {

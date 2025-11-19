@@ -5,9 +5,9 @@
         <h3>WAIKO</h3>
         <p>Consultoría en Gestión Ambiental</p>
       </div>
-      <div class="footer-links">
+      <!-- <div class="footer-links">
         <p>Más sobre nosotros</p>
-      </div>
+      </div> -->
     </div>
     <div class="footer-bottom">
       <p>&copy; {{ new Date().getFullYear() }} WAIKO. Todos los derechos reservados.</p>
@@ -32,11 +32,11 @@ font-family: 'Roboto', sans-serif;
 
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding-bottom: 1rem;
 }
@@ -46,6 +46,7 @@ font-family: 'Roboto', sans-serif;
   font-weight: bold;
   margin-bottom: 0.3rem;
   color: #aee79d;
+
 }
 
 .footer-info p {

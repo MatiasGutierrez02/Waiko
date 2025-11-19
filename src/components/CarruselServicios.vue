@@ -32,7 +32,7 @@
         <SwiperSlide v-for="(s, i) in items" :key="i">
           <article class="servicio-card">
             <div class="img-wrap">
-              <img :src="s.img" :alt="s.title" />
+              <img :src="s.img" :alt="s.title" :class="{ 'logo-img': s.title.includes('CAF-BID-BM') }"/>
               <span
                 v-if="s.premium || i === 0"
                 class="premium-corner"
@@ -120,13 +120,13 @@ const props = defineProps({
       {
         title: "Inscripción Generador de Residuos Peligrosos APra",
         desc: "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
-        img: new URL("@/assets/ResiduosPeligrosos.jpg", import.meta.url).href,
+        img: new URL("@/assets/apra.jpg", import.meta.url).href,
         to: "/servicios/habilitaciones-comerciales",
       },
       {
         title: "Residuos Peligrosos (Sayds)",
         desc: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
-        img: new URL("@/assets/AsesoriaTecnica.jpg", import.meta.url).href,
+        img: new URL("@/assets/sayds.jpg", import.meta.url).href,
         to: "/servicios/habilitaciones-comerciales-nacion",
       },
       {
@@ -151,7 +151,7 @@ const props = defineProps({
       {
         title: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
         desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
-        img: new URL("@/assets/OrganismosInternacionales.jpg", import.meta.url)
+        img: new URL("@/assets/caf_bid.jpg", import.meta.url)
           .href,
         to: "/servicios/internacionales-credito",
       },
@@ -563,6 +563,17 @@ onMounted(() => {
     display: none;
   }
 }
+.logo-img {
+  object-fit: contain !important;
+  background-color: white;
+  padding: 0.5rem;
+  height: 220px;
+  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+
 
 .servicios {
   overflow-x: clip;
