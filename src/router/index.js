@@ -1,47 +1,39 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import Contacto from "../views/ContactoView.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () => import(/* webpackChunkName: "home" */ "../views/HomeView.vue"),
   },
   {
     path: "/quien-somos",
     name: "quien-somos",
-    component: () => import("../views/AboutView.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
     path: "/servicios/:slug",
     name: "ServicioDetalle",
-    component: () =>
-      import(/* webpackChunkName: "servicios" */ "../views/ServiciosView.vue"),
+    component: () => import(/* webpackChunkName: "servicios" */ "../views/ServiciosView.vue"),
     props: true,
   },
   {
     path: "/beneficio",
     name: "beneficio",
-    component: () =>
-      import(/* webpackChunkName: "beneficio" */ "../views/BeneficioView.vue"),
+    component: () => import(/* webpackChunkName: "beneficio" */ "../views/BeneficioView.vue"),
   },
   {
     path: "/contacto",
     name: "contacto",
-    component: Contacto,
+    component: () => import(/* webpackChunkName: "contacto" */ "../views/ContactoView.vue"),
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
+  scrollBehavior(_, __, savedPosition) {
+    return savedPosition ? savedPosition : { top: 0 };
   },
 });
 
