@@ -3,12 +3,15 @@
     <div class="banner">
       <video
         class="banner-video"
-        src="@/assets/bannerAnimado.mp4"
         autoplay
         muted
         loop
         playsinline
-      ></video>
+        preload="none"
+      >
+        <source src="@/assets/bannerAnimado.webm" type="video/webm" />
+        <source src="@/assets/bannerAnimado.mp4" type="video/mp4" />
+      </video>
       <div class="banner-content">
         <div class="banner-right">
           <div class="brand-waiko" aria-label="WAIKO" data-hero>

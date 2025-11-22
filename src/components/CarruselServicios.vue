@@ -32,7 +32,11 @@
         <SwiperSlide v-for="(s, i) in items" :key="i">
           <article class="servicio-card">
             <div class="img-wrap">
-              <img :src="s.img" :alt="s.title" :class="{ 'logo-img': s.title.includes('CAF-BID-BM') }"/>
+              <picture>
+                <source :srcset="s.imgWebp" type="image/webp" />
+                <img :src="s.img" :alt="s.title" :class="{ 'logo-img': s.title.includes('CAF-BID-BM') }"/>
+              </picture>
+
               <span
                 v-if="s.premium || i === 0"
                 class="premium-corner"
@@ -104,70 +108,79 @@ const props = defineProps({
   services: {
     type: Array,
     default: () => [
-      {
-        premium: true,
-        title: "Abono Mensual",
-        desc: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
-        img: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
-        to: "/servicios/abono-mensual",
-      },
-      {
-        title: "Impacto Ambiental",
-        desc: "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
-        img: new URL("@/assets/GestionAmbiental.jpg", import.meta.url).href,
-        to: "/servicios/gestion-ambiental",
-      },
-      {
-        title: "Inscripción Generador de Residuos Peligrosos APra",
-        desc: "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
-        img: new URL("@/assets/apra.jpg", import.meta.url).href,
-        to: "/servicios/habilitaciones-comerciales",
-      },
-      {
-        title: "Residuos Peligrosos (Sayds)",
-        desc: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
-        img: new URL("@/assets/sayds.jpg", import.meta.url).href,
-        to: "/servicios/habilitaciones-comerciales-nacion",
-      },
-      {
-        title: "Estudio de Impacto Acústico - RAC",
-        desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-        img: new URL("@/assets/impacto acustico.png", import.meta.url).href,
-        to: "/servicios/impacto-acustico",
-      },
-      {
-        title: "Habilitaciones Y Permisos",
-        desc: "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
-        img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url)
-          .href,
-        to: "/servicios/habilitaciones-permisos",
-      },
-      {
-        title: "Intimaciones Y Cédulas",
-        desc: "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
-        img: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url).href,
-        to: "/servicios/intimaciones-cedulas",
-      },
-      {
-        title: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
-        desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
-        img: new URL("@/assets/caf_bid.jpg", import.meta.url)
-          .href,
-        to: "/servicios/internacionales-credito",
-      },
-      {
-        title: "Empresas Extranjeras",
-        desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
-        img: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
-        to: "/servicios/empresas-extranjeras",
-      },
-      {
-        title: "Registro de Campanas, Conductos y Afines",
-        desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025.",
-        img: new URL("@/assets/campana.jpg", import.meta.url).href,
-        to: "/servicios/registro-campanas",
-      },
-    ],
+  {
+    premium: true,
+    title: "Abono Mensual",
+    desc: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
+    img: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/imagenTrabajo.webp", import.meta.url).href,
+    to: "/servicios/abono-mensual",
+  },
+  {
+    title: "Impacto Ambiental",
+    desc: "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
+    img: new URL("@/assets/GestionAmbiental.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/GestionAmbiental.webp", import.meta.url).href,
+    to: "/servicios/gestion-ambiental",
+  },
+  {
+    title: "Inscripción Generador de Residuos Peligrosos APra",
+    desc: "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
+    img: new URL("@/assets/apra.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/apra.webp", import.meta.url).href,
+    to: "/servicios/habilitaciones-comerciales",
+  },
+  {
+    title: "Residuos Peligrosos (Sayds)",
+    desc: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
+    img: new URL("@/assets/sayds.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/sayds.webp", import.meta.url).href,
+    to: "/servicios/habilitaciones-comerciales-nacion",
+  },
+  {
+    title: "Estudio de Impacto Acústico - RAC",
+    desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
+    img: new URL("@/assets/impacto acustico.png", import.meta.url).href,
+    imgWebp: new URL("@/assets/impacto acustico.webp", import.meta.url).href,
+    to: "/servicios/impacto-acustico",
+  },
+  {
+    title: "Habilitaciones Y Permisos",
+    desc: "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
+    img: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/HabilitacionesComerciales.webp", import.meta.url).href,
+    to: "/servicios/habilitaciones-permisos",
+  },
+  {
+    title: "Intimaciones Y Cédulas",
+    desc: "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
+    img: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/IntimacionesCedulas.webp", import.meta.url).href,
+    to: "/servicios/intimaciones-cedulas",
+  },
+  {
+    title: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
+    desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
+    img: new URL("@/assets/caf_bid.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/caf_bid.webp", import.meta.url).href,
+    to: "/servicios/internacionales-credito",
+  },
+  {
+    title: "Empresas Extranjeras",
+    desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
+    img: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/EmpresasExtranjeras.webp", import.meta.url).href,
+    to: "/servicios/empresas-extranjeras",
+  },
+  {
+    title: "Registro de Campanas, Conductos y Afines",
+    desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025.",
+    img: new URL("@/assets/campana.jpg", import.meta.url).href,
+    imgWebp: new URL("@/assets/campana.webp", import.meta.url).href,
+    to: "/servicios/registro-campanas",
+  },
+]
+,
   },
 });
 const emit = defineEmits(["select"]);

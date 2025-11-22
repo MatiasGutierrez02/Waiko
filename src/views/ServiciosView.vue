@@ -3,11 +3,15 @@
     <!-- Hero Section -->
     <div class="hero-section" v-if="serviceData">
       <div class="hero-overlay"></div>
-      <img
-        :src="serviceData.image"
-        :alt="serviceData.title"
-        class="hero-image"
-      />
+      <picture v-if="serviceData">
+        <source :srcset="serviceData.imageWebp" type="image/webp" />
+        <img
+          :src="serviceData.image"
+          :alt="serviceData.title"
+          class="hero-image"
+        />
+      </picture>
+
       <div class="hero-content">
         <div class="container">
           <h1 class="hero-title">{{ serviceData.title }}</h1>

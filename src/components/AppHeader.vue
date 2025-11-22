@@ -1,12 +1,15 @@
 <template>
   <header :class="['header', { 'is-hidden': isHidden }]">
     <div class="container">
-      <img
-        src="../assets/Logo_con_nombre_blanco.png"
-        @click="goHome"
-        class="imagenLogo"
-        alt="Logo"
-      />
+      <picture @click="goHome">
+        <source srcset="../assets/Logo_con_nombre_blanco.webp" type="image/webp" />
+        <img
+          src="../assets/Logo_con_nombre_blanco.png"
+          class="imagenLogo"
+          alt="Logo"
+        />
+      </picture>
+
 
       <button class="hamburger" @click="toggleMenu">
         <span :class="{ open: isMenuOpen }"></span>

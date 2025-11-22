@@ -48,11 +48,16 @@
       </div>
 
       <figure class="about-media" data-aos="fade-left" data-aos-delay="140">
-        <img src="@/assets/SobreNosotros.jpg" alt="Equipo de gestión y proyectos ambientales" />
+        <picture>
+          <source srcset="@/assets/SobreNosotros.webp" type="image/webp" />
+          <img src="@/assets/SobreNosotros.jpg" alt="Equipo de gestión y proyectos ambientales" />
+        </picture>
+
         <span class="media-gradient"></span>
         <span class="media-ring"></span>
         <span class="media-badge">+13 años</span>
       </figure>
+
     </div>
   </section>
 </template>
