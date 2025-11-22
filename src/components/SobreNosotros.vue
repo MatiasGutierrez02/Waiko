@@ -43,7 +43,7 @@
         </ul>
 
         <div class="about-cta" data-aos="fade-up" data-aos-delay="270">
-          <button class="btn btn-ghost" @click="scrollToServices">Ver servicios</button>
+          <button aria-label="ir a servicios" class="btn btn-ghost" @click="scrollToServices">Ver servicios</button>
         </div>
       </div>
 

@@ -62,7 +62,7 @@
 
             <h3 v-html="s.title"></h3>
             <p>{{ s.desc }}</p>
-            <button @click="onSelect(s)">Más información</button>
+            <button @click="onSelect(s)"  aria-label="Mas informacion">Más información</button>
           </article>
         </SwiperSlide>
 

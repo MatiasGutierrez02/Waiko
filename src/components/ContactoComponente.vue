@@ -41,7 +41,7 @@
           <q-checkbox v-model="termsAccepted" color="primary" dense size="md" @update:model-value="clearTermsInvalid">
             <template #default>
               <span>Leí y acepto nuestros
-                <button type="button" class="link-terms" @click="showTerms = true">Términos y Condiciones</button>.
+                <button  aria-label="Aceptar terminos y condiciones" type="button" class="link-terms" @click="showTerms = true">Términos y Condiciones</button>.
               </span>
             </template>
           </q-checkbox>

@@ -30,7 +30,7 @@
             Trayectoria, conocimiento normativo y soluciones efectivas para cada
             desafío regulatorio
           </h2>
-          <button class="banner-button" @click="scrollToContact" data-hero>
+          <button aria-label="contacta desde aqui" class="banner-button" @click="scrollToContact" data-hero>
             Contacta nuestro servicio aquí
           </button>
         </div>

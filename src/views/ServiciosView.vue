@@ -65,7 +65,7 @@
       <div class="container">
         <h1>Servicio no encontrado</h1>
         <p>El servicio que buscas no existe o ha sido movido.</p>
-        <button @click="goHome" class="back-button">Volver al inicio</button>
+        <button @click="goHome" class="back-button" aria-label="volver al incio">Volver al inicio</button>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
       </picture>
 
 
-      <button class="hamburger" @click="toggleMenu">
+      <button class="hamburger" @click="toggleMenu"  aria-label="Abrir menu">
         <span :class="{ open: isMenuOpen }"></span>
         <span :class="{ open: isMenuOpen }"></span>
         <span :class="{ open: isMenuOpen }"></span>
