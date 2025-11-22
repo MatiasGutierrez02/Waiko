@@ -12,14 +12,19 @@
       <div class="banner-content">
         <div class="banner-right">
           <div class="brand-waiko" aria-label="WAIKO" data-hero>
-            <img class="brand-w" src="@/assets/Logo_con_nombre_blanco.png" alt="W" />
+            <img
+              class="brand-w"
+              src="@/assets/Logo_con_nombre_blanco.png"
+              alt="W"
+            />
           </div>
 
           <h1 class="banner-main-title" data-hero>
             Tu aliado estratégico en gestión ambiental
           </h1>
           <h2 class="banner-subtitle" data-hero>
-            Trayectoria, conocimiento normativo y soluciones efectivas para cada desafío regulatorio
+            Trayectoria, conocimiento normativo y soluciones efectivas para cada
+            desafío regulatorio
           </h2>
           <button class="banner-button" @click="scrollToContact" data-hero>
             Contacta nuestro servicio aquí
@@ -188,8 +193,14 @@ const scrollToContact = () => {
     --hero-title-size: 3.8rem;
   }
   .brand-w {
-    height: 1em;
+    height: 6em;
     margin-right: -0.15em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
   }
   .brand-letters {
     margin-left: -0.05em;
@@ -228,8 +239,13 @@ const scrollToContact = () => {
   }
 
   .brand-w {
-    height: 1em;
+    height: 6em;
     margin-right: -0.1em;
+  }
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
   }
   .brand-letters {
     margin-left: -0.03em;
@@ -243,7 +259,6 @@ const scrollToContact = () => {
     padding: 0;
     height: 75vh;
     min-height: 450px;
-    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -256,7 +271,7 @@ const scrollToContact = () => {
     gap: clamp(0.8rem, 2vw, 1.2rem);
   }
   .brand-w {
-    height: 1em;
+    height: 4em;
     margin-right: -0.13em;
   }
   .brand-letters {
@@ -295,8 +310,13 @@ const scrollToContact = () => {
   }
 
   .brand-w {
-    height: 1em;
+    height: 5em;
     margin-right: -0.15em;
+  }
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
   }
   .brand-letters {
     margin-left: -0.05em;
@@ -308,6 +328,51 @@ const scrollToContact = () => {
   }
 }
 
+/* === iPhone 14 Pro Max y móviles similares (430px) === */
+@media (max-width: 430px) and (min-width: 415px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 70vh;
+    min-height: 450px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0.9rem;
+  }
+  .brand-waiko {
+    margin-bottom: -1.5em;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2.1rem, 8vw + 0.5rem, 2.9rem);
+    gap: clamp(0.7rem, 2vw, 1.1rem);
+  }
+  .brand-w {
+    height: 4em;
+    margin-right: -0.13em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.95rem, 3vw + 0.4rem, 1.15rem);
+    margin-bottom: 1.3rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(0.95rem, 4vw + 0.2rem, 1.05rem);
+    padding: 0.65rem 1.1rem;
+  }
+}
+
 /* === iPhone XR y móviles similares (414px) === */
 @media (max-width: 414px) and (min-width: 375px) {
   .banner {
@@ -315,7 +380,6 @@ const scrollToContact = () => {
     padding: 0;
     height: 70vh;
     min-height: 420px;
-    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -323,8 +387,7 @@ const scrollToContact = () => {
     padding: 1rem 0.8rem;
   }
   .brand-waiko {
-      margin-bottom: -1.5em;
-
+    margin-bottom: -1.5em;
   }
   .banner-right {
     align-items: center;
@@ -362,7 +425,6 @@ const scrollToContact = () => {
     padding: 0;
     height: 65vh;
     min-height: 380px;
-    margin-top: 52px ;
   }
   .banner-content {
     align-items: center;
@@ -375,7 +437,7 @@ const scrollToContact = () => {
     gap: 0.5rem;
   }
   .brand-w {
-    height: 1em;
+    height: 4em;
     margin-right: -0.1em;
   }
   .brand-letters {
@@ -402,7 +464,6 @@ const scrollToContact = () => {
 @media (max-width: 320px) {
   .banner {
     min-height: 360px;
-    margin-top: 52px ;
   }
 
   .banner-content {
@@ -417,6 +478,11 @@ const scrollToContact = () => {
     padding: 0.5rem 0.7rem;
     font-size: 0.85rem;
   }
+
+  .brand-w {
+    height: 4em;
+    margin-right: -0.1em;
+  }
 }
 
 /* === Móviles en orientación horizontal === */
@@ -424,8 +490,6 @@ const scrollToContact = () => {
   .banner {
     height: 85vh;
     min-height: 350px;
-    margin-top: 52px ;
-
   }
 
   .banner-right {
@@ -438,6 +502,11 @@ const scrollToContact = () => {
 
   .banner-subtitle {
     margin-bottom: 1rem;
+  }
+
+  .brand-w {
+    height: 4em;
+    margin-right: -0.1em;
   }
 }
 
