@@ -380,6 +380,7 @@ const scrollToContact = () => {
     padding: 0;
     height: 70vh;
     min-height: 420px;
+    margin-top: 64px
   }
   .banner-content {
     align-items: center;

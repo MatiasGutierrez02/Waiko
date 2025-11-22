@@ -163,7 +163,7 @@ const props = defineProps({
       },
       {
         title: "Registro de Campanas, Conductos y Afines",
-        desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025 y mantener un Certificado Digital de Limpieza vigente.",
+        desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025.",
         img: new URL("@/assets/campana.jpg", import.meta.url).href,
         to: "/servicios/registro-campanas",
       },
