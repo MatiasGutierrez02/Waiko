@@ -7,8 +7,9 @@
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="auto"
         poster="@/assets/bannerPoster.webp"
+        fetchpriority="high"
       >
         <source src="@/assets/bannerAnimado.webm" type="video/webm" />
       </video>
