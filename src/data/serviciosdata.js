@@ -4,7 +4,6 @@ export const serviciosData = {
     subtitle: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
     description:
       "Abono Ambiental Empresarial / Control de Vencimientos y Declaraciones Juradas. Delegue la gestión ambiental de su empresa con nuestro plan mensual evitando sanciones y pago de multas.",
-    image: new URL("@/assets/imagenTrabajo.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/imagenTrabajo.webp", import.meta.url).href,
     features: [
       "Control de vencimientos y presentaciones.",
@@ -20,7 +19,6 @@ export const serviciosData = {
       "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
     description:
       "Elaboramos y gestionamos el Certificado de Aptitud Ambiental (CAA) y actualizaciones ambientales requeridas por Ley 123",
-    image: new URL("@/assets/GestionAmbiental.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/GestionAmbiental.webp", import.meta.url).href,
     features: [
       "Ayudamos a su empresa al total cumplimiento normativo.",
@@ -35,7 +33,6 @@ export const serviciosData = {
       "Inscripción en Residuos Peligrosos APra | Cumpla la Ley 2214 | Evite Multas",
     description:
       "Nos encargamos de inscripciones, renovaciones y actualizaciones en el Registro de Generadores de Residuos Peligrosos (APRA).",
-    image: new URL("@/assets/apra.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/apra.webp", import.meta.url).href,
     features: [
       "Atención inmediata ante inspecciones o intimaciones.",
@@ -50,7 +47,6 @@ export const serviciosData = {
       "Gestionamos altas, renovaciones, declaraciones juradas y manifiestos electrónicos.",
     description:
       "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
-    image: new URL("@/assets/sayds.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/sayds.webp", import.meta.url).href,
     features: [
       "Inscripción y renovación de Generadores de Residuos Peligrosos.",
@@ -65,7 +61,6 @@ export const serviciosData = {
       "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
     description:
       "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-    image: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/EstudioRuido.webp", import.meta.url).href,
     features: [
       "Inscripción al Registro de Actividades Catalogadas (RAc).",
@@ -80,7 +75,6 @@ export const serviciosData = {
       "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
     description:
       "Gestiones ante la Agencia gubernamental de Control.\nEvite sanciones y mantenga su empresa operativa.\n",
-    image: new URL("@/assets/HabilitacionesComerciales.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/HabilitacionesComerciales.webp", import.meta.url).href,
     features: [
       "Asesoramiento en factibilidad edilicia y de requisitos según usos comerciales:",
@@ -100,7 +94,6 @@ export const serviciosData = {
       "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
     description:
       "¿Recibió una intimación o cédula ambiental?\nRespondemos de inmediato para evitar multas o clausuras.",
-    image: new URL("@/assets/IntimacionesCedulas.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/IntimacionesCedulas.webp", import.meta.url).href,
     features: [
       "Regularización urgente.",
@@ -115,7 +108,6 @@ export const serviciosData = {
       "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM)",
     description:
       "Auditores especializados en proyectos financiados por organismos internacionales, garantizando el cumplimiento de los más exigentes estándares ambientales.",
-    image: new URL("@/assets/caf_bid.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/caf_bid.webp", import.meta.url).href,
     features: [
       "Contamos con inspectores ambientales especializados en obras financiadas por organismos internacionales.",
@@ -133,7 +125,6 @@ export const serviciosData = {
       "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
     description:
       "Asistencia a empresas internacionales para cumplir con normativa ambiental argentina.\nTraducción técnica y gestión completa.",
-    image: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/EmpresasExtranjeras.webp", import.meta.url).href,
     features: [
       "Orientamos a empresas extranjeras que inician operaciones en Argentina.",
@@ -151,7 +142,6 @@ export const serviciosData = {
       "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025 y mantener un Certificado Digital de Limpieza vigente.",
     description:
       "Relevamos las campanas, extractores, conductos y sistemas de evacuación existentes para identificar lo que debe declararse según la disposición vigente.",
-    image: new URL("@/assets/campana.jpg", import.meta.url).href,
     imageWebp: new URL("@/assets/campana.webp", import.meta.url).href,
     features: [
       "Auditoría técnica del establecimiento.",

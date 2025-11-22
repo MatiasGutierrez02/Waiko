@@ -11,14 +11,13 @@
         poster="@/assets/bannerPoster.webp"
       >
         <source src="@/assets/bannerAnimado.webm" type="video/webm" />
-        <source src="@/assets/bannerAnimado.mp4" type="video/mp4" />
       </video>
       <div class="banner-content">
         <div class="banner-right">
           <div class="brand-waiko" aria-label="WAIKO" data-hero>
             <img
               class="brand-w"
-              src="@/assets/Logo_con_nombre_blanco.png"
+              src="@/assets/Logo_con_nombre_blanco.webp"
               alt="W"
             />
           </div>

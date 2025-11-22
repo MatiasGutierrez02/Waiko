@@ -3,11 +3,6 @@
     <div class="container">
       <picture @click="goHome">
         <source srcset="../assets/Logo_con_nombre_blanco.webp" type="image/webp" />
-        <img
-          src="../assets/Logo_con_nombre_blanco.png"
-          class="imagenLogo"
-          alt="Logo"
-        />
       </picture>
 
 
