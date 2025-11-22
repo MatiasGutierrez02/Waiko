@@ -7,7 +7,7 @@
         muted
         loop
         playsinline
-        preload="none"
+        preload="auto"
       >
         <source src="@/assets/bannerAnimado.webm" type="video/webm" />
         <source src="@/assets/bannerAnimado.mp4" type="video/mp4" />
