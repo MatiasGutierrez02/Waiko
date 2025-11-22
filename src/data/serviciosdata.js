@@ -136,4 +136,21 @@ export const serviciosData = {
       "Contamos con capacidades bilingües en español e inglés, lo cual nos permite establecer una comunicación fluida y efectiva con equipos corporativos internacionales, garantizando la comprensión precisa de los requisitos y procesos involucrados.",
     ],
   },
+  "registro-campanas": {
+    title: "Registro de Campanas, Conductos y Afines",
+    subtitle:
+      "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025 y mantener un Certificado Digital de Limpieza vigente.",
+
+    description:
+      "Relevamos las campanas, extractores, conductos y sistemas de evacuación existentes para identificar lo que debe declararse según la disposición vigente.",
+    image: new URL("@/assets/campana.jpg", import.meta.url)
+      .href,
+    features: [
+      "Auditoría técnica del establecimiento.",
+      "Registro oficial de Campanas, Conductos y Afines.",
+      "Asesoramiento post-registro.",
+      "Renovación anual del registro y certificados.",
+      "Guía para la obtención del “Certificado Digital de Limpieza”.",
+    ],
+  },
 };

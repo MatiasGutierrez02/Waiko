@@ -132,7 +132,7 @@ const props = defineProps({
       {
         title: "Estudio de Impacto Acústico - RAC",
         desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-        img: new URL("@/assets/EstudioRuido.jpg", import.meta.url).href,
+        img: new URL("@/assets/impacto acustico.png", import.meta.url).href,
         to: "/servicios/impacto-acustico",
       },
       {
@@ -160,6 +160,12 @@ const props = defineProps({
         desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
         img: new URL("@/assets/EmpresasExtranjeras.jpg", import.meta.url).href,
         to: "/servicios/empresas-extranjeras",
+      },
+      {
+        title: "Registro de Campanas, Conductos y Afines",
+        desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025 y mantener un Certificado Digital de Limpieza vigente.",
+        img: new URL("@/assets/campana.jpg", import.meta.url).href,
+        to: "/servicios/registro-campanas",
       },
     ],
   },
