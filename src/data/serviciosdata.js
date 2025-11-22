@@ -61,7 +61,7 @@ export const serviciosData = {
       "Estudio de Ruido APRA | Inscripción al RAc | Cumplimiento Normativo Acústico",
     description:
       "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-    imageWebp: new URL("@/assets/EstudioRuido.webp", import.meta.url).href,
+    imageWebp: new URL("@/assets/impactoAcustico.webp", import.meta.url).href,
     features: [
       "Inscripción al Registro de Actividades Catalogadas (RAc).",
       "Mediciones con instrumental calibrado y certificado.",

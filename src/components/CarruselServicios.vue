@@ -136,7 +136,7 @@ const props = defineProps({
   {
     title: "Estudio de Impacto Acústico - RAC",
     desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-    imgWebp: new URL("@/assets/impacto acustico.webp", import.meta.url).href,
+    imgWebp: new URL("@/assets/impactoAcustico.webp", import.meta.url).href,
     to: "/servicios/impacto-acustico",
   },
   {

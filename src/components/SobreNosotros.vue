@@ -49,7 +49,7 @@
 
       <figure class="about-media" data-aos="fade-left" data-aos-delay="140">
         <picture>
-          <source srcset="@/assets/SobreNosotros.webp" type="image/webp" />
+          <img src="@/assets/SobreNosotros.webp" alt="Equipo de gestión y proyectos ambientales" />
         </picture>
 
         <span class="media-gradient"></span>
