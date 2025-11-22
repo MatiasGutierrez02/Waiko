@@ -2,11 +2,15 @@
   <header :class="['header', { 'is-hidden': isHidden }]">
     <div class="container">
       <picture @click="goHome">
-        <source srcset="../assets/Logo_con_nombre_blanco.webp" type="image/webp" />
+        <img
+          src="../assets/Logo_con_nombre_blanco.webp"
+          class="imagenLogo"
+          alt="Logo"
+        />
       </picture>
 
 
-      <button class="hamburger" @click="toggleMenu"  aria-label="Abrir menu">
+      <button class="hamburger" @click="toggleMenu"  aria-label="Abrir me">
         <span :class="{ open: isMenuOpen }"></span>
         <span :class="{ open: isMenuOpen }"></span>
         <span :class="{ open: isMenuOpen }"></span>
