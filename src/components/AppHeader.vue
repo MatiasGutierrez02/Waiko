@@ -21,12 +21,6 @@
       <nav class="nav-desktop">
         <button class="lang-toggle" @click="toggleLang" aria-label="Cambiar idioma">
           <span v-if="currentLang === 'es'">
-            <svg width="24" height="24" viewBox="0 0 640 480">
-              <rect width="640" height="480" fill="#AA151B"/>
-              <rect width="640" height="240" y="120" fill="#F1BF00"/>
-            </svg>
-          </span>
-          <span v-else>
             <svg width="24" height="24" viewBox="0 0 60 30">
               <clipPath id="s">
                 <path d="M0,0 v30 h60 v-30 z"/>
@@ -41,6 +35,12 @@
                 <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
                 <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
               </g>
+            </svg>
+          </span>
+          <span v-else>
+            <svg width="24" height="24" viewBox="0 0 640 480">
+              <rect width="640" height="480" fill="#AA151B"/>
+              <rect width="640" height="240" y="120" fill="#F1BF00"/>
             </svg>
           </span>
         </button>
@@ -58,12 +58,6 @@
 
         <button class="lang-toggle" @click="toggleLang" aria-label="Cambiar idioma">
           <span v-if="currentLang === 'es'">
-            <svg width="24" height="24" viewBox="0 0 640 480">
-              <rect width="640" height="480" fill="#AA151B"/>
-              <rect width="640" height="240" y="120" fill="#F1BF00"/>
-            </svg>
-          </span>
-          <span v-else>
             <svg width="24" height="24" viewBox="0 0 60 30">
               <clipPath id="s">
                 <path d="M0,0 v30 h60 v-30 z"/>
@@ -78,6 +72,12 @@
                 <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
                 <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
               </g>
+            </svg>
+          </span>
+          <span v-else>
+            <svg width="24" height="24" viewBox="0 0 640 480">
+              <rect width="640" height="480" fill="#AA151B"/>
+              <rect width="640" height="240" y="120" fill="#F1BF00"/>
             </svg>
           </span>
         </button>
@@ -249,8 +249,8 @@ export default {
 
 .lang-toggle {
   background: transparent;
-  border: none;      /* 💥 ESTO QUITA EL BORDE */
-  padding: 0;        /* Opcional, para que quede justo al SVG */
+  border: none;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
