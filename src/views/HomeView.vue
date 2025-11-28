@@ -24,15 +24,22 @@
           </div>
 
           <h1 class="banner-main-title" data-hero>
-            Tu aliado estratégico en gestión ambiental
+            {{ t("mainTitle") }}
           </h1>
+
           <h2 class="banner-subtitle" data-hero>
-            Trayectoria, conocimiento normativo y soluciones efectivas para cada
-            desafío regulatorio
+            {{ t("subtitle") }}
           </h2>
-          <button aria-label="contacta desde aqui" class="banner-button" @click="scrollToContact" data-hero>
-            Contacta nuestro servicio aquí
+
+          <button
+            aria-label="contacta desde aqui"
+            class="banner-button"
+            @click="scrollToContact"
+            data-hero
+          >
+            {{ t("contactBtn") }}
           </button>
+
         </div>
       </div>
     </div>
@@ -53,15 +60,46 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import CarruselServicios from "@/components/CarruselServicios.vue";
 import NuestroImpacto from "@/components/NuestroImpacto.vue";
 import ValoresDestacados from "@/components/ValoresDestacados.vue";
 import SobreNosotros from "@/components/SobreNosotros.vue";
 import ContactoComponente from "@/components/ContactoComponente.vue";
 
-onMounted(() => {});
+const currentLang = ref(localStorage.getItem("lang") || "es");
 
+onMounted(() => {
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail;
+  });
+});
+
+
+const translations = {
+  es: {
+    mainTitle: "Tu aliado estratégico en gestión ambiental",
+    subtitle:
+      "Trayectoria, conocimiento normativo y soluciones efectivas para cada desafío regulatorio",
+    contactBtn: "Contacta nuestro servicio aquí",
+  },
+  en: {
+    mainTitle: "Your strategic ally in environmental management",
+    subtitle:
+      "Expertise, regulatory knowledge and effective solutions for every compliance challenge",
+    contactBtn: "Contact our service here",
+  },
+};
+
+const t = (key) => translations[currentLang.value][key];
+
+window.addEventListener("storage", (e) => {
+  if (e.key === "lang") {
+    currentLang.value = e.newValue;
+  }
+});
+
+// scroll
 const scrollToContact = () => {
   const el = document.getElementById("contacto");
   if (!el) return;
@@ -71,6 +109,7 @@ const scrollToContact = () => {
   window.scrollTo({ top: y, behavior: "smooth" });
 };
 </script>
+
 
 <style scoped>
 .home-page {

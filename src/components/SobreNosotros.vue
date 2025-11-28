@@ -1,11 +1,11 @@
 <template>
   <section class="about-wrap">
-    <h2 class="about-heading" ref="headingRef"><span>Sobre nosotros</span></h2>
+    <h2 class="about-heading" ref="headingRef"><span>{{ t("title") }}</span></h2>
 
     <div class="about-grid">
       <div class="about-copy" data-aos="fade-up" data-aos-delay="50">
         <p class="about-lead">
-          Somos un equipo de especialistas en gestión ambiental con amplia trayectoria, dedicados a brindar soluciones integrales para el cumplimiento normativo y la sostenibilidad de proyectos industriales.
+          {{ t("lead") }}
         </p>
 
         <ul class="about-features">
@@ -18,7 +18,7 @@
                       d="M9 12l2 2 4-4"/>
               </svg>
             </span>
-            Experiencia que respalda cada gestión
+            {{ t("f1") }}
           </li>
 
           <li class="feature" data-aos="fade-up" data-aos-delay="170">
@@ -28,7 +28,7 @@
                 <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
               </svg>
             </span>
-            Conocimiento técnico al servicio de nuestros clientes
+            {{ t("f2") }}
           </li>
 
           <li class="feature" data-aos="fade-up" data-aos-delay="220">
@@ -38,23 +38,25 @@
                       d="M4 19h16M7 16v-5m5 5V8m5 8V6"/>
               </svg>
             </span>
-            Eficiencia y confiabilidad en cada proyecto
+            {{ t("f3") }}
           </li>
         </ul>
 
         <div class="about-cta" data-aos="fade-up" data-aos-delay="270">
-          <button aria-label="ir a servicios" class="btn btn-ghost" @click="scrollToServices">Ver servicios</button>
+          <button aria-label="ir a servicios" class="btn btn-ghost" @click="scrollToServices">
+            {{ t("btn") }}
+          </button>
         </div>
       </div>
 
       <figure class="about-media" data-aos="fade-left" data-aos-delay="140">
         <picture>
-          <img src="@/assets/SobreNosotros.webp" alt="Equipo de gestión y proyectos ambientales" />
+          <img src="@/assets/SobreNosotros.webp" :alt="t('title')" />
         </picture>
 
         <span class="media-gradient"></span>
         <span class="media-ring"></span>
-        <span class="media-badge">+13 años</span>
+        <span class="media-badge">{{ t("badge") }}</span>
       </figure>
 
     </div>
@@ -68,16 +70,44 @@ import 'aos/dist/aos.css'
 
 const headingRef = ref(null)
 
-function scrollToServices() {
-  const el = document.getElementById('servicios')
-  if (!el) return
-  const header = document.querySelector('header.header')
-  const headerH = header ? header.offsetHeight : 100
-  const y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 2
-  window.scrollTo({ top: y, behavior: 'smooth' })
+// 🌍 idioma actual (reactivo)
+const currentLang = ref(localStorage.getItem("lang") || "es")
+
+// 🌍 diccionario de traducciones
+const translations = {
+  es: {
+    title: "Sobre nosotros",
+    lead:
+      "Somos un equipo de especialistas en gestión ambiental con amplia trayectoria, dedicados a brindar soluciones integrales para el cumplimiento normativo y la sostenibilidad de proyectos industriales.",
+    f1: "Experiencia que respalda cada gestión",
+    f2: "Conocimiento técnico al servicio de nuestros clientes",
+    f3: "Eficiencia y confiabilidad en cada proyecto",
+    btn: "Ver servicios",
+    badge: "+13 años"
+  },
+
+  en: {
+    title: "About us",
+    lead:
+      "We are a team of environmental management specialists with extensive experience, dedicated to providing comprehensive solutions for regulatory compliance and the sustainability of industrial projects.",
+    f1: "Experience backing every management process",
+    f2: "Technical knowledge supporting our clients",
+    f3: "Efficiency and reliability in every project",
+    btn: "View services",
+    badge: "+13 years"
+  }
 }
 
+// función traductora
+const t = (key) => translations[currentLang.value][key]
+
+// 🔥 escuchar evento global del Header
 onMounted(() => {
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail
+  })
+
+  // AOS + animación del título
   AOS.init({ duration: 700, once: true, easing: 'ease-out-quart', offset: 80 })
 
   const el = headingRef.value
@@ -88,21 +118,37 @@ onMounted(() => {
 
   const io = new IntersectionObserver(([entry]) => {
     if (!entry.isIntersecting) return
+
     const start = performance.now()
     const dur = 800
+
     const tick = (now) => {
       const t = Math.min(1, (now - start) / dur)
       const ease = 1 - Math.pow(1 - t, 3)
+
       el.style.setProperty('--line-scale', ease.toString())
       el.style.opacity = ease.toString()
       el.style.transform = `translateX(${(1 - ease) * 40}px)`
+
       if (t < 1) requestAnimationFrame(tick)
       else io.disconnect()
     }
+
     requestAnimationFrame(tick)
   }, { threshold: 0.4 })
+
   io.observe(el)
 })
+
+// scroll
+function scrollToServices() {
+  const el = document.getElementById('servicios')
+  if (!el) return
+  const header = document.querySelector('header.header')
+  const headerH = header ? header.offsetHeight : 100
+  const y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 2
+  window.scrollTo({ top: y, behavior: 'smooth' })
+}
 </script>
 
 <style scoped>

@@ -1,13 +1,13 @@
 <template>
   <section id="contacto" class="contacto-section">
     <div class="section-heading" ref="headingRef">
-      <h2 class="contacto-title" ref="titleRef"><span>Contacto</span></h2>
+      <h2 class="contacto-title" ref="titleRef"><span>{{ t("title") }}</span></h2>
     </div>
 
     <div class="contacto-grid" ref="gridRef">
       <aside class="info-card contact-card" style="--delay: 0ms">
-        <h3 class="info-title">Hablemos</h3>
-        <p class="info-text">Escribinos y uno de nuestros consultores te responderá a la brevedad.</p>
+        <h3 class="info-title">{{ t("talkTitle") }}</h3>
+        <p class="info-text">{{ t("talkText") }}</p>
 
         <ul class="info-list">
           <li>
@@ -20,35 +20,49 @@
           </li>
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7Zm0 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" fill="currentColor"/></svg>
-            Argentina
+            {{ t("country") }}
           </li>
         </ul>
 
-        <a :href="whatsappLink" target="_blank" class="wa-cta">Escribir por WhatsApp</a>
+        <a :href="whatsappLink" target="_blank" class="wa-cta">{{ t("waCta") }}</a>
       </aside>
 
       <q-form @submit.prevent="enviarConsulta" class="form-card contact-card" style="--delay: 140ms">
         <div class="fields-grid">
-          <q-input filled dense color="primary" v-model="form.nombre" label="Nombre y Apellido" class="field" :rules="[v => !!v || 'Requerido']"/>
-          <q-input filled dense color="primary" v-model="form.mail" type="email" label="Email" class="field"
-                   :rules="[v => !!v || 'Requerido', v => /.+@.+\..+/.test(v) || 'Email inválido']"/>
-          <q-input filled dense color="primary" v-model="form.telefono" label="Teléfono" class="field span-2"/>
+          <q-input filled dense color="primary" v-model="form.nombre"
+                   :label="t('nameLabel')" class="field"
+                   :rules="[v => !!v || t('required')]" />
+
+          <q-input filled dense color="primary" v-model="form.mail" type="email"
+                   :label="t('emailLabel')" class="field"
+                   :rules="[
+                     v => !!v || t('required'),
+                     v => /.+@.+\..+/.test(v) || t('invalidEmail')
+                   ]" />
+
+          <q-input filled dense color="primary" v-model="form.telefono"
+                   :label="t('phoneLabel')" class="field span-2" />
+
           <q-input filled dense color="primary" v-model="form.consulta" type="textarea" autogrow
-                   label="Contanos tu consulta" class="field span-2 textarea-large" :rules="[v => !!v || 'Requerido']"/>
+                   :label="t('messageLabel')" class="field span-2 textarea-large"
+                   :rules="[v => !!v || t('required')]" />
         </div>
 
         <div class="terms-wrap" :class="{ invalid: termsInvalid }">
-          <q-checkbox v-model="termsAccepted" color="primary" dense size="md" @update:model-value="clearTermsInvalid">
+          <q-checkbox v-model="termsAccepted" color="primary" dense size="md"
+                      @update:model-value="clearTermsInvalid">
             <template #default>
-              <span>Leí y acepto nuestros
-                <button  aria-label="Aceptar terminos y condiciones" type="button" class="link-terms" @click="showTerms = true">Términos y Condiciones</button>.
+              <span>
+                {{ t("termsPrefix") }}
+                <button aria-label="Términos" type="button" class="link-terms"
+                        @click="showTerms = true">{{ t("termsBtn") }}</button>.
               </span>
             </template>
           </q-checkbox>
         </div>
 
         <div class="actions">
-          <q-btn type="submit" label="Enviar consulta" color="primary" unelevated
+          <q-btn type="submit" :label="t('sendBtn')" color="primary" unelevated
                  class="send-btn" :class="{ shake: shakeNow }" :loading="loading" />
         </div>
       </q-form>
@@ -58,10 +72,10 @@
       <q-card class="terms-card">
         <div class="t-hero">
           <div class="t-hero-left">
-            <div class="t-badge" aria-hidden="true">🔒</div>
+            <div class="t-badge">🔒</div>
             <div class="t-hero-text">
-              <div class="t-hero-title">Política de Privacidad</div>
-              <div class="t-hero-sub">Última actualización: {{ today }}</div>
+              <div class="t-hero-title">{{ t("privacyTitle") }}</div>
+              <div class="t-hero-sub">{{ t("privacyUpdated") }} {{ today }}</div>
             </div>
           </div>
           <q-btn flat round dense icon="close" class="t-close" v-close-popup />
@@ -69,50 +83,53 @@
 
         <div class="t-body">
           <section class="t-section">
-            <h4 class="t-h">¿Qué datos recopilamos?</h4>
+            <h4 class="t-h">{{ t("s1Title") }}</h4>
             <ul class="t-list">
-              <li>Nombre y apellido</li>
-              <li>Correo electrónico</li>
-              <li>Teléfono de contacto</li>
-              <li>Empresa o institución</li>
-              <li>Mensajes o consultas específicas</li>
+              <li>{{ t("s1li1") }}</li>
+              <li>{{ t("s1li2") }}</li>
+              <li>{{ t("s1li3") }}</li>
+              <li>{{ t("s1li4") }}</li>
+              <li>{{ t("s1li5") }}</li>
             </ul>
           </section>
 
           <section class="t-section">
-            <h4 class="t-h">¿Para qué usamos tus datos?</h4>
+            <h4 class="t-h">{{ t("s2Title") }}</h4>
             <ul class="t-list">
-              <li>Contactarte en relación con tu consulta o interés en nuestros servicios.</li>
-              <li>Ofrecerte asesoramiento personalizado sobre gestión ambiental, normativa y residuos.</li>
-              <li>Enviarte comunicaciones informativas o comerciales (solo con tu consentimiento).</li>
+              <li>{{ t("s2li1") }}</li>
+              <li>{{ t("s2li2") }}</li>
+              <li>{{ t("s2li3") }}</li>
             </ul>
           </section>
 
           <section class="t-section">
-            <h4 class="t-h">¿Cómo protegemos tus datos?</h4>
-            <p>Aplicamos medidas técnicas y organizativas adecuadas para evitar accesos no autorizados, pérdidas o divulgaciones indebidas.</p>
+            <h4 class="t-h">{{ t("s3Title") }}</h4>
+            <p>{{ t("s3p") }}</p>
           </section>
 
           <section class="t-section">
-            <h4 class="t-h">¿Compartimos tu información?</h4>
-            <p>No compartimos tus datos con terceros.</p>
+            <h4 class="t-h">{{ t("s4Title") }}</h4>
+            <p>{{ t("s4p") }}</p>
           </section>
 
           <section class="t-section">
-            <h4 class="t-h">Tus derechos</h4>
-            <p>Podés solicitar el acceso, rectificación, actualización o supresión de tus datos escribiendo a
-              <a href="mailto:info@waiko.com.ar">info@waiko.com.ar</a>. También podés pedir dejar de recibir comunicaciones en cualquier momento.</p>
+            <h4 class="t-h">{{ t("s5Title") }}</h4>
+            <p>
+              {{ t("s5p") }}
+              <a href="mailto:info@waiko.com.ar">info@waiko.com.ar</a>.
+              {{ t("s5p2") }}
+            </p>
           </section>
 
           <section class="t-section">
-            <h4 class="t-h">Base legal</h4>
-            <p>Cumplimos con la Ley N.º 25.326 de Protección de los Datos Personales de la República Argentina.</p>
+            <h4 class="t-h">{{ t("s6Title") }}</h4>
+            <p>{{ t("s6p") }}</p>
           </section>
         </div>
 
         <div class="t-actions">
-          <q-btn flat label="Cerrar" color="primary" v-close-popup />
-          <q-btn label="Aceptar y cerrar" color="primary" unelevated class="t-cta" v-close-popup />
+          <q-btn flat :label="t('close')" color="primary" v-close-popup />
+          <q-btn :label="t('acceptAndClose')" color="primary" unelevated class="t-cta" v-close-popup />
         </div>
       </q-card>
     </q-dialog>
@@ -122,6 +139,95 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import emailjs from 'emailjs-com'
+
+/* 🌍 idioma */
+const currentLang = ref(localStorage.getItem("lang") || "es")
+
+/* 🌍 diccionario */
+const translations = {
+  es: {
+    title: "Contacto",
+    talkTitle: "Hablemos",
+    talkText: "Escribinos y uno de nuestros consultores te responderá a la brevedad.",
+    country: "Argentina",
+    waCta: "Escribir por WhatsApp",
+    nameLabel: "Nombre y Apellido",
+    emailLabel: "Email",
+    phoneLabel: "Teléfono",
+    messageLabel: "Contanos tu consulta",
+    required: "Requerido",
+    invalidEmail: "Email inválido",
+    termsPrefix: "Leí y acepto nuestros",
+    termsBtn: "Términos y Condiciones",
+    sendBtn: "Enviar consulta",
+    privacyTitle: "Política de Privacidad",
+    privacyUpdated: "Última actualización:",
+    s1Title: "¿Qué datos recopilamos?",
+    s1li1: "Nombre y apellido",
+    s1li2: "Correo electrónico",
+    s1li3: "Teléfono de contacto",
+    s1li4: "Empresa o institución",
+    s1li5: "Mensajes o consultas específicas",
+    s2Title: "¿Para qué usamos tus datos?",
+    s2li1: "Contactarte en relación con tu consulta o interés en nuestros servicios.",
+    s2li2: "Ofrecerte asesoramiento personalizado sobre gestión ambiental, normativa y residuos.",
+    s2li3: "Enviarte comunicaciones informativas o comerciales (solo con tu consentimiento).",
+    s3Title: "¿Cómo protegemos tus datos?",
+    s3p: "Aplicamos medidas técnicas y organizativas adecuadas para evitar accesos no autorizados, pérdidas o divulgaciones indebidas.",
+    s4Title: "¿Compartimos tu información?",
+    s4p: "No compartimos tus datos con terceros.",
+    s5Title: "Tus derechos",
+    s5p: "Podés solicitar acceso, rectificación o eliminación escribiendo a",
+    s5p2: "También podés dejar de recibir comunicaciones.",
+    s6Title: "Base legal",
+    s6p: "Cumplimos con la Ley 25.326 de Protección de Datos Personales.",
+    close: "Cerrar",
+    acceptAndClose: "Aceptar y cerrar"
+  },
+  en: {
+    title: "Contact",
+    talkTitle: "Let's talk",
+    talkText: "Write to us and one of our consultants will get back to you shortly.",
+    country: "Argentina",
+    waCta: "Write on WhatsApp",
+    nameLabel: "Full name",
+    emailLabel: "Email",
+    phoneLabel: "Phone",
+    messageLabel: "Tell us your inquiry",
+    required: "Required",
+    invalidEmail: "Invalid email",
+    termsPrefix: "I have read and accept the",
+    termsBtn: "Terms and Conditions",
+    sendBtn: "Send inquiry",
+    privacyTitle: "Privacy Policy",
+    privacyUpdated: "Last updated:",
+    s1Title: "What data do we collect?",
+    s1li1: "First and last name",
+    s1li2: "Email address",
+    s1li3: "Contact phone number",
+    s1li4: "Company or institution",
+    s1li5: "Messages or specific inquiries",
+    s2Title: "What do we use your data for?",
+    s2li1: "Contact you regarding your inquiry.",
+    s2li2: "Offer personalized environmental advice.",
+    s2li3: "Send informational or commercial emails (only with your consent).",
+    s3Title: "How do we protect your data?",
+    s3p: "We apply appropriate technical measures.",
+    s4Title: "Do we share your information?",
+    s4p: "We do not share your data with third parties.",
+    s5Title: "Your rights",
+    s5p: "You can request access or deletion by writing to",
+    s5p2: "You can stop receiving emails anytime.",
+    s6Title: "Legal basis",
+    s6p: "We comply with Argentina's Data Protection Law.",
+    close: "Close",
+    acceptAndClose: "Accept and close"
+  }
+}
+
+const t = (key) => translations[currentLang.value][key];
+
+/* -------- resto igual -------- */
 
 const form = ref({ nombre: '', mail: '', telefono: '', consulta: '' })
 const loading = ref(false)
@@ -171,6 +277,12 @@ let gridIO
 const ease = t => 1 - Math.pow(1 - t, 3)
 
 onMounted(async () => {
+
+  /* 🔥 IMPORTANTE: escuchar cambio de idioma */
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail;
+  });
+
   await nextTick()
 
   const title = titleRef.value

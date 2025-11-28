@@ -1,6 +1,7 @@
 <template>
   <header :class="['header', { 'is-hidden': isHidden }]">
     <div class="container">
+
       <picture @click="goHome">
         <img
           src="../assets/Logo_con_nombre_blanco.webp"
@@ -9,26 +10,36 @@
         />
       </picture>
 
+      <div class="right-controls">
+        
 
-      <button class="hamburger" @click="toggleMenu"  aria-label="Abrir me">
-        <span :class="{ open: isMenuOpen }"></span>
-        <span :class="{ open: isMenuOpen }"></span>
-        <span :class="{ open: isMenuOpen }"></span>
-      </button>
+        <button class="hamburger" @click="toggleMenu" aria-label="menu">
+          <span :class="{ open: isMenuOpen }"></span>
+          <span :class="{ open: isMenuOpen }"></span>
+          <span :class="{ open: isMenuOpen }"></span>
+        </button>
+      </div>
 
       <nav class="nav-desktop">
-        <router-link to="/">Inicio</router-link>
-        <a href="#quien-somos" @click.prevent="goNosotros">Quienes Somos</a>
-        <a href="#servicios" @click.prevent="goServicios">Servicios</a>
-        <a href="#contacto" @click.prevent="goContact">Contacto</a>
+        <button class="lang-toggle" @click="toggleLang">
+          {{ currentLang.toUpperCase() }}
+        </button>
+        <router-link to="/">{{ t("home") }}</router-link>
+        <a href="#quien-somos" @click.prevent="goNosotros">{{ t("about") }}</a>
+        <a href="#servicios" @click.prevent="goServicios">{{ t("services") }}</a>
+        <a href="#contacto" @click.prevent="goContact">{{ t("contact") }}</a>
       </nav>
 
       <nav class="nav-mobile" v-if="isMenuOpen">
-        <router-link to="/" @click="closeMenu">Inicio</router-link>
-        <a href="#quien-somos" @click.prevent="goNosotros">Quienes Somos</a>
-        <a href="#servicios" @click.prevent="goServicios">Servicios</a>
-        <a href="#contacto" @click.prevent="goContact">Contacto</a>
+        <router-link to="/" @click="closeMenu">{{ t("home") }}</router-link>
+        <a href="#quien-somos" @click.prevent="goNosotros">{{ t("about") }}</a>
+        <a href="#servicios" @click.prevent="goServicios">{{ t("services") }}</a>
+        <a href="#contacto" @click.prevent="goContact">{{ t("contact") }}</a>
+        <button class="lang-toggle" @click="toggleLang">
+          {{ currentLang.toUpperCase() }}
+        </button>
       </nav>
+
     </div>
   </header>
 </template>
@@ -41,9 +52,26 @@ export default {
       isMenuOpen: false,
       isHidden: false,
       lastY: 0,
+      currentLang: "es",
+      translations: {
+        es: {
+          home: "Inicio",
+          about: "Quienes Somos",
+          services: "Servicios",
+          contact: "Contacto",
+        },
+        en: {
+          home: "Home",
+          about: "About Us",
+          services: "Services",
+          contact: "Contact",
+        },
+      },
     };
   },
   mounted() {
+    const saved = localStorage.getItem("lang");
+    if (saved) this.currentLang = saved;
     this.lastY = window.pageYOffset || 0;
     window.addEventListener("scroll", this.handleScroll, { passive: true });
   },
@@ -51,6 +79,16 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    t(key) {
+      return this.translations[this.currentLang][key];
+    },
+    toggleLang() {
+      this.currentLang = this.currentLang === "es" ? "en" : "es";
+      localStorage.setItem("lang", this.currentLang);
+      window.dispatchEvent(new CustomEvent("lang-changed", {
+        detail: this.currentLang
+    }));
+    },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
       if (this.isMenuOpen) this.isHidden = false;
@@ -61,14 +99,12 @@ export default {
     handleScroll() {
       const y = window.pageYOffset || 0;
       const delta = y - this.lastY;
-
       if (Math.abs(delta) < 5) return;
       if (this.isMenuOpen) {
         this.isHidden = false;
         this.lastY = y;
         return;
       }
-
       if (y < 80) {
         this.isHidden = false;
       } else if (delta > 0) {
@@ -78,11 +114,9 @@ export default {
       }
       this.lastY = y;
     },
-
     goHome() {
       this.$router.push("/");
     },
-
     goNosotros() {
       this.closeMenu();
       this.isHidden = false;
@@ -91,7 +125,8 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y =
+          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -100,7 +135,6 @@ export default {
         this.$router.push("/").then(() => setTimeout(scroll, 250));
       }
     },
-
     goContact() {
       this.closeMenu();
       this.isHidden = false;
@@ -109,7 +143,8 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y =
+          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -118,7 +153,6 @@ export default {
         this.$router.push("/").then(() => setTimeout(scroll, 250));
       }
     },
-
     goServicios() {
       this.closeMenu();
       this.isHidden = false;
@@ -127,7 +161,8 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y =
+          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -152,8 +187,7 @@ export default {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transform: translateY(0);
-  transition: transform 0.35s ease, box-shadow 0.2s ease,
-    background-color 0.2s ease;
+  transition: transform 0.35s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   will-change: transform;
 }
 .header.is-hidden {
@@ -165,6 +199,28 @@ export default {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.lang-toggle {
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  height: 28px;
 }
 
 .imagenLogo {
@@ -200,7 +256,6 @@ nav {
   border-top: 1px solid #ffffff22;
 }
 
-/* Links */
 a {
   color: #ffffff;
   text-decoration: none;
@@ -262,18 +317,11 @@ a:hover::after {
   .hamburger {
     display: flex;
   }
-  .nav-mobile {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #144553;
-    width: 100%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  .right-controls {
+    gap: 10px;
   }
-
   .imagenLogo {
     height: 40px;
   }
-
 }
 </style>

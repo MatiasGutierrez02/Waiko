@@ -1,10 +1,10 @@
 <template>
   <section class="values-section">
-    <h2 class="values-title" ref="titleRef"><span>Nuestros Valores</span></h2>
+    <h2 class="values-title" ref="titleRef"><span>{{ t("title") }}</span></h2>
 
     <div class="values-grid">
       <article
-        v-for="(v, i) in items"
+        v-for="(v, i) in translatedItems"
         :key="i"
         class="value-card"
         data-aos="card-tilt"
@@ -31,7 +31,6 @@
             <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
           </svg>
 
-          <!-- Objetivo: bullseye con flecha (reemplaza al roto) -->
           <svg v-else-if="v.icon === 'objetivo'" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
             <circle cx="12" cy="12" r="5.5" stroke-width="1.8"/>
@@ -46,8 +45,12 @@
           </svg>
         </div>
 
-        <h3 class="value-title" data-aos="fade-up" :data-aos-delay="i * 140 + 200">{{ v.title }}</h3>
-        <p class="value-text" data-aos="fade-up" :data-aos-delay="i * 140 + 240">{{ v.text }}</p>
+        <h3 class="value-title" data-aos="fade-up" :data-aos-delay="i * 140 + 200">
+          {{ v.title }}
+        </h3>
+        <p class="value-text" data-aos="fade-up" :data-aos-delay="i * 140 + 240">
+          {{ v.text }}
+        </p>
       </article>
     </div>
   </section>
@@ -58,44 +61,108 @@ import { computed, ref, onMounted, defineProps } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
+const currentLang = ref(localStorage.getItem("lang") || "es")
+
+const dict = {
+  es: {
+    title: "Nuestros Valores",
+    values: [
+      {
+        title: "Misión",
+        text: "Ofrecer asesoramiento técnico y gestión ambiental de alta calidad, garantizando el cumplimiento normativo y la mejora continua en cada proyecto.",
+        icon: "mision",
+      },
+      {
+        title: "Visión",
+        text: "Ser referentes en consultoría ambiental, promoviendo una cultura empresarial basada en la excelencia y la sostenibilidad.",
+        icon: "vision",
+      },
+      {
+        title: "Objetivo",
+        text: "Desarrollar soluciones integrales que fortalezcan el desempeño ambiental y la competitividad de nuestros clientes.",
+        icon: "objetivo",
+      }
+    ]
+  },
+
+  en: {
+    title: "Our Values",
+    values: [
+      {
+        title: "Mission",
+        text: "Provide high-quality technical consulting and environmental management, ensuring regulatory compliance and continuous improvement in every project.",
+        icon: "mision",
+      },
+      {
+        title: "Vision",
+        text: "Be leaders in environmental consulting, promoting a business culture based on excellence and sustainability.",
+        icon: "vision",
+      },
+      {
+        title: "Objective",
+        text: "Develop comprehensive solutions that enhance environmental performance and the competitiveness of our clients.",
+        icon: "objetivo",
+      }
+    ]
+  }
+}
+
+const t = (key) => dict[currentLang.value][key]
+
 const props = defineProps({
   values: {
     type: Array,
-    default: () => ([
-      { title: 'Misión',   text: 'Ofrecer asesoramiento técnico y gestión ambiental de alta calidad, garantizando el cumplimiento normativo y la mejora continua en cada proyecto.', icon: 'mision' },
-      { title: 'Visión',   text: 'Ser referentes en consultoría ambiental, promoviendo una cultura empresarial basada en la excelencia y la sostenibilidad.',     icon: 'vision' },
-      { title: 'Objetivo', text: 'Desarrollar soluciones integrales que fortalezcan el desempeño ambiental y la competitividad de nuestros clientes.', icon: 'objetivo' }
-    ])
+    default: () => ([])
   }
 })
 
-const items = computed(() => props.values)
+const translatedItems = computed(() => {
+  if (!props.values.length) return dict[currentLang.value].values
+
+  return props.values.map((x, i) => ({
+    ...x,
+    title: dict[currentLang.value].values[i]?.title ?? x.title,
+    text: dict[currentLang.value].values[i]?.text ?? x.text
+  }))
+})
+
 const titleRef = ref(null)
 
 onMounted(() => {
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail
+  })
+
   AOS.init({ duration: 900, once: true, easing: 'ease-out-quart', offset: 80 })
 
   const el = titleRef.value
   if (!el) return
+
   el.style.setProperty('--line-scale', '0')
   el.style.opacity = '0'
   el.style.transform = 'translateX(-40px)'
 
   const io = new IntersectionObserver(([entry]) => {
     if (!entry.isIntersecting) return
+
     const start = performance.now()
     const dur = 900
+
     const tick = (now) => {
       const t = Math.min(1, (now - start) / dur)
       const ease = 1 - Math.pow(1 - t, 3)
+
       el.style.setProperty('--line-scale', ease.toString())
       el.style.opacity = ease.toString()
       el.style.transform = `translateX(${(1 - ease) * -40}px)`
+
       if (t < 1) requestAnimationFrame(tick)
       else io.disconnect()
     }
+
     requestAnimationFrame(tick)
   }, { threshold: 0.4 })
+
   io.observe(el)
 })
 </script>

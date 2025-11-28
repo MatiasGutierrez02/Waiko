@@ -2,7 +2,7 @@
   <section id="servicios" class="servicios">
     <div class="section-heading" ref="headingRef">
       <h2 class="section-title-servicios" ref="titleRef">
-        <span>Servicios</span>
+        <span>{{ t("title") }}</span>
       </h2>
     </div>
 
@@ -29,7 +29,7 @@
         :autoplay="{ delay: 4000, disableOnInteraction: false }"
         class="servicios-swiper"
       >
-        <SwiperSlide v-for="(s, i) in items" :key="i">
+        <SwiperSlide v-for="(s, i) in translatedItems" :key="i">
           <article class="servicio-card">
             <div class="img-wrap">
               <picture>
@@ -40,8 +40,8 @@
               <span
                 v-if="s.premium || i === 0"
                 class="premium-corner"
-                title="Servicio destacado"
-                aria-label="Servicio destacado"
+                :title="t('featured')"
+                :aria-label="t('featured')"
               >
                 <svg viewBox="0 0 24 24" class="crown" aria-hidden="true">
                   <g
@@ -62,7 +62,9 @@
 
             <h3 v-html="s.title"></h3>
             <p>{{ s.desc }}</p>
-            <button @click="onSelect(s)"  aria-label="Mas informacion">Más información</button>
+            <button @click="onSelect(s)" aria-label="Más información">
+              {{ t("moreInfo") }}
+            </button>
           </article>
         </SwiperSlide>
 
@@ -70,12 +72,12 @@
         <div
           class="swiper-button-prev"
           :class="{ 'is-visible': hover }"
-          aria-label="Anterior"
+          :aria-label="t('previous')"
         ></div>
         <div
           class="swiper-button-next"
           :class="{ 'is-visible': hover }"
-          aria-label="Siguiente"
+          :aria-label="t('next')"
         ></div>
       </Swiper>
     </div>
@@ -104,81 +106,182 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+const currentLang = ref(localStorage.getItem("lang") || "es");
+
+const translations = {
+  es: {
+    title: "Servicios",
+    featured: "Servicio destacado",
+    moreInfo: "Más información",
+    previous: "Anterior",
+    next: "Siguiente",
+  },
+  en: {
+    title: "Services",
+    featured: "Featured service",
+    moreInfo: "More info",
+    previous: "Previous",
+    next: "Next",
+  },
+};
+
+const t = (key) => translations[currentLang.value][key];
+
+onMounted(() => {
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail;
+  });
+});
+
 const props = defineProps({
   services: {
     type: Array,
     default: () => [
-  {
-    premium: true,
-    title: "Abono Mensual",
-    desc: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
-    imgWebp: new URL("@/assets/imagenTrabajo.webp", import.meta.url).href,
-    to: "/servicios/abono-mensual",
-  },
-  {
-    title: "Impacto Ambiental",
-    desc: "Estudio de Impacto Ambiental APRA | Cumplimiento Ley 123 | Evite Multas",
-    imgWebp: new URL("@/assets/GestionAmbiental.webp", import.meta.url).href,
-    to: "/servicios/gestion-ambiental",
-  },
-  {
-    title: "Inscripción Generador de Residuos Peligrosos APra",
-    desc: "Revisamos y optimizamos la gestión de sus residuos peligrosos.",
-    imgWebp: new URL("@/assets/apra.webp", import.meta.url).href,
-    to: "/servicios/habilitaciones-comerciales",
-  },
-  {
-    title: "Residuos Peligrosos (Sayds)",
-    desc: "Cumpla con la Ley 24.051 y asegure la correcta inscripción de residuos peligrosos, evitando sanciones y clausuras.",
-    imgWebp: new URL("@/assets/sayds.webp", import.meta.url).href,
-    to: "/servicios/habilitaciones-comerciales-nacion",
-  },
-  {
-    title: "Estudio de Impacto Acústico - RAC",
-    desc: "Asesoramos en la inscripción de actividades con potencial impacto acústico, garantizando el cumplimiento legal.",
-    imgWebp: new URL("@/assets/impactoAcustico.webp", import.meta.url).href,
-    to: "/servicios/impacto-acustico",
-  },
-  {
-    title: "Habilitaciones Y Permisos",
-    desc: "Brindamos un servicio integral de habilitaciones comerciales y ambientales.",
-    imgWebp: new URL("@/assets/HabilitacionesComerciales.webp", import.meta.url).href,
-    to: "/servicios/habilitaciones-permisos",
-  },
-  {
-    title: "Intimaciones Y Cédulas",
-    desc: "Respuesta a Intimaciones Ambientales | Cédulas APRA y AGC | Evite Multas",
-    imgWebp: new URL("@/assets/IntimacionesCedulas.webp", import.meta.url).href,
-    to: "/servicios/intimaciones-cedulas",
-  },
-  {
-    title: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
-    desc: "Asistencia técnica en evaluaciones ambientales exigidas por organismos internacionales (CAF, BID, BM).",
-    imgWebp: new URL("@/assets/caf_bid.webp", import.meta.url).href,
-    to: "/servicios/internacionales-credito",
-  },
-  {
-    title: "Empresas Extranjeras",
-    desc: "Asesoramiento Ambiental para Empresas Extranjeras | Cumplimiento Legal en Argentina",
-    imgWebp: new URL("@/assets/EmpresasExtranjeras.webp", import.meta.url).href,
-    to: "/servicios/empresas-extranjeras",
-  },
-  {
-    title: "Registro de Campanas, Conductos y Afines",
-    desc: "Si tu establecimiento tiene campanas o conductos de extracción, debe cumplir con la Disposición 913/2025.",
-    imgWebp: new URL("@/assets/campana.webp", import.meta.url).href,
-    to: "/servicios/registro-campanas",
-  },
-]
-,
+      {
+        premium: true,
+        title: {
+          es: "Abono Mensual",
+          en: "Monthly Plan",
+        },
+        desc: {
+          es: "¿Quiere olvidarse de los vencimientos y evitar intimaciones?",
+          en: "Do you want to forget about deadlines and avoid legal notices?",
+        },
+        imgWebp: new URL("@/assets/imagenTrabajo.webp", import.meta.url).href,
+        to: "/servicios/abono-mensual",
+      },
+      {
+        title: {
+          es: "Impacto Ambiental",
+          en: "Environmental Impact",
+        },
+        desc: {
+          es: "Estudios APRA | Ley 123 | Evite multas y clausuras",
+          en: "APRA Studies | Law 123 compliance | Avoid fines and closures",
+        },
+        imgWebp: new URL("@/assets/GestionAmbiental.webp", import.meta.url).href,
+        to: "/servicios/gestion-ambiental",
+      },
+      {
+        title: {
+          es: "Inscripción Generador de Residuos Peligrosos APRA",
+          en: "Hazardous Waste Registration (APRA)",
+        },
+        desc: {
+          es: "Revisamos y optimizamos la gestión de residuos peligrosos.",
+          en: "We review and optimize your hazardous waste management.",
+        },
+        imgWebp: new URL("@/assets/apra.webp", import.meta.url).href,
+        to: "/servicios/habilitaciones-comerciales",
+      },
+      {
+        title: {
+          es: "Residuos Peligrosos (Sayds)",
+          en: "Hazardous Waste (Sayds)",
+        },
+        desc: {
+          es: "Cumpla con la Ley 24.051 y evite sanciones.",
+          en: "Comply with Law 24.051 and avoid penalties.",
+        },
+        imgWebp: new URL("@/assets/sayds.webp", import.meta.url).href,
+        to: "/servicios/habilitaciones-comerciales-nacion",
+      },
+      {
+        title: {
+          es: "Impacto Acústico - RAC",
+          en: "Acoustic Impact - RAC",
+        },
+        desc: {
+          es: "Asesoramos para cumplir con las normativas acústicas vigentes.",
+          en: "We advise you to comply with acoustic regulations.",
+        },
+        imgWebp: new URL("@/assets/impactoAcustico.webp", import.meta.url).href,
+        to: "/servicios/impacto-acustico",
+      },
+      {
+        title: {
+          es: "Habilitaciones y Permisos",
+          en: "Permits & Authorizations",
+        },
+        desc: {
+          es: "Servicio integral de habilitaciones comerciales y ambientales.",
+          en: "Comprehensive service for commercial & environmental permits.",
+        },
+        imgWebp: new URL("@/assets/HabilitacionesComerciales.webp", import.meta.url).href,
+        to: "/servicios/habilitaciones-permisos",
+      },
+      {
+        title: {
+          es: "Intimaciones y Cédulas",
+          en: "Environmental Notices & Citations",
+        },
+        desc: {
+          es: "Respuesta profesional a intimaciones APRA y AGC.",
+          en: "Professional response to APRA and AGC notices.",
+        },
+        imgWebp: new URL("@/assets/IntimacionesCedulas.webp", import.meta.url).href,
+        to: "/servicios/intimaciones-cedulas",
+      },
+      {
+        title: {
+          es: "Organismos Internacionales<br>de Crédito<br>(CAF-BID-BM)",
+          en: "International<br>Credit Agencies<br>(CAF-IDB-WB)",
+        },
+        desc: {
+          es: "Asistencia técnica para evaluaciones ambientales.",
+          en: "Technical assistance for environmental assessments.",
+        },
+        imgWebp: new URL("@/assets/caf_bid.webp", import.meta.url).href,
+        to: "/servicios/internacionales-credito",
+      },
+      {
+        title: {
+          es: "Empresas Extranjeras",
+          en: "Foreign Companies",
+        },
+        desc: {
+          es: "Asesoramiento ambiental para empresas internacionales.",
+          en: "Environmental advisory for international companies.",
+        },
+        imgWebp: new URL("@/assets/EmpresasExtranjeras.webp", import.meta.url).href,
+        to: "/servicios/empresas-extranjeras",
+      },
+      {
+        title: {
+          es: "Registro de Campanas, Conductos y Afines",
+          en: "Hoods, Ducts & Extraction Registry",
+        },
+        desc: {
+          es: "Cumpla con la Disposición 913/2025.",
+          en: "Comply with Regulation 913/2025.",
+        },
+        imgWebp: new URL("@/assets/campana.webp", import.meta.url).href,
+        to: "/servicios/registro-campanas",
+      },
+    ],
   },
 });
+
+const translatedItems = computed(() =>
+  props.services.map((s) => ({
+    ...s,
+    title: s.title[currentLang.value],
+    desc: s.desc[currentLang.value],
+  }))
+);
+
+
 const emit = defineEmits(["select"]);
 const router = useRouter();
 const modules = [Navigation, Pagination, Keyboard, A11y, Autoplay];
 const hover = ref(false);
 const swiperRef = ref(null);
-const items = computed(() => props.services);
+
+function onSelect(item) {
+  if (item.to) router.push(item.to);
+  emit("select", item);
+}
+
 const navigation = {
   nextEl: ".swiper-button-next",
   prevEl: ".swiper-button-prev",
@@ -188,43 +291,24 @@ const pagination = {
   clickable: true,
   dynamicBullets: true,
 };
-const breakpoints = {
-  480: {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    centeredSlides: true,
-  },
-  768: {
-    slidesPerView: 1.5,
-    spaceBetween: 18,
-    centeredSlides: true,
-  },
-  900: {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    centeredSlides: true,
-  },
-  1200: {
-    slidesPerView: 3,
-    spaceBetween: 24,
-    centeredSlides: true,
-  },
-};
-function onSelect(item) {
-  if (item.to) {
-    router.push(item.to);
-  }
 
-  emit("select", item);
-}
+const breakpoints = {
+  480: { slidesPerView: 1, spaceBetween: 16, centeredSlides: true },
+  768: { slidesPerView: 1.5, spaceBetween: 18, centeredSlides: true },
+  900: { slidesPerView: 2, spaceBetween: 20, centeredSlides: true },
+  1200: { slidesPerView: 3, spaceBetween: 24, centeredSlides: true },
+};
+
 function onSwiperReady(swiper) {
   swiperRef.value = swiper;
   requestAnimationFrame(() => swiper.update());
   window.addEventListener("load", handleWindowLoad);
 }
+
 function handleWindowLoad() {
   swiperRef.value?.update();
 }
+
 onMounted(() => setTimeout(() => swiperRef.value?.update(), 120));
 onBeforeUnmount(() => window.removeEventListener("load", handleWindowLoad));
 

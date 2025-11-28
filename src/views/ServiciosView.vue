@@ -1,51 +1,47 @@
 <template>
   <div class="servicio-detalle">
-    <!-- Hero Section -->
     <div class="hero-section" v-if="serviceData">
       <div class="hero-overlay"></div>
       <picture v-if="serviceData">
         <source :srcset="serviceData.imageWebp" type="image/webp" />
         <img
           :src="serviceData.image"
-          :alt="serviceData.title"
+          :alt="t('title')"
           class="hero-image"
         />
       </picture>
 
       <div class="hero-content">
         <div class="container">
-          <h1 class="hero-title">{{ serviceData.title }}</h1>
-          <p class="hero-subtitle">{{ serviceData.subtitle }}</p>
+          <h1 class="hero-title">{{ t("title") }}</h1>
+          <p class="hero-subtitle">{{ t("subtitle") }}</p>
         </div>
       </div>
     </div>
 
-    <!-- Content Section -->
     <div class="content-section" v-if="serviceData">
       <div class="container">
-        <!-- Descripción -->
         <section
           class="description-section"
           data-aos="fade-up"
           data-aos-offset="100"
           data-aos-delay="100"
         >
-          <h2>¿Qué ofrecemos?</h2>
-          <p class="description">{{ serviceData.description }}</p>
+          <h2>{{ what }}</h2>
+          <p class="description">{{ t("description") }}</p>
         </section>
 
-        <!-- Características principales -->
         <section
           class="features-section"
           data-aos="fade-up"
           data-aos-offset="100"
           data-aos-delay="200"
         >
-          <h2>Características principales</h2>
+          <h2>{{ featuresTitle }}</h2>
           <div class="features-grid">
             <div
-              v-for="(feature, i) in serviceData.features"
-              :key="feature"
+              v-for="(feature, i) in translatedFeatures"
+              :key="i"
               class="feature-card"
               :data-aos-delay="200 + i * 100"
               data-aos="fade-up"
@@ -56,46 +52,74 @@
           </div>
         </section>
 
-        <!-- Call to action -->
-        <ContactoComponente></ContactoComponente>
+        <ContactoComponente />
       </div>
     </div>
 
     <div v-else class="error-section">
       <div class="container">
-        <h1>Servicio no encontrado</h1>
-        <p>El servicio que buscas no existe o ha sido movido.</p>
-        <button @click="goHome" class="back-button" aria-label="volver al incio">Volver al inicio</button>
+        <h1>{{ errorTitle }}</h1>
+        <p>{{ errorDesc }}</p>
+        <button @click="goHome" class="back-button" aria-label="volver al incio">
+          {{ back }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { serviciosData } from "@/data/serviciosdata.js";
 import ContactoComponente from "@/components/ContactoComponente.vue";
+
 const route = useRoute();
 const router = useRouter();
 
+const currentLang = ref(localStorage.getItem("lang") || "es");
+window.addEventListener("lang-changed", e => currentLang.value = e.detail);
+
 const serviceSlug = computed(() => route.params.slug);
-const serviceData = computed(() => {
-  return serviciosData[serviceSlug.value] || null;
-});
+const serviceData = computed(() => serviciosData[serviceSlug.value] || null);
 
+const t = key => serviceData.value[key][currentLang.value];
 
-const goHome = () => {
-  router.push("/");
-};
+const translatedFeatures = computed(() =>
+  serviceData.value.features.map(f => f[currentLang.value])
+);
+
+const what = computed(() => ({
+  es: "¿Qué ofrecemos?",
+  en: "What do we offer?"
+}[currentLang.value]));
+
+const featuresTitle = computed(() => ({
+  es: "Características principales",
+  en: "Key Features"
+}[currentLang.value]));
+
+const errorTitle = computed(() => ({
+  es: "Servicio no encontrado",
+  en: "Service not found"
+}[currentLang.value]));
+
+const errorDesc = computed(() => ({
+  es: "El servicio que buscas no existe o ha sido movido.",
+  en: "The service you are looking for does not exist or has been moved."
+}[currentLang.value]));
+
+const back = computed(() => ({
+  es: "Volver al inicio",
+  en: "Back to home"
+}[currentLang.value]));
+
+const goHome = () => router.push("/");
 
 onMounted(() => {
-  // Inicializa AOS
   AOS.refresh();
-
-  // Animación hero al entrar
   const hero = document.querySelector(".hero-content");
   if (hero) {
     hero.style.opacity = 0;

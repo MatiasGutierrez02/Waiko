@@ -1,11 +1,11 @@
 <template>
   <section class="nuestro-impacto">
-    <h2 class="section-title-impacto" ref="titleRef">Nuestro Impacto</h2>
+    <h2 class="section-title-impacto" ref="titleRef">{{ t("title") }}</h2>
 
     <div class="impacto-container">
       <div class="estadisticas">
         <div
-          v-for="(item, i) in items"
+          v-for="(item, i) in translatedItems"
           :key="i"
           class="estadistica-item"
           ref="itemRefs"
@@ -22,17 +22,42 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onBeforeUnmount, watch, nextTick, defineProps } from 'vue'
+import { ref, reactive, onMounted, onBeforeUnmount, watch, nextTick, defineProps, computed } from 'vue'
+
+/* ========= idioma ========= */
+
+const currentLang = ref(localStorage.getItem("lang") || "es")
+
+const dict = {
+  es: {
+    title: "Nuestro Impacto",
+    stats: [
+      { target: 350,  label: "Proyectos Completados",      suffix: "+" },
+      { target: 2300, label: "Toneladas de CO₂ Reducidas", suffix: "k" },
+      { target: 600,  label: "Clientes Satisfechos",       suffix: "+" },
+      { target: 13,   label: "Años de Experiencia",        suffix: "+" }
+    ]
+  },
+
+  en: {
+    title: "Our Impact",
+    stats: [
+      { target: 350,  label: "Completed Projects",     suffix: "+" },
+      { target: 2300, label: "CO₂ Tons Reduced",       suffix: "k" },
+      { target: 600,  label: "Satisfied Clients",      suffix: "+" },
+      { target: 13,   label: "Years of Experience",    suffix: "+" }
+    ]
+  }
+}
+
+const t = (key) => dict[currentLang.value][key]
+
+/* ========= props originales ========= */
 
 const props = defineProps({
   stats: {
     type: Array,
-    default: () => ([
-      { target: 350,  label: 'Proyectos Completados',        suffix: '+' },
-      { target: 2300, label: 'Toneladas de CO₂ Reducidas',   suffix: 'k' },
-      { target: 600,  label: 'Clientes Satisfechos',         suffix: '+' },
-      { target: 13,   label: 'Años de Experiencia',          suffix: '+' },
-    ])
+    default: () => ([])
   },
   duration: { type: Number, default: 1200 },
   once: { type: Boolean, default: true },
@@ -40,7 +65,20 @@ const props = defineProps({
   formatThousands: { type: Boolean, default: true }
 })
 
-const items = reactive(props.stats)
+/* ========= stats traducidas ========= */
+
+const translatedItems = computed(() => {
+  if (!props.stats.length) return dict[currentLang.value].stats
+
+  return props.stats.map((s, i) => ({
+    ...s,
+    label: dict[currentLang.value].stats[i]?.label ?? s.label
+  }))
+})
+
+/* ========= animaciones originales ========= */
+
+const items = reactive(translatedItems.value)
 const itemRefs = ref([])
 const displayValues = ref(items.map(() => '0'))
 let observer
@@ -54,7 +92,7 @@ function ease(t) {
 
 function formatNumber(n) {
   if (!props.formatThousands) return String(n)
-  return new Intl.NumberFormat('es-AR').format(n)
+  return new Intl.NumberFormat(currentLang.value === "en" ? "en-US" : "es-AR").format(n)
 }
 
 function animateCount(index, target) {
@@ -81,7 +119,7 @@ function observeOnce() {
       const idx = itemRefs.value.indexOf(entry.target)
       if (entry.isIntersecting && idx > -1) {
         entry.target.classList.add('in-view')
-        animateCount(idx, Number(items[idx].target) || 0)
+        animateCount(idx, Number(translatedItems.value[idx].target) || 0)
         if (props.once) observer.unobserve(entry.target)
       }
     })
@@ -90,6 +128,12 @@ function observeOnce() {
 }
 
 onMounted(async () => {
+  window.addEventListener("lang-changed", (e) => {
+    currentLang.value = e.detail
+    displayValues.value = translatedItems.value.map(() => "0")
+    nextTick().then(observeOnce)
+  })
+
   await nextTick()
   observeOnce()
 
@@ -98,6 +142,7 @@ onMounted(async () => {
     title.style.opacity = '0'
     title.style.transform = 'translateX(-40px)'
     title.style.setProperty('--line-scale', '0')
+
     titleIO = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
       const start = performance.now()
@@ -122,8 +167,8 @@ onBeforeUnmount(() => {
   titleIO && titleIO.disconnect()
 })
 
-watch(() => props.stats, (nv) => {
-  displayValues.value = nv.map(() => '0')
+watch(() => props.stats, () => {
+  displayValues.value = translatedItems.value.map(() => '0')
   nextTick().then(observeOnce)
 })
 </script>
@@ -141,7 +186,6 @@ watch(() => props.stats, (nv) => {
 @supports not (overflow-x: clip){
   .nuestro-impacto{ overflow-x: hidden; }
 }
-
 
 .section-title-impacto {
   --line-scale: 0;
