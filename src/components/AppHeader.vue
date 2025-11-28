@@ -11,8 +11,6 @@
       </picture>
 
       <div class="right-controls">
-        
-
         <button class="hamburger" @click="toggleMenu" aria-label="menu">
           <span :class="{ open: isMenuOpen }"></span>
           <span :class="{ open: isMenuOpen }"></span>
@@ -21,8 +19,30 @@
       </div>
 
       <nav class="nav-desktop">
-        <button class="lang-toggle" @click="toggleLang">
-          {{ currentLang.toUpperCase() }}
+        <button class="lang-toggle" @click="toggleLang" aria-label="Cambiar idioma">
+          <span v-if="currentLang === 'es'">
+            <svg width="24" height="24" viewBox="0 0 640 480">
+              <rect width="640" height="480" fill="#AA151B"/>
+              <rect width="640" height="240" y="120" fill="#F1BF00"/>
+            </svg>
+          </span>
+          <span v-else>
+            <svg width="24" height="24" viewBox="0 0 60 30">
+              <clipPath id="s">
+                <path d="M0,0 v30 h60 v-30 z"/>
+              </clipPath>
+              <clipPath id="t">
+                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+              </clipPath>
+              <g clip-path="url(#s)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </span>
         </button>
         <router-link to="/">{{ t("home") }}</router-link>
         <a href="#quien-somos" @click.prevent="goNosotros">{{ t("about") }}</a>
@@ -35,8 +55,31 @@
         <a href="#quien-somos" @click.prevent="goNosotros">{{ t("about") }}</a>
         <a href="#servicios" @click.prevent="goServicios">{{ t("services") }}</a>
         <a href="#contacto" @click.prevent="goContact">{{ t("contact") }}</a>
-        <button class="lang-toggle" @click="toggleLang">
-          {{ currentLang.toUpperCase() }}
+
+        <button class="lang-toggle" @click="toggleLang" aria-label="Cambiar idioma">
+          <span v-if="currentLang === 'es'">
+            <svg width="24" height="24" viewBox="0 0 640 480">
+              <rect width="640" height="480" fill="#AA151B"/>
+              <rect width="640" height="240" y="120" fill="#F1BF00"/>
+            </svg>
+          </span>
+          <span v-else>
+            <svg width="24" height="24" viewBox="0 0 60 30">
+              <clipPath id="s">
+                <path d="M0,0 v30 h60 v-30 z"/>
+              </clipPath>
+              <clipPath id="t">
+                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+              </clipPath>
+              <g clip-path="url(#s)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </span>
         </button>
       </nav>
 
@@ -85,9 +128,9 @@ export default {
     toggleLang() {
       this.currentLang = this.currentLang === "es" ? "en" : "es";
       localStorage.setItem("lang", this.currentLang);
-      window.dispatchEvent(new CustomEvent("lang-changed", {
-        detail: this.currentLang
-    }));
+      window.dispatchEvent(
+        new CustomEvent("lang-changed", { detail: this.currentLang })
+      );
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
@@ -125,8 +168,7 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y =
-          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -143,8 +185,7 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y =
-          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -161,8 +202,7 @@ export default {
         if (!el) return;
         const header = document.querySelector("header.header");
         const h = header ? header.offsetHeight : 80;
-        const y =
-          el.getBoundingClientRect().top + window.pageYOffset - h - 2;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - h - 2;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
       if (this.$route.path === "/") {
@@ -209,19 +249,14 @@ export default {
 
 .lang-toggle {
   background: transparent;
-  border: 2px solid #FFFFFF;
-  color: #FFFFFF;
-  padding: 4px 10px;
-  border-radius: 5px;
-  font-weight: 600;
+  border: none;      /* 💥 ESTO QUITA EL BORDE */
+  padding: 0;        /* Opcional, para que quede justo al SVG */
   cursor: pointer;
-  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  height: 28px;
 }
+
 
 .imagenLogo {
   height: 60px;
