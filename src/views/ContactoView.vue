@@ -6,7 +6,7 @@
       <p>
         <strong>Celular Corporativo:</strong>
         <a :href="whatsappLink" target="_blank" class="contact-link">
-          (54 11) 15 5384 9262
+          (54 11) 2165-6926
         </a>
       </p>
       <p>
@@ -100,7 +100,7 @@ const form = ref({
 const loading = ref(false);
 const successDialog = ref(false);
 
-const whatsappLink = "https://wa.me/541153849262";
+const whatsappLink = "https://wa.me/5491121656926?text=Hola%21%20me%20gustaria%20obtener%20mas%20informaci%C3%B3n%20sobre%20tus%20servicios%20sobre%20consultoria%20ambiental.";
 
 const enviarConsulta = async () => {
   loading.value = true;

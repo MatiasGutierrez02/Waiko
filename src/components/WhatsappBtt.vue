@@ -1,7 +1,7 @@
 <!-- src/components/WhatsAppButton.vue -->
 <template>
   <a
-    href="https://wa.me/5491153849262"
+    href="https://wa.me/5491121656926?text=Hola%21%20me%20gustaria%20obtener%20mas%20informaci%C3%B3n%20sobre%20tus%20servicios%20sobre%20consultoria%20ambiental."
     target="_blank"
     rel="noopener noreferrer"
     class="whatsapp-button"

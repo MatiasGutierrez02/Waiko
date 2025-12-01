@@ -12,7 +12,7 @@
         <ul class="info-list">
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2a1.6 1.6 0 0 1 1.7-.38c1.8.72 3.8 1.12 5.9 1.12a1.6 1.6 0 0 1 1.6 1.6V21a1.6 1.6 0 0 1-1.6 1.6A19.6 19.6 0 0 1 3 7.6 1.6 1.6 0 0 1 4.6 6h2.48A1.6 1.6 0 0 1 8.68 7.6c0 2.1.4 4.1 1.12 5.9a1.6 1.6 0 0 1-.38 1.7L7.6 17.4a15.9 15.9 0 0 0-1-6.6Z" fill="currentColor"/></svg>
-            <a :href="whatsappLink" target="_blank">+54 11 5384-9262</a>
+            <a :href="whatsappLink" target="_blank">+54 11 2165-6926</a>
           </li>
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 12 4 6.01V6h16ZM4 18V8.24l7.4 5.55a1 1 0 0 0 1.2 0L20 8.24V18H4Z" fill="currentColor"/></svg>
@@ -227,8 +227,6 @@ const translations = {
 
 const t = (key) => translations[currentLang.value][key];
 
-/* -------- resto igual -------- */
-
 const form = ref({ nombre: '', mail: '', telefono: '', consulta: '' })
 const loading = ref(false)
 const showTerms = ref(false)
@@ -236,7 +234,7 @@ const termsAccepted = ref(false)
 const termsInvalid = ref(false)
 const shakeNow = ref(false)
 
-const whatsappLink = 'https://wa.me/541153849262'
+const whatsappLink = 'https://wa.me/5491121656926?text=Hola%21%20me%20gustaria%20obtener%20mas%20informaci%C3%B3n%20sobre%20tus%20servicios%20sobre%20consultoria%20ambiental.'
 const today = computed(() =>
   new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'long', year: 'numeric' })
 )
