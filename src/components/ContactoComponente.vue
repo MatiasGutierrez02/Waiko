@@ -247,15 +247,15 @@ const enviarConsulta = async () => {
   loading.value = true
   try {
     await emailjs.send(
-      'service_9gypgvi',
-      'template_qzcan29',
+      'service_tcqu1sg',
+      'template_qzs1vyn',
       {
         nombre: form.value.nombre,
         mail: form.value.mail,
         telefono: form.value.telefono,
         consulta: form.value.consulta
       },
-      'ZYTdaHsiLkfn2j2CQ'
+      'MheBtyUsCR9jTx0Oy'
     )
     form.value = { nombre: '', mail: '', telefono: '', consulta: '' }
     termsAccepted.value = false
