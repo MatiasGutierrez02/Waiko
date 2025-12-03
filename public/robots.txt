@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://waiko.com.ar/sitemap.xml

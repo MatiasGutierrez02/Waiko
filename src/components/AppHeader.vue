@@ -259,7 +259,7 @@ export default {
 
 
 .imagenLogo {
-  height: 60px;
+  height: 3em;
   transition: transform 0.3s ease;
 }
 .imagenLogo:hover {
@@ -343,6 +343,17 @@ a:hover::after {
 }
 .hamburger span.open:nth-child(3) {
   transform: translateY(-7.5px) rotate(-45deg);
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .imagenLogo {
+    height: 3em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .imagenLogo {
+    height: 3em;
+  }
 }
 
 @media (max-width: 768px) {

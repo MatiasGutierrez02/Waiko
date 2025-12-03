@@ -27,7 +27,7 @@ export default {
   color: #ffffff;
   padding: 2rem 1.5rem 1rem;
   font-size: 0.95rem;
-font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", system-ui, sans-serif;
 }
 
 .footer-container {

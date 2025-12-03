@@ -143,7 +143,7 @@ const enviarConsulta = async () => {
   border-radius: 12px;
   box-shadow: 0 10px 24px rgba(38, 77, 44, 0.15);
   padding: 2.5rem 2rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", system-ui, sans-serif;
   color: #144553;
 }
 

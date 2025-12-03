@@ -1,58 +1,61 @@
 <template>
   <div id="app">
+    <img
+      v-show="showPoster"
+      class="global-lcp-poster"
+      src="/img/bannerPoster.webp"
+      fetchpriority="high"
+      decoding="sync"
+      loading="eager"
+      alt=""
+    />
     <AppHeader />
+
     <main class="content">
-      <router-view />
+      <HomeView @video-loaded="hidePoster" />
     </main>
+
     <WhatsappBtt />
     <AppFooter />
+
   </div>
 </template>
 
 <script>
-import WhatsappBtt from "@/components/WhatsappBtt.vue";
 import AppHeader from "@/components/AppHeader.vue";
+import WhatsappBtt from "@/components/WhatsappBtt.vue";
 import AppFooter from "@/components/AppFooter.vue";
+import HomeView from "@/views/HomeView.vue";
 
 export default {
   name: "App",
   components: {
-    WhatsappBtt,
     AppHeader,
+    WhatsappBtt,
     AppFooter,
+    HomeView,
+  },
+  data() {
+    return {
+      showPoster: true, // 🔥 por defecto se ve
+    };
+  },
+  methods: {
+    hidePoster() {
+      this.showPoster = false;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #808285;
-  background-color: #f8f9fa;
-  font-weight: 800;
-  line-height: 1.33;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #f8f4ee;
-    }
-  }
+.global-lcp-poster {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: opacity 0.4s ease;
 }
 </style>
