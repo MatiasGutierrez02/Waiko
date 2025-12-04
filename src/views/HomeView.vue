@@ -376,39 +376,36 @@ const scrollToContact = () => {
   }
 }
 
-/* === NOTEBOOKS Y PANTALLAS MEDIANAS (ej. 1366px, 1536px) === */
-@media (min-width: 1200px) and (max-width: 1600px) {
-  :deep(.banner-right) {
-    --hero-title-size: 4.5rem;
-    padding-top: 60px;
+/* === NOTEBOOKS MEDIANAS (1280px - 1600px) === */
+@media (min-width: 1280px) and (max-width: 1600px) {
+
+  .banner-right {
+    --hero-title-size: 3.5rem;   /* Mucho más realista para 1366px */
   }
 
-  :deep(.banner-main-title) {
-    font-size: 4.5rem !important;
-  }
-
-  :deep(.banner-subtitle) {
-    font-size: 1.4rem !important;
+  .brand-waiko {
+    margin-bottom: -3.2rem;
   }
 
   .brand-w {
-    height: 5em;
-    margin-right: -0.15em;
-  }
-  .banner-main-title {
-    margin-top: 0.4rem;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-  }
-  .brand-letters {
-    margin-left: -0.05em;
+    height: 3.2em;               /* Antes 5em → gigante */
   }
 
-  :deep(.banner-button) {
-    font-size: 1.1rem !important;
+  .banner-main-title {
+    line-height: 1.1;
+    margin-top: 0.2rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1.25rem !important;
+  }
+
+  .banner-button {
+    font-size: 1.05rem !important;
     margin-top: 1rem;
   }
 }
+
 
 /* === iPhone 14 Pro Max y móviles similares (430px) === */
 @media (max-width: 430px) and (min-width: 415px) {
