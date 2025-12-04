@@ -83,12 +83,15 @@ const currentLang = ref(localStorage.getItem("lang") || "es");
 window.addEventListener("lang-changed", e => currentLang.value = e.detail);
 
 const serviceSlug = computed(() => route.params.slug);
-const serviceData = computed(() => serviciosData[serviceSlug.value] || null);
+const serviceData = computed(() => {
+  const slug = serviceSlug.value;
+  return serviciosData?.[slug] ?? null;
+});
 
-const t = key => serviceData.value[key][currentLang.value];
+const t = key => serviceData.value?.[key]?.[currentLang.value] ?? "";
 
 const translatedFeatures = computed(() =>
-  serviceData.value.features.map(f => f[currentLang.value])
+  serviceData.value?.features?.map(f => f[currentLang.value]) ?? []
 );
 
 const what = computed(() => ({
@@ -137,7 +140,7 @@ onMounted(() => {
 <style scoped>
 .servicio-detalle {
   min-height: 100vh;
-  margin-top: 80px;
+  margin-top: 72px;
 }
 
 /* Hero Section */

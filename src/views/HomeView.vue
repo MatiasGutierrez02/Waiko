@@ -12,7 +12,7 @@
       >
         <source src="@/assets/bannerAnimado.webm" type="video/webm" />
       </video>
-      
+
       <div class="banner-content">
         <div class="banner-right">
           <div class="brand-waiko" aria-label="WAIKO" data-hero>
@@ -78,7 +78,6 @@ onMounted(() => {
   });
 
   const video = document.querySelector(".banner-video");
-
   if (!video) return;
 
   /* 🔥 Cuando el video carga, avisamos al App.vue que puede ocultar el poster global */
@@ -127,8 +126,6 @@ const scrollToContact = () => {
 };
 </script>
 
-
-
 <style scoped>
 .home-page {
   display: flex;
@@ -152,6 +149,30 @@ const scrollToContact = () => {
   justify-content: flex-end;
   padding: 0 clamp(2rem, 8vw, 10vw) 0 0;
   background-color: #000;
+}
+
+.banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  /* 🎥 Fade-in del nuevo archivo */
+  transition: opacity 0.4s ease-out;
+  opacity: 0;
+}
+
+/* Opcional: si en algún momento usás una imagen de poster dentro del banner */
+.banner-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
 }
 
 .banner-content {
@@ -184,11 +205,11 @@ const scrollToContact = () => {
   letter-spacing: 0.02em;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
-  margin-bottom: -9.5rem;
+  margin-bottom: -9.75rem;
 }
 
 .brand-w {
-  height: 4em;
+  height: 3.5em;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
@@ -196,10 +217,18 @@ const scrollToContact = () => {
   flex-shrink: 0;
 }
 
+.brand-letters {
+  letter-spacing: 0.04em;
+  z-index: 10;
+  font-weight: 900;
+  margin-left: -0.05em; /* Additional negative margin to get closer */
+}
+
 .banner-main-title {
   font-size: var(--hero-title-size);
-  font-weight: 700;
-  margin: -20px 0 1rem 0;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: -20px;
   line-height: 1;
 }
 
@@ -219,42 +248,220 @@ const scrollToContact = () => {
   transition: background-color 0.3s ease;
   font-size: 1.3rem;
 }
+
 .banner-button:hover {
   background-color: #3b6e40;
 }
 
-.banner-poster,
-.banner-video {
-  position: absolute;
-  inset: 0;
+#section {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s ease-out;
 }
 
-.banner-poster {
-  z-index: 1;
-  opacity: 1;
-}
-
-.banner-video {
-  z-index: 0;
-  opacity: 0;
-}
-
-@keyframes heroIn {
-  0% { opacity: 0; transform: translateY(22px) scale(0.98); filter: blur(2px); }
-  100% { opacity: 1; transform: none; filter: none; }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
+/* === TABLETS PORTRAIT === */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .banner {
+    justify-content: center;
+    padding-right: 0;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
   .banner-right {
+    align-items: center;
+    --hero-title-size: 3.8rem;
+  }
+  .brand-w {
+    height: 6em;
+    margin-right: -0.15em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .brand-letters {
+    margin-left: -0.05em;
+  }
+
+  .banner-main-title {
+    margin-top: 0;
+  }
+  .banner-subtitle {
+    font-size: clamp(1rem, 3.2vw + 0.5rem, 1.2rem);
+    margin-bottom: 1.4rem;
+  }
+  .banner-button {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+/* === TABLETS EN HORIZONTAL (Landscape) === */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  :deep(.banner-right) {
+    --hero-title-size: 3.5rem;
+    padding-top: 80px;
+  }
+
+  :deep(.banner-main-title) {
+    font-size: 3.5rem !important;
+  }
+
+  :deep(.banner-subtitle) {
+    font-size: 1.2rem !important;
+  }
+
+  :deep(.banner-button) {
+    font-size: 1rem !important;
+    margin-top: 1rem;
+  }
+
+  .brand-w {
+    height: 6em;
+    margin-right: -0.1em;
+  }
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .brand-letters {
+    margin-left: -0.03em;
+  }
+}
+
+/* === MÓVILES MEDIANOS A GRANDES (415px - 767px) === */
+@media (max-width: 767px) and (min-width: 415px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 75vh;
+    min-height: 450px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2.2rem, 7vw + 0.8rem, 3.2rem);
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+  }
+  .brand-w {
+    height: 4em;
+    margin-right: -0.13em;
+    margin-bottom: 1.5em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .banner-subtitle {
+    font-size: clamp(1rem, 3vw + 0.5rem, 1.2rem);
+    margin-bottom: 1.4rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(1rem, 3vw + 0.3rem, 1.1rem);
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+/* === NOTEBOOKS Y PANTALLAS MEDIANAS (ej. 1366px, 1536px) === */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  :deep(.banner-right) {
     --hero-title-size: 4.5rem;
+    padding-top: 60px;
+  }
+
+  :deep(.banner-main-title) {
+    font-size: 4.5rem !important;
+  }
+
+  :deep(.banner-subtitle) {
+    font-size: 1.4rem !important;
+  }
+
+  .brand-w {
+    height: 5em;
+    margin-right: -0.15em;
+  }
+  .banner-main-title {
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .brand-letters {
+    margin-left: -0.05em;
+  }
+
+  :deep(.banner-button) {
+    font-size: 1.1rem !important;
+    margin-top: 1rem;
+  }
+}
+
+/* === iPhone 14 Pro Max y móviles similares (430px) === */
+@media (max-width: 430px) and (min-width: 415px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 70vh;
+    min-height: 450px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0.9rem;
+  }
+  .brand-waiko {
+    margin-bottom: -1.5em;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2.1rem, 8vw + 0.5rem, 2.9rem);
+    gap: clamp(0.7rem, 2vw, 1.1rem);
+  }
+  .brand-w {
+    height: 4em;
+    margin-right: -0.13em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.95rem, 3vw + 0.4rem, 1.15rem);
+    margin-bottom: 1.3rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(0.95rem, 4vw + 0.2rem, 1.05rem);
+    padding: 0.65rem 1.1rem;
+  }
+}
+/* === NOTEBOOKS / PANTALLAS MEDIANAS (entre 1025px y 1199px) === */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .banner-right {
+    --hero-title-size: 4.2rem;
   }
 
   .brand-waiko {
-    margin-bottom: -6.5rem;
+    margin-bottom: -6rem;
   }
 
   .brand-w {
@@ -262,94 +469,235 @@ const scrollToContact = () => {
   }
 
   .banner-main-title {
-    margin-top: 0.4rem;
     line-height: 1.1;
+    margin-bottom: 1rem;
     width: 70%;
   }
 
   .banner-subtitle {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+    max-width: 80%;
+  }
+
+  .banner-button {
+    font-size: 1.15rem;
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .banner-content,
-  .banner-right {
+
+/* === iPhone XR y móviles similares (414px) === */
+@media (max-width: 414px) and (min-width: 375px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 70vh;
+    min-height: 420px;
+    margin-top: 64px
+  }
+  .banner-content {
     align-items: center;
     text-align: center;
+    padding: 1rem 0.8rem;
+  }
+  .brand-waiko {
+    margin-bottom: -1.5em;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(2rem, 8vw + 0.5rem, 2.8rem);
+    gap: clamp(0.6rem, 2vw, 1rem);
+  }
+  .brand-w {
+    height: 4em;
+    margin-right: -0.12em;
+  }
+  .brand-letters {
+    margin-left: -0.04em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.9rem, 3vw + 0.4rem, 1.1rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  .banner-button {
+    font-size: clamp(0.9rem, 4vw + 0.2rem, 1rem);
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* === Móviles pequeños (iPhone SE, etc.) === */
+@media (max-width: 374px) {
+  .banner {
+    justify-content: center;
+    padding: 0;
+    height: 65vh;
+    min-height: 380px;
+  }
+  .banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 0.8rem 0.6rem;
+  }
+  .banner-right {
+    align-items: center;
+    --hero-title-size: clamp(1.6rem, 10vw + 0.2rem, 2.4rem);
+    gap: 0.5rem;
+  }
+  .brand-w {
+    height: 4em;
+    margin-right: -0.1em;
+    margin-bottom: 3em;
+  }
+  .brand-letters {
+    margin-left: -0.03em;
+  }
+
+  .banner-main-title {
+    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .banner-subtitle {
+    font-size: clamp(0.85rem, 4vw + 0.3rem, 1rem);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .banner-button {
+    font-size: clamp(0.85rem, 5vw + 0.1rem, 0.95rem);
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* === Pantallas muy pequeñas === */
+@media (max-width: 320px) {
+  .banner {
+    min-height: 360px;
+  }
+
+  .banner-content {
+    padding: 0.6rem 0.4rem;
   }
 
   .banner-right {
-    --hero-title-size: 3.2rem;
-    gap: 0.75rem;
+    --hero-title-size: clamp(1.4rem, 12vw, 2rem);
   }
 
-  .brand-waiko {
-    margin-bottom: -4.5rem;
+  .banner-button {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
   }
 
   .brand-w {
     height: 4em;
-  }
-
-  .banner-main-title {
-    margin-top: 0.3rem;
-    line-height: 1.15;
-  }
-
-  .banner-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    max-width: 85%;
-  }
-
-  .banner-button {
-    font-size: 1.05rem;
-    padding: 0.75rem 1.25rem;
+    margin-right: -0.1em;
   }
 }
 
-@media (max-width: 767px) {
+/* === Móviles en orientación horizontal === */
+@media (max-width: 767px) and (orientation: landscape) {
   .banner {
-    justify-content: center;
-    padding-right: 0;
-    height: 100vh;
-    min-height: 450px;
-    margin-top: 69px;
-  }
-
-  .banner-content {
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
+    height: 85vh;
+    min-height: 350px;
   }
 
   .banner-right {
-    align-items: center;
-    --hero-title-size: clamp(2.2rem, 8vw + 1rem, 3.2rem);
-    margin-top: 1rem;
-  }
-
-  .brand-waiko {
-    margin-bottom: -4rem;
-  }
-
-  .brand-w {
-    height: 3.2em;
+    gap: 0.4rem;
   }
 
   .banner-main-title {
-    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .brand-waiko {
+    margin-bottom: -2.5rem;  /* Antes -4rem → demasiado agresivo */
   }
 
   .banner-subtitle {
-    font-size: clamp(1rem, 3vw + 0.5rem, 1.2rem);
-    line-height: 1.4;
+    margin-bottom: 1rem;
   }
 
-  .banner-button {
-    font-size: clamp(1rem, 4vw + 0.2rem, 1.2rem);
-    padding: 0.7rem 1.2rem;
+  .brand-w {
+    height: 4em;
+    margin-right: -0.1em;
+    
+  }
+}
+
+/* Animación de entrada solo en elementos del banner */
+@keyframes heroIn {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+.banner-content [data-hero] {
+  opacity: 0;
+  animation: heroIn 0.7s ease-out forwards;
+}
+.brand-waiko[data-hero] {
+  animation-delay: 0.05s;
+}
+.banner-main-title[data-hero] {
+  animation-delay: 0.15s;
+}
+.banner-subtitle[data-hero] {
+  animation-delay: 0.28s;
+}
+.banner-button[data-hero] {
+  animation-delay: 0.42s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-content [data-hero] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.home-page {
+  overflow-x: clip;
+}
+.banner {
+  overflow-x: clip;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .banner {
+    height: -webkit-fill-available;
+    min-height: 450px;
+  }
+
+  @media (max-width: 414px) {
+    .banner {
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .banner {
+      min-height: 380px;
+    }
+  }
+}
+
+@supports not (overflow-x: clip) {
+  .home-page,
+  .banner {
+    overflow-x: hidden;
   }
 }
 </style>

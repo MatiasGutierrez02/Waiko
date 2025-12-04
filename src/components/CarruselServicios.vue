@@ -278,6 +278,7 @@ const hover = ref(false);
 const swiperRef = ref(null);
 
 function onSelect(item) {
+  console.log(item)
   if (item.to) router.push(item.to);
   emit("select", item);
 }

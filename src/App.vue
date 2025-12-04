@@ -12,7 +12,7 @@
     <AppHeader />
 
     <main class="content">
-      <HomeView @video-loaded="hidePoster" />
+      <router-view @video-loaded="hidePoster" />
     </main>
 
     <WhatsappBtt />
@@ -25,7 +25,6 @@
 import AppHeader from "@/components/AppHeader.vue";
 import WhatsappBtt from "@/components/WhatsappBtt.vue";
 import AppFooter from "@/components/AppFooter.vue";
-import HomeView from "@/views/HomeView.vue";
 
 export default {
   name: "App",
@@ -33,7 +32,6 @@ export default {
     AppHeader,
     WhatsappBtt,
     AppFooter,
-    HomeView,
   },
   data() {
     return {
